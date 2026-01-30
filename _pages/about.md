@@ -2,33 +2,38 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle: Master's in AI & Innovation · <a href='https://www.cmu.edu'>Carnegie Mellon University</a> · Pittsburgh, PA
 
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: false
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p><strong>Pittsburgh, PA</strong></p>
+    <p><a href="mailto:mramnath@andrew.cmu.edu">mramnath@andrew.cmu.edu</a></p>
+    <p>+1 (412) 812-1059</p>
+    <p><a href="/cv/">CV / Resume</a></p>
 
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+selected_papers: true
+social: true
 
 announcements:
-  enabled: true # includes a list of news items
-  scrollable: true # adds a vertical scroll bar if there are more than 3 news items
-  limit: 5 # leave blank to include all the news in the `_news` folder
+  enabled: true
+  scrollable: true
+  limit: 5
 
 latest_posts:
   enabled: true
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
+  scrollable: true
+  limit: 3
 ---
 
-Write your biography here. Tell the world about yourself. Link to your favorite [subreddit](http://reddit.com). You can put a picture in, too. The code is already in, just name your picture `prof_pic.jpg` and put it in the `img/` folder.
+I'm a Master's student in **Artificial Intelligence & Innovation** at [Carnegie Mellon University](https://www.cmu.edu) (expected May 2027), with coursework in Machine Learning (PhD-level), Deep Learning, AI Engineering, Advanced NLP, Multimodal Machine Learning, and Data Structures & Algorithms.
 
-Put your address / P.O. box / other info right below your picture. You can also disable any of these elements by editing `profile` property of the YAML header of your `_pages/about.md`. Edit `_bibliography/papers.bib` and Jekyll will render your [publications page](/al-folio/publications/) automatically.
+Before CMU, I worked at **American Express** in Credit & Fraud Risk—first as an Analyst Intern, then Analyst, and finally **Senior Analyst**. I led the migration of large-scale ML feature pipelines from IBM mainframe to a proprietary cloud platform, built PySpark-based data ingestion and validation pipelines, and applied feature selection and dimensionality reduction to compress feature space by 43% while improving pipeline efficiency. I also engineered automated PySpark and HiveQL validation frameworks that saved 2500+ QA hours per quarter and supported model feature generation pipelines with $15M annual business impact.
 
-Link to your social media connections, too. This theme is set up to use [Font Awesome icons](https://fontawesome.com/) and [Academicons](https://jpswalsh.github.io/academicons/), like the ones below. Add your Facebook, Twitter, LinkedIn, Google Scholar, or just disable all of them.
+I hold a **B.E. in Electronics & Communication Engineering** and **M.Sc. in Physics** from [BITS Pilani, Hyderabad](https://www.bits-pilani.ac.in). During my undergrad, I was an ML Research Intern at the [Computer Vision Lab, University of Ljubljana](https://www.fri.uni-lj.si/en) (remote), where I integrated a CNN-based segmentation module into a biometric eye recognition pipeline and cut inference latency to 27% by consolidating into a single compact model. I also interned at **Adobe** in Operational Security, assessing Kubernetes cluster vulnerabilities and benchmarking security tools.
+
+My research interests include **multimodal machine learning**, **efficient fusion** (e.g., bottleneck transformers), **ML systems**, and **production ML pipelines**. I recently worked on **Cross-Modal Bottleneck Transformers for Efficient Multimodal Fusion** at CMU, designing and implementing multiple fusion architectures on MOSI/MOSEI and proposing a hierarchical bottleneck fusion mechanism that improved Acc2 by 4.3% and F1 by 2.8% over the strongest baseline.
+
+Feel free to reach out via [email](mailto:mramnath@andrew.cmu.edu), [LinkedIn](https://linkedin.com/in/mrunalini-ramnath), or [GitHub](https://github.com/mrunalinir). You can also download my [CV](/cv/).

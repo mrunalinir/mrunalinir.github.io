@@ -11,7 +11,6 @@ profile:
   more_info: >
     <p><strong>Pittsburgh, PA</strong></p>
     <p><a href="mailto:mramnath@andrew.cmu.edu">mramnath@andrew.cmu.edu</a></p>
-    <p>+1 (412) 812-1059</p>
     <p><a href="/cv/">CV / Resume</a></p>
 
 selected_papers: true

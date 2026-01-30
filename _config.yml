@@ -2,7 +2,7 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title:  # the website title (if blank, full name will be used instead)
+title: blank  # use 'blank' to show full name (first_name last_name) as home page title
 first_name: Mrunalini
 middle_name: 
 last_name: Ramnath

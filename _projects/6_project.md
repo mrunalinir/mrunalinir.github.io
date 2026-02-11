@@ -1,80 +1,58 @@
 ---
 layout: page
-title: project 6
-description: a project with no image
-img:
-importance: 4
-category: fun
+title: Data Tracking & Alert Automation System
+description: Automated alert retrieval saving 1000+ hours per quarter
+img: assets/img/6.jpg
+importance: 6
+category: work
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+## Project Overview
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+During my internship at **American Express** (January 2022 - June 2022), I developed an automated system for data tracking and alert management that significantly improved operational efficiency.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+## Key Achievements
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+### Automation & Efficiency
+- Automated data tracking systems' **triggered alert data retrieval and reporting**
+- **Saved over 1000 hours per quarter** by eliminating manual data collection and reporting processes
+- Streamlined alert management workflows for risk monitoring teams
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+### Feature Engineering & Optimization
+- Created **high-volume feature datasets** using PySpark and Hive to aid internal risk systems and ML workflows
+- Improved feature logic and alert filtering mechanisms
+- **Decreased false alert rate by 13%** measured weekly through upgraded filtering algorithms
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+### System Integration
+- Integrated with existing data tracking and monitoring systems
+- Built automated reporting dashboards for stakeholders
+- Enabled real-time alert processing and response
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+## Technical Stack
 
-{% raw %}
+- **Technologies**: PySpark, Apache Spark, Hive, HiveQL
+- **Automation**: Python scripts, scheduled jobs, data pipelines
+- **Visualization**: Reporting dashboards, alert monitoring systems
+- **Tools**: SQL, data analysis libraries
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
+## System Components
 
-{% endraw %}
+1. **Alert Data Retrieval**: Automated extraction from tracking systems
+2. **Data Processing**: PySpark-based transformation and aggregation
+3. **Feature Generation**: High-volume dataset creation for ML models
+4. **Reporting**: Automated report generation and distribution
+5. **Alert Filtering**: Logic-based false positive reduction
+
+## Business Impact
+
+This automation project freed up significant analyst time from manual data retrieval and reporting, allowing teams to focus on higher-value analysis and decision-making. The reduction in false alerts improved the signal-to-noise ratio of the monitoring system.
+
+## Skills Demonstrated
+
+- Process Automation
+- Data Engineering & ETL
+- PySpark & Distributed Computing
+- Alert System Design
+- Feature Engineering
+- Operational Efficiency Optimization

@@ -1,80 +1,59 @@
 ---
 layout: page
-title: project 4
-description: another without an image
-img:
-importance: 3
-category: fun
+title: Biometric Eye Recognition System
+description: CNN-based segmentation for vascular-feature identification
+img: assets/img/4.jpg
+importance: 4
+category: work
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+## Project Overview
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+Worked as a **Machine Learning Research Intern** at the **Computer Vision Lab, University of Ljubljana** (June 2021 - December 2021), developing an efficient biometric eye recognition pipeline using deep learning.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+## Key Achievements
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+### Model Integration & Optimization
+- Integrated a **CNN-based segmentation module** into a biometric eye recognition pipeline
+- Removed redundant stages to streamline the identification process
+- **Slashed inference latency to 27%** by consolidating into a single compact model
+- Achieved efficiency gains with no material accuracy regression on internal benchmarks
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+### Model Architecture Research
+- Benchmarked multiple model variants including **U-Net, MobileNet, and DenseNet**
+- Evaluated architectures for vascular-feature-based identification
+- Optimized for both accuracy and computational efficiency
+- Conducted systematic performance analysis across different model configurations
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+### System Design
+- Designed end-to-end pipeline for biometric authentication
+- Implemented efficient preprocessing and feature extraction stages
+- Developed production-ready inference pipeline with minimal latency
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+## Technical Stack
 
-{% raw %}
+- **Deep Learning Frameworks**: PyTorch/TensorFlow
+- **Architectures**: U-Net, MobileNet, DenseNet, CNNs
+- **Computer Vision**: OpenCV, image segmentation, feature extraction
+- **Tools**: Python, model optimization techniques
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
+## Research Contributions
 
-{% endraw %}
+This work demonstrated that careful model architecture selection and pipeline consolidation can achieve significant efficiency gains in biometric systems. The 73% reduction in inference latency makes the system more practical for real-time authentication applications while maintaining high accuracy.
+
+## Application Areas
+
+- **Biometric Authentication**: Eye-based user identification
+- **Vascular Pattern Recognition**: Analysis of eye blood vessel patterns
+- **Medical Imaging**: Potential applications in ophthalmology
+- **Security Systems**: Fast, accurate biometric verification
+
+## Skills Demonstrated
+
+- Computer Vision & Deep Learning
+- Model Benchmarking & Optimization
+- CNN Architecture Design
+- Image Segmentation
+- Research & Experimentation
+- Performance Optimization

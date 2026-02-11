@@ -1,81 +1,51 @@
 ---
 layout: page
-title: project 2
-description: a project with a background image and giscus comments
-img: assets/img/3.jpg
+title: Large-Scale ML Feature Pipeline Migration
+description: Cloud migration of credit risk decisioning systems at American Express
+img: assets/img/2.jpg
 importance: 2
 category: work
-giscus_comments: true
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+## Project Overview
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+Led the **migration of large-scale ML feature pipelines** from IBM mainframe to a proprietary cloud platform at **American Express** (February 2024 - June 2025), supporting online credit risk decisioning systems.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+## Key Achievements
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+### Cloud Migration & Production Systems
+- Successfully migrated critical ML feature pipelines through **rolling canary deployments** while maintaining **99.9% production uptime**
+- Supported online credit risk decisioning systems processing millions of transactions
+- Ensured seamless transition with zero business disruption
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+### Pipeline Development & Optimization
+- Built and maintained **PySpark-based data ingestion and validation pipelines** for model features
+- Enhanced reliability of downstream training and inference workflows
+- Applied feature selection, dimensionality reduction, and statistical clustering to **compress feature space by 43%**
+- Improved pipeline efficiency and throughput significantly
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+### Data Quality & ML Operations
+- Delivered feature updates using **data lineage and correlation analysis** to elevate data quality for production ML models
+- Implemented robust monitoring and validation frameworks
+- Established best practices for feature engineering in production environments
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+## Technical Stack
 
-{% raw %}
+- **Technologies**: PySpark, Apache Spark, Hive, HiveQL
+- **Cloud Platform**: Proprietary cloud infrastructure
+- **Techniques**: Feature selection, dimensionality reduction, statistical clustering
+- **Tools**: Python, SQL, data lineage tracking
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
+## Business Impact
 
-{% endraw %}
+This migration project enabled American Express to modernize its risk decisioning infrastructure, improving scalability, reliability, and maintainability of critical ML systems supporting billions of dollars in transaction volume.
+
+## Skills Demonstrated
+
+- ML Pipeline Architecture & Migration
+- Cloud Infrastructure & Deployment
+- Feature Engineering & Optimization
+- Production ML Systems
+- Data Engineering at Scale
+- PySpark & Distributed Computing

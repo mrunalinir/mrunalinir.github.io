@@ -1,80 +1,64 @@
 ---
 layout: page
-title: project 5
-description: a project with a background image
-img: assets/img/1.jpg
-importance: 3
-category: fun
+title: Kubernetes Security Assessment
+description: Security audit and tool benchmarking for Adobe's K8s infrastructure
+img: assets/img/5.jpg
+importance: 5
+category: work
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+## Project Overview
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+Worked as a **Software Development Intern in Operational Security** at **Adobe** (May 2021 - July 2021), conducting comprehensive security assessments of Kubernetes infrastructure.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+## Key Achievements
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+### Security Assessment
+- Assessed vulnerabilities across **10+ Kubernetes clusters**
+- Documented **15+ critical security gaps** with detailed risk analysis
+- Provided actionable recommendations for security hardening
+- Evaluated cluster configurations, RBAC policies, and network security
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+### Tool Evaluation & Benchmarking
+- Benchmarked multiple Kubernetes security tools:
+  - **kube-bench**: CIS benchmark compliance checking
+  - **kube-hunter**: Active security testing and penetration testing
+  - **AquaSecurity**: Container security scanning
+  - **kube-score**: Static analysis of Kubernetes manifests
+  - **kubesec**: Security risk analysis for Kubernetes resources
+- Advancing security coverage by **26%** through comprehensive tool adoption
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+### Remediation Strategy
+- Proposed remediation strategies reducing **monitoring overhead by 15%**
+- Ensured seamless integration with existing DevOps workflows
+- Developed prioritized action plans for addressing security gaps
+- Created documentation and runbooks for security best practices
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+## Technical Stack
 
-{% raw %}
+- **Platform**: Kubernetes, Docker, containers
+- **Security Tools**: kube-bench, kube-hunter, AquaSecurity, kube-score, kubesec
+- **Cloud**: Azure/AWS Kubernetes services
+- **Tools**: Python, shell scripting, security scanning tools
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
+## Security Areas Assessed
 
-{% endraw %}
+1. **Cluster Configuration**: API server settings, etcd security, kubelet configuration
+2. **RBAC & Access Control**: Role bindings, service accounts, authentication mechanisms
+3. **Network Security**: Network policies, ingress/egress rules, pod security
+4. **Container Security**: Image scanning, runtime security, supply chain security
+5. **Compliance**: CIS benchmarks, industry best practices
+
+## Impact
+
+This comprehensive security assessment helped Adobe identify and address critical vulnerabilities in their Kubernetes infrastructure, improving overall security posture and reducing risk exposure for production workloads.
+
+## Skills Demonstrated
+
+- Kubernetes Security & Architecture
+- Cloud Security & DevSecOps
+- Security Audit & Vulnerability Assessment
+- Tool Evaluation & Benchmarking
+- Risk Analysis & Remediation
+- Documentation & Best Practices

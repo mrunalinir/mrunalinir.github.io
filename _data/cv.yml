@@ -79,7 +79,7 @@
       year: Oct 2025 - Dec 2025
       description:
         - Fusion Architectures: Implemented early, mid, late, and bottleneck fusion variants on CMU MOSI/MOSEI
-        - Accuracy Gains: Designed hierarchical bottleneck fusion: +4.3% Acc2 and +2.8% F1 vs. strongest baseline
+        - "Accuracy Gains: Designed hierarchical bottleneck fusion: +4.3% Acc2 and +2.8% F1 vs. strongest baseline"
         - Compute Tradeoffs: Analyzed accuracy-compute behavior through FLOPs-aware ablations
 
 - title: Research Projects

@@ -15,84 +15,99 @@
 - title: Education
   type: time_table
   contents:
-    - title: Master of Science in Artificial Intelligence & Innovation
+    - title: Master of Science, Artificial Intelligence & Innovation
       institution: Carnegie Mellon University, Pittsburgh, PA
       year: Expected May 2027
       description:
-        - "Coursework: Machine Learning (PhD), Deep Learning, AI Engineering, Adv. Natural Language Processing, Multimodal Machine Learning, Data Structures and Algorithms"
-    - title: B.E. in Electronics & Communication Engineering; M.Sc. in Physics
-      institution: Birla Institute of Technology & Science, Pilani Hyderabad, India
+        - "Selected Coursework: Machine Learning (PhD), Deep Learning, AI Engineering, Adv. Natural Language Processing, Multimodal Machine Learning, Computational Data Science, Data Structures and Algorithms"
+    - title: Bachelor of Engineering, Electronics & Communication Engineering; Master of Science, Physics
+      institution: Birla Institute of Technology & Science, Pilani, Hyderabad, India
       year: Jun 2022
       description:
-        - "Coursework: Artificial Intelligence, Object-Oriented Programming, Operating Systems, Digital Image Processing"
+        - "Selected Coursework: Artificial Intelligence, Object-Oriented Programming, Operating Systems, Digital Image Processing"
 
 - title: Professional Experience
   type: time_table
   contents:
-    - title: Senior Analyst - Credit & Fraud Risk
+    - title: Senior Analyst
       institution: American Express, Bengaluru, India
       year: Feb 2024 - Jun 2025
       description:
-        - Led the migration of large-scale ML feature pipelines from IBM mainframe to a proprietary cloud platform supporting online credit risk decisioning systems through rolling canary deployments while maintaining 99.9% production uptime
-        - Built and maintained PySpark-based data ingestion and validation pipelines for model features, enhancing reliability of downstream training and inference workflows
-        - Applied feature selection, dimensionality reduction, and statistical clustering to compress feature space by 43%, improving pipeline efficiency and throughput
-        - Delivered feature updates using data lineage and correlation analysis to elevate data quality for production ML models
-    - title: Analyst - Credit & Fraud Risk
+        - ML Pipeline Migration: Led migration of large-scale production ML feature pipelines from IBM mainframe to a proprietary cloud platform for online credit-risk decisioning; executed canary deployments and sustained 99.9% uptime
+        - Data Reliability: Built lineage-aware ingestion and validation workflows to enforce feature freshness, access governance, and dependency integrity in production ML pipelines
+        - Feature Compression: Used feature selection and clustering to compress feature space by 43%, boosting throughput
+    - title: Analyst
       institution: American Express, Bengaluru, India
       year: Jul 2022 - Jan 2024
       description:
-        - Optimized ML feature pipelines using tree-based selection, correlation filtering, and mutual information, cutting down feature usage by 32%
-        - Engineered automated PySpark and HiveQL validation frameworks for production ML datasets, saving 2500+ QA hours per quarter
-        - Facilitated large-scale model feature generation pipelines delivering $15M annual business impact
-    - title: Analyst Intern - Credit & Fraud Risk
+        - Feature Optimization: Cut feature usage 32% via tree-based selection, correlation filtering, and mutual information
+        - QA Automation: Built PySpark/HiveQL validation framework for production ML datasets, saving 2500+ QA hours/quarter
+        - Business Impact: Scaled feature generation pipelines driving $15M/year impact
+    - title: Analyst Intern
       institution: American Express, Bengaluru, India
       year: Jan 2022 - Jun 2022
       description:
-        - Created high-volume feature datasets using PySpark and Hive to aid internal risk systems and ML workflows
-        - Automated data tracking systems' triggered alert data retrieval and reporting, saving over 1000 hours per quarter
-        - Decreased false alert rate by 13% measured weekly by upgrading feature logic and alert filtering
+        - Alert Reporting: Automated triggered-alert retrieval and reporting, saving 1000+ QA hours/quarter
+        - False Alerts: Reduced false-alert rate 13% by improving feature logic and alert filtering
+    - title: Software Development Intern
+      institution: Adobe, Bengaluru, India (Remote)
+      year: May 2021 - Jul 2021
+      description:
+        - Vulnerability Review: Analyzed and enhanced 10+ Kubernetes clusters; documented 15+ critical security gaps
+        - Benchmarking: Evaluated kube-bench/kube-hunter/AquaSecurity/kube-score/kubesec, improving coverage 26%
+        - Remediation Plan: Proposed remediations that cut monitoring overhead 15% with seamless integration
+
+- title: Academic Projects
+  type: time_table
+  contents:
+    - title: Fine-Tuning a Step-Efficient Multimodal Web Agent
+      institution: Pittsburgh, PA
+      year: 2025
+      description:
+        - Behavior Fine-Tuning: Fine-tuning a candidate-ranking multimodal agent on Mind2Web for grounded action selection
+        - Step Optimization: Preference-training in VisualWebArena to minimize steps and decision errors
+    - title: Privacy-Compliant LLM Feature Engineering for Zulip
+      institution: Pittsburgh, PA
+      year: 2025
+      description:
+        - LLM Integration: Engineered chat and inbox summarization, with topic-drift detection in the Zulip open-source codebase
+        - Privacy-Safe Inference: Implemented identity-masking with deterministic re-mapping to prevent sensitive data exposure
+        - Inference Efficiency: Optimized token usage and latency via trigger-based invocation, rolling context windows, and message batching. Achieved sub-1-minute inference
+        - Clean Outputs: Citation-backed summaries with structured prompts; constraints to improve reliability, reduce injection risk
+    - title: Efficient Multimodal Fusion with Bottleneck Transformers
+      institution: Pittsburgh, PA
+      year: Oct 2025 - Dec 2025
+      description:
+        - Fusion Architectures: Implemented early, mid, late, and bottleneck fusion variants on CMU MOSI/MOSEI
+        - Accuracy Gains: Designed hierarchical bottleneck fusion: +4.3% Acc2 and +2.8% F1 vs. strongest baseline
+        - Compute Tradeoffs: Analyzed accuracy-compute behavior through FLOPs-aware ablations
+
+- title: Research Projects
+  type: time_table
+  contents:
     - title: Machine Learning Research Intern
       institution: Computer Vision Lab, University of Ljubljana, Ljubljana, Slovenia (Remote)
       year: Jun 2021 - Dec 2021
       description:
-        - Integrated a CNN-based segmentation module into a biometric eye recognition pipeline and removed redundant stages
-        - Benchmarked model variants, including U-Net, MobileNet, and DenseNet, for vascular-feature-based identification
-        - Slashed inference latency to 27% by consolidating into a single compact model, with no material accuracy regression on internal benchmarks
-    - title: Software Development Intern - Operational Security
-      institution: Adobe, Bengaluru, India (Remote)
-      year: May 2021 - Jul 2021
-      description:
-        - Assessed vulnerabilities across 10+ Kubernetes clusters, documenting 15+ critical security gaps
-        - Benchmarked Kubernetes security tools (kube-bench, kube-hunter, AquaSecurity, kube-score, kubesec), advancing coverage by 26%
-        - Proposed remediation strategies reducing monitoring overhead by 15% with seamless integration
-
-- title: Projects
-  type: time_table
-  contents:
-    - title: Cross-Modal Bottleneck Transformers for Efficient Multimodal Fusion
-      institution: Carnegie Mellon University
-      year: Oct 2025 - Dec 2025
-      description:
-        - Designed and implemented multiple Multimodal Bottleneck Transformer architectures on CMU MOSI and CMU MOSEI, including early-, mid-, late-fusion, and bottleneck-based baselines
-        - Proposed a hierarchical bottleneck fusion mechanism that improved Acc2 by 4.3% and F1 by 2.8% over the strongest Multimodal Bottleneck Transformer baseline
-        - Performed systematic ablations over bottleneck placement and token budgets using reproducible training pipelines, quantifying accuracy–compute tradeoffs via FLOPs analysis
-        - Ensured experimental robustness by reproducing results across multiple random seeds and dataset splits; built config-driven training and logging pipelines to support extensible ablations
+        - Segmentation Module: Integrated CNN segmentation into a biometric eye-ID multi-step model pipeline
+        - Model Benchmarking: Benchmarked U-Net, MobileNet, and DenseNet variants for vascular-feature identification
+        - Latency Reduction: Cut inference latency to 27% via a single compact model with no accuracy regression
 
 - title: Technical Skills
   type: nested_list
   contents:
-    - title: Programming Languages & Tools
+    - title: Languages
       items:
         - Python, C, C++, SQL, HiveQL, MATLAB, TypeScript, HTML/CSS, Git
-    - title: Machine Learning
+    - title: ML Libraries
       items:
         - PyTorch, TensorFlow, Scikit-Learn, Pandas, NumPy, PySpark, Apache Spark
+    - title: Machine Learning
+      items:
+        - Multimodal Models, LLMs, LMMs, VLMs, Computer Vision, Training/Optimization, Fine-Tuning, LoRA
     - title: Frameworks & Libraries
       items:
-        - HuggingFace Transformers, LangChain, vLLM, OpenCV, NLTK, Django, Flask
+        - HuggingFace Transformers, OpenCV, NLTK, Django, Flask
     - title: Cloud & Platforms
       items:
         - AWS, Azure, Kubernetes, Docker
-    - title: Machine Learning Systems
-      items:
-        - Model training pipelines, experiment tracking, reproducibility, scalable data processing

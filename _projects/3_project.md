@@ -1,57 +1,45 @@
 ---
 layout: page
-title: Automated ML Validation Framework
-description: PySpark and HiveQL validation system saving 2500+ QA hours per quarter
+title: Efficient Multimodal Fusion with Bottleneck Transformers
+description: Hierarchical bottleneck fusion for multimodal sentiment analysis on MOSI/MOSEI
 img: assets/img/3.jpg
 importance: 3
 category: work
+github: 
 related_publications: false
 ---
 
 ## Project Overview
 
-Engineered an **automated validation framework** for production ML datasets at **American Express** (July 2022 - January 2024), dramatically reducing manual QA effort while improving data quality.
+This research project, conducted at **Carnegie Mellon University** (October 2025 - December 2025), focused on designing efficient multimodal fusion architectures for sentiment analysis using bottleneck transformers on **CMU MOSI** and **CMU MOSEI** datasets.
 
 ## Key Achievements
 
-### Automation & Efficiency
-- Engineered automated **PySpark and HiveQL validation frameworks** for production ML datasets
-- **Saved 2500+ QA hours per quarter** by automating previously manual validation processes
-- Established repeatable, scalable validation workflows
+### Fusion Architectures
+- Implemented **early**, **mid**, **late**, and **bottleneck fusion** variants on CMU MOSI/MOSEI
+- Developed scalable pipelines for multimodal model training and evaluation
 
-### Feature Optimization
-- Optimized ML feature pipelines using tree-based selection, correlation filtering, and mutual information
-- **Cut down feature usage by 32%** while maintaining model performance
-- Improved pipeline efficiency and reduced computational costs
+### Accuracy Gains
+- Designed **hierarchical bottleneck fusion** mechanism: **+4.3% Acc2** and **+2.8% F1** vs. strongest baseline
+- Demonstrated that bottleneck mechanisms can improve performance while controlling compute
 
-### Business Impact
-- Facilitated large-scale model feature generation pipelines delivering **$15M annual business impact**
-- Enhanced reliability and quality of ML systems used for credit and fraud risk decisioning
-- Enabled faster feature deployment cycles
+### Compute Tradeoffs
+- Analyzed **accuracy-compute behavior** through **FLOPs-aware ablations**
+- Quantified tradeoffs between model capacity and computational cost for deployment
 
 ## Technical Stack
 
-- **Technologies**: PySpark, Apache Spark, HiveQL, Hive
-- **ML Techniques**: Feature selection (tree-based, correlation filtering, mutual information)
-- **Tools**: Python, SQL, data validation frameworks
-- **Infrastructure**: Distributed computing, big data processing
+- **Frameworks**: PyTorch, HuggingFace Transformers
+- **Datasets**: CMU MOSI, CMU MOSEI
+- **Techniques**: Transformer architectures, bottleneck fusion, multimodal learning
 
-## Validation Framework Components
+## Research Impact
 
-1. **Automated Data Quality Checks**: Schema validation, null checks, range validation
-2. **Feature Statistics**: Distribution analysis, outlier detection, drift monitoring
-3. **Cross-Dataset Validation**: Consistency checks across multiple data sources
-4. **Performance Monitoring**: Pipeline latency tracking, throughput metrics
-
-## Impact
-
-This automated validation framework became a critical component of American Express's ML operations, ensuring high data quality while dramatically reducing the time required for dataset validation and feature deployment.
+This work demonstrates that hierarchical bottleneck mechanisms can significantly improve multimodal fusion efficiency while maintaining or improving performance on sentiment analysis tasks.
 
 ## Skills Demonstrated
 
-- Test Automation & Quality Assurance
-- Data Validation & Quality Engineering
-- Feature Engineering & Selection
-- PySpark & Distributed Systems
-- ML Operations & Production Systems
-- Process Optimization
+- Deep Learning & Transformer Architectures
+- Multimodal Machine Learning
+- Experimental Design & Ablation Studies
+- ML Systems & Pipeline Development

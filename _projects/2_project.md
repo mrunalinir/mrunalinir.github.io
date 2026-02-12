@@ -1,51 +1,49 @@
 ---
 layout: page
-title: Large-Scale ML Feature Pipeline Migration
-description: Cloud migration of credit risk decisioning systems at American Express
+title: Privacy-Compliant LLM Feature Engineering for Zulip
+description: Chat summarization and inbox features with identity-masking and inference optimization
 img: assets/img/2.jpg
 importance: 2
 category: work
+github: 
 related_publications: false
 ---
 
 ## Project Overview
 
-Led the **migration of large-scale ML feature pipelines** from IBM mainframe to a proprietary cloud platform at **American Express** (February 2024 - June 2025), supporting online credit risk decisioning systems.
+Engineered **privacy-compliant LLM features** for the **Zulip** open-source chat platform at **Carnegie Mellon University** (2025). The work delivers chat and inbox summarization with strict privacy safeguards and optimized inference.
 
 ## Key Achievements
 
-### Cloud Migration & Production Systems
-- Successfully migrated critical ML feature pipelines through **rolling canary deployments** while maintaining **99.9% production uptime**
-- Supported online credit risk decisioning systems processing millions of transactions
-- Ensured seamless transition with zero business disruption
+### LLM Integration
+- Engineered **chat and inbox summarization** with **topic-drift detection** in the Zulip codebase
+- Built citation-backed summaries with structured prompts to improve reliability and reduce injection risk
 
-### Pipeline Development & Optimization
-- Built and maintained **PySpark-based data ingestion and validation pipelines** for model features
-- Enhanced reliability of downstream training and inference workflows
-- Applied feature selection, dimensionality reduction, and statistical clustering to **compress feature space by 43%**
-- Improved pipeline efficiency and throughput significantly
+### Privacy-Safe Inference
+- Implemented **identity-masking** with deterministic re-mapping to prevent sensitive data exposure
+- Ensured privacy compliance for enterprise and personal chat data
 
-### Data Quality & ML Operations
-- Delivered feature updates using **data lineage and correlation analysis** to elevate data quality for production ML models
-- Implemented robust monitoring and validation frameworks
-- Established best practices for feature engineering in production environments
+### Inference Efficiency
+- Optimized token usage and latency via **trigger-based invocation**, **rolling context windows**, and **message batching**
+- Achieved **sub-1-minute inference** for summarization workflows
+
+### Clean Outputs
+- Citation-backed summaries with structured prompts
+- Constraints to improve reliability and reduce injection risk
 
 ## Technical Stack
 
-- **Technologies**: PySpark, Apache Spark, Hive, HiveQL
-- **Cloud Platform**: Proprietary cloud infrastructure
-- **Techniques**: Feature selection, dimensionality reduction, statistical clustering
-- **Tools**: Python, SQL, data lineage tracking
+- **Platform**: Zulip (open-source)
+- **Techniques**: LLM integration, identity masking, inference optimization
+- **Tools**: Python, HuggingFace, structured prompting
 
-## Business Impact
+## Impact
 
-This migration project enabled American Express to modernize its risk decisioning infrastructure, improving scalability, reliability, and maintainability of critical ML systems supporting billions of dollars in transaction volume.
+This work demonstrates how to integrate LLM capabilities into production chat systems while maintaining privacy and efficiency—critical for enterprise adoption.
 
 ## Skills Demonstrated
 
-- ML Pipeline Architecture & Migration
-- Cloud Infrastructure & Deployment
-- Feature Engineering & Optimization
-- Production ML Systems
-- Data Engineering at Scale
-- PySpark & Distributed Computing
+- LLM Integration & Fine-Tuning
+- Privacy-Preserving ML
+- Inference Optimization
+- Open-Source Software Engineering

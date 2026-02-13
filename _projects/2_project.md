@@ -2,8 +2,8 @@
 layout: page
 title: Privacy-Compliant LLM Feature Engineering for Zulip
 description: Chat summarization and inbox features with identity-masking and inference optimization
-img: assets/img/2.jpg
-importance: 2
+img: assets/img/5.jpg
+importance: 3
 category: work
 github: 
 related_publications: false

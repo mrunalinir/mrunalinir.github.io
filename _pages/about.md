@@ -30,10 +30,10 @@ latest_posts:
   limit: 3
 ---
 
-I'm a Master's student in **AI & Innovation** at [Carnegie Mellon University](https://www.cmu.edu) (expected May 2027). I did my undergrad at [BITS Pilani](https://www.bits-pilani.ac.in) and have worked at **American Express**, **Adobe**, and the [Computer Vision Lab at University of Ljubljana](https://www.fri.uni-lj.si/en).
+I'm a Master's student in **AI & Innovation** at [Carnegie Mellon University](https://www.cmu.edu) (expected May 2027), and I'm actively looking for **Summer '26 internships** in AI! I did my undergrad at [BITS Pilani](https://www.bits-pilani.ac.in) and have worked at [**American Express**](https://www.americanexpress.com), [**Adobe**](https://www.adobe.com), and the [Computer Vision Lab at University of Ljubljana](https://www.fri.uni-lj.si/en).
 
-I'm into **multimodal ML**, **web agents**, **LLMs**, and making things run efficiently—think fusion models, fine-tuning, and privacy-aware systems. Always happy to geek out about the latest in AI.
+I'm passionate about **multimodal ML**, **web agents**, **LLMs**, and building systems that are both efficient and responsible. Think fusion models, fine-tuning, and privacy-aware design. I love geeking out about the latest in AI and turning research into something people can actually use.
 
-When I'm not coding or reading papers, you'll find me at the gym, running, boxing, or dancing. I love to **travel** and explore new cultures, and I'm a big **reader**—plus I run on caffeine, so I'm always up for a coffee chat.
+When I'm not coding or reading papers, you'll find me at the gym, running, boxing, or dancing. I love to **travel** and explore new cultures, and I'm a big **reader**. I also run on caffeine, so I'm always up for a coffee chat.
 
-Feel free to reach out via [email](mailto:mramnath@andrew.cmu.edu), [LinkedIn](https://linkedin.com/in/mrunalini-ramnath), or [GitHub](https://github.com/mrunalinir)—or grab my [CV](/cv/) if you want the full rundown.
+Feel free to reach out via [email](mailto:mramnath@andrew.cmu.edu), [LinkedIn](https://linkedin.com/in/mrunalini-ramnath), or [GitHub](https://github.com/mrunalinir). You can also grab my [CV](/cv/) for the full rundown.

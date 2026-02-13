@@ -16,6 +16,7 @@
     {
       "name": "American Express",
       "position": "Senior Analyst",
+      "image": "https://logo.clearbit.com/americanexpress.com",
       "url": "https://www.americanexpress.com",
       "startDate": "2024-02-01",
       "endDate": "2025-06-01",
@@ -31,6 +32,7 @@
     {
       "name": "American Express",
       "position": "Analyst",
+      "image": "https://logo.clearbit.com/americanexpress.com",
       "url": "https://www.americanexpress.com",
       "startDate": "2022-07-01",
       "endDate": "2024-01-01",
@@ -45,6 +47,7 @@
     {
       "name": "American Express",
       "position": "Analyst Intern",
+      "image": "https://logo.clearbit.com/americanexpress.com",
       "url": "https://www.americanexpress.com",
       "startDate": "2022-01-01",
       "endDate": "2022-06-01",
@@ -58,6 +61,7 @@
     {
       "name": "Adobe",
       "position": "Software Development Intern",
+      "image": "https://logo.clearbit.com/adobe.com",
       "url": "https://www.adobe.com",
       "startDate": "2021-05-01",
       "endDate": "2021-07-01",
@@ -72,6 +76,7 @@
     {
       "name": "Telangana E-Governance",
       "position": "Summer Intern",
+      "image": "https://logo.clearbit.com/telangana.gov.in",
       "url": "#",
       "startDate": "2019-05-01",
       "endDate": "2019-07-01",
@@ -88,6 +93,7 @@
     {
       "organization": "American Express",
       "position": "Summer Internship Mentor",
+      "image": "https://logo.clearbit.com/americanexpress.com",
       "url": "https://www.americanexpress.com",
       "startDate": "2024-05-01",
       "endDate": "2024-07-01",
@@ -97,6 +103,7 @@
     {
       "organization": "Placement Unit, BITS Pilani-Hyderabad Campus",
       "position": "Training Coordinator",
+      "image": "https://logo.clearbit.com/bits-pilani.ac.in",
       "url": "https://www.bits-pilani.ac.in",
       "startDate": "2020-04-01",
       "endDate": "2021-04-01",
@@ -194,6 +201,18 @@
   "interests": [],
   "references": [],
   "projects": [
+    {
+      "name": "Multimodal Financial Market Movement Prediction via Temporal Fusion",
+      "summary": "Personal",
+      "highlights": [
+        "Built multimodal forecasting model combining stock prices, financial news, tweets, and firm metadata, achieving 14% accuracy gain over unimodal baselines",
+        "Added a time-safe RAG layer that pulls latest news, turns it into JSON event tags, and provides short, cited explanations next to predictions, enhancing model interpretability",
+        "Deployed an analyst UI that ranks tickers (top-10 gainers/losers), flags high-confidence signals, and links to the exact retrieved news powering each forecast"
+      ],
+      "startDate": "2025-07-01",
+      "endDate": "2025-08-01",
+      "url": "#"
+    },
     {
       "name": "Fine-Tuning a Step-Efficient Multimodal Web Agent",
       "summary": "Pittsburgh, PA",

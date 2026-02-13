@@ -6,7 +6,7 @@ subtitle: Master's in AI & Innovation · <a href='https://www.cmu.edu'>Carnegie 
 
 profile:
   align: right
-  image: official_dp.jpg
+  image: updated_dp.jpg
   image_circular: false
   more_info: >
     <p><strong>Pittsburgh, PA</strong></p>

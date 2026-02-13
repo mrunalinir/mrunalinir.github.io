@@ -68,6 +68,13 @@
 - title: Academic Projects
   type: time_table
   contents:
+    - title: Multimodal Financial Market Movement Prediction via Temporal Fusion
+      institution: Personal
+      year: Jul 2025 - Aug 2025
+      description:
+        - Built multimodal forecasting model combining stock prices, financial news, tweets, and firm metadata, achieving 14% accuracy gain over unimodal baselines
+        - Added a time-safe RAG layer that pulls latest news, turns it into JSON event tags, and provides short, cited explanations next to predictions, enhancing model interpretability
+        - Deployed an analyst UI that ranks tickers (top-10 gainers/losers), flags high-confidence signals, and links to the exact retrieved news powering each forecast
     - title: Fine-Tuning a Step-Efficient Multimodal Web Agent
       institution: Pittsburgh, PA
       year: 2025

@@ -33,6 +33,11 @@
           </table>
         </div>
         <div class="col-xs-10 col-sm-10 col-md-10 mt-2 mt-md-0">
+          {% if content.image %}
+            <div class="mb-2 ml-1 ml-md-4">
+              <img src="{{ content.image }}" alt="{{ content.organization }} logo" style="max-height: 32px; max-width: 120px; object-fit: contain;" onerror="this.style.display='none'">
+            </div>
+          {% endif %}
           <h6 class="title font-weight-bold ml-1 ml-md-4">
             <a href="{{ content.url }}">{{ content.position }}</a>
           </h6>

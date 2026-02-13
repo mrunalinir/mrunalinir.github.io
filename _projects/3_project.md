@@ -2,8 +2,8 @@
 layout: page
 title: Efficient Multimodal Fusion with Bottleneck Transformers
 description: Hierarchical bottleneck fusion for multimodal sentiment analysis on MOSI/MOSEI
-img: assets/img/3.jpg
-importance: 3
+img: assets/img/6.jpg
+importance: 4
 category: work
 github: 
 related_publications: false

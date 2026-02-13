@@ -36,6 +36,7 @@
         - ML Pipeline Migration: Led migration of large-scale production ML feature pipelines from IBM mainframe to a proprietary cloud platform for online credit-risk decisioning; executed canary deployments and sustained 99.9% uptime
         - Data Reliability: Built lineage-aware ingestion and validation workflows to enforce feature freshness, access governance, and dependency integrity in production ML pipelines
         - Feature Compression: Used feature selection and clustering to compress feature space by 43%, boosting throughput
+        - "Awards: 3× SVP Star Performer Award (Q2 2023, Q4 2023, Q2 2025) for exceptional quality of work and high-impact outcomes"
     - title: Analyst
       institution: American Express, Bengaluru, India
       year: Jul 2022 - Jan 2024
@@ -56,6 +57,13 @@
         - Vulnerability Review: Analyzed and enhanced 10+ Kubernetes clusters; documented 15+ critical security gaps
         - Benchmarking: Evaluated kube-bench/kube-hunter/AquaSecurity/kube-score/kubesec, improving coverage 26%
         - Remediation Plan: Proposed remediations that cut monitoring overhead 15% with seamless integration
+    - title: Summer Intern
+      institution: Telangana E-Governance, Hyderabad, Telangana
+      year: May 2019 - July 2019
+      description:
+        - Conceptualized and developed a website for automating municipality complaint registration and tracking
+        - Streamlined complaint handling by implementing a multi-level user hierarchy using Django and PostgreSQL
+        - Published dashboards for regular tracking using JS, HTML and CSS for the front-end of the website
 
 - title: Academic Projects
   type: time_table
@@ -92,6 +100,22 @@
         - Segmentation Module: Integrated CNN segmentation into a biometric eye-ID multi-step model pipeline
         - Model Benchmarking: Benchmarked U-Net, MobileNet, and DenseNet variants for vascular-feature identification
         - Latency Reduction: Cut inference latency to 27% via a single compact model with no accuracy regression
+
+- title: Leadership / Extracurricular
+  type: time_table
+  contents:
+    - title: Summer Internship Mentor
+      institution: American Express
+      year: May 2024 - Jul 2024
+      description: []
+    - title: Training Coordinator
+      institution: Placement Unit, BITS Pilani-Hyderabad Campus
+      year: April 2020 - April 2021
+      description: []
+    - title: Head of Web Development
+      institution: Verba Maximus, BITS Pilani-Hyderabad Campus
+      year: Oct 2018 - Sept 2019
+      description: []
 
 - title: Technical Skills
   type: nested_list

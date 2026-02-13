@@ -18,7 +18,7 @@ ninja.data = [{
           },
         },{id: "nav-cv",
           title: "cv",
-          description: "Resume and CV. Download the PDF using the button above.",
+          description: "Download my resume using the button above.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/cv/";
@@ -74,7 +74,7 @@ ninja.data = [{
         title: 'CV',
         section: 'Socials',
         handler: () => {
-          window.open("/assets/pdf/Mrunalini_Ramnath_Resume.pdf", "_blank");
+          window.open("https://drive.google.com/file/d/1NzU8DMzGB0oSgwaqWZnkl9ZeA1rvjdyV/view?usp=drive_link", "_blank");
         },
       },{
         id: 'social-email',

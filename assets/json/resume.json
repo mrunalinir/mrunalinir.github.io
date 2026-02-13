@@ -24,7 +24,8 @@
       "highlights": [
         "ML Pipeline Migration: Led migration of large-scale production ML feature pipelines from IBM mainframe to a proprietary cloud platform for online credit-risk decisioning; executed canary deployments and sustained 99.9% uptime",
         "Data Reliability: Built lineage-aware ingestion and validation workflows to enforce feature freshness, access governance, and dependency integrity in production ML pipelines",
-        "Feature Compression: Used feature selection and clustering to compress feature space by 43%, boosting throughput"
+        "Feature Compression: Used feature selection and clustering to compress feature space by 43%, boosting throughput",
+        "Awards: 3× SVP Star Performer Award (Q2 2023, Q4 2023, Q2 2025) for exceptional quality of work and high-impact outcomes"
       ]
     },
     {
@@ -67,9 +68,51 @@
         "Benchmarking: Evaluated kube-bench/kube-hunter/AquaSecurity/kube-score/kubesec, improving coverage 26%",
         "Remediation Plan: Proposed remediations that cut monitoring overhead 15% with seamless integration"
       ]
+    },
+    {
+      "name": "Telangana E-Governance",
+      "position": "Summer Intern",
+      "url": "#",
+      "startDate": "2019-05-01",
+      "endDate": "2019-07-01",
+      "summary": "",
+      "location": "Hyderabad, Telangana",
+      "highlights": [
+        "Conceptualized and developed a website for automating municipality complaint registration and tracking",
+        "Streamlined complaint handling by implementing a multi-level user hierarchy using Django and PostgreSQL",
+        "Published dashboards for regular tracking using JS, HTML and CSS for the front-end of the website"
+      ]
     }
   ],
-  "volunteer": [],
+  "volunteer": [
+    {
+      "organization": "American Express",
+      "position": "Summer Internship Mentor",
+      "url": "https://www.americanexpress.com",
+      "startDate": "2024-05-01",
+      "endDate": "2024-07-01",
+      "summary": "",
+      "highlights": []
+    },
+    {
+      "organization": "Placement Unit, BITS Pilani-Hyderabad Campus",
+      "position": "Training Coordinator",
+      "url": "https://www.bits-pilani.ac.in",
+      "startDate": "2020-04-01",
+      "endDate": "2021-04-01",
+      "summary": "",
+      "highlights": []
+    },
+    {
+      "organization": "Verba Maximus, BITS Pilani-Hyderabad Campus",
+      "position": "Head of Web Development",
+      "url": "#",
+      "startDate": "2018-10-01",
+      "endDate": "2019-09-01",
+      "summary": "",
+      "highlights": []
+    }
+  ],
   "education": [
     {
       "institution": "Carnegie Mellon University",

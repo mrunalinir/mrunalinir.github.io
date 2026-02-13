@@ -11,7 +11,7 @@ profile:
   more_info: >
     <p><strong>Pittsburgh, PA</strong></p>
     <p><a href="mailto:mramnath@andrew.cmu.edu">mramnath@andrew.cmu.edu</a></p>
-    <p><a href="/cv/">CV / Resume</a></p>
+    <p><a href="/cv/">Resume</a></p>
 
 # selected_papers: true  # Hidden - not currently used
 selected_papers: false
@@ -36,4 +36,4 @@ I'm passionate about **multimodal ML**, **web agents**, **LLMs**, and building s
 
 When I'm not coding or reading papers, you'll find me at the gym, running, boxing, or dancing. I love to **travel** and explore new cultures, and I'm a big **reader**. I also run on caffeine, so I'm always up for a coffee chat.
 
-Feel free to reach out via [email](mailto:mramnath@andrew.cmu.edu), [LinkedIn](https://linkedin.com/in/mrunalini-ramnath), or [GitHub](https://github.com/mrunalinir). You can also grab my [CV](/cv/) for the full rundown.
+Feel free to reach out via [email](mailto:mramnath@andrew.cmu.edu), [LinkedIn](https://linkedin.com/in/mrunalini-ramnath), or [GitHub](https://github.com/mrunalinir). You can also grab my [Resume](/cv/) for the full rundown.

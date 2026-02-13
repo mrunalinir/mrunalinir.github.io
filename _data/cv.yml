@@ -36,7 +36,7 @@
         - ML Pipeline Migration: Led migration of large-scale production ML feature pipelines from IBM mainframe to a proprietary cloud platform for online credit-risk decisioning; executed canary deployments and sustained 99.9% uptime
         - Data Reliability: Built lineage-aware ingestion and validation workflows to enforce feature freshness, access governance, and dependency integrity in production ML pipelines
         - Feature Compression: Used feature selection and clustering to compress feature space by 43%, boosting throughput
-        - "Awards: 3× SVP Star Performer Award (Q2 2023, Q4 2023, Q2 2025) for exceptional quality of work and high-impact outcomes"
+        - "Awards: 3 times SVP Star Performer Award (Q2 2023, Q4 2023, Q2 2025) for exceptional quality of work and high-impact outcomes"
     - title: Analyst
       institution: American Express, Bengaluru, India
       year: Jul 2022 - Jan 2024
@@ -68,22 +68,15 @@
 - title: Academic Projects
   type: time_table
   contents:
-    - title: Multimodal Financial Market Movement Prediction via Temporal Fusion
-      institution: Personal
-      year: Jul 2025 - Aug 2025
-      description:
-        - Built multimodal forecasting model combining stock prices, financial news, tweets, and firm metadata, achieving 14% accuracy gain over unimodal baselines
-        - Added a time-safe RAG layer that pulls latest news, turns it into JSON event tags, and provides short, cited explanations next to predictions, enhancing model interpretability
-        - Deployed an analyst UI that ranks tickers (top-10 gainers/losers), flags high-confidence signals, and links to the exact retrieved news powering each forecast
     - title: Fine-Tuning a Step-Efficient Multimodal Web Agent
       institution: Pittsburgh, PA
-      year: 2025
+      year: Feb 2026 - Present
       description:
         - Behavior Fine-Tuning: Fine-tuning a candidate-ranking multimodal agent on Mind2Web for grounded action selection
         - Step Optimization: Preference-training in VisualWebArena to minimize steps and decision errors
     - title: Privacy-Compliant LLM Feature Engineering for Zulip
       institution: Pittsburgh, PA
-      year: 2025
+      year: Jan 2026 - Feb 2026
       description:
         - LLM Integration: Engineered chat and inbox summarization, with topic-drift detection in the Zulip open-source codebase
         - Privacy-Safe Inference: Implemented identity-masking with deterministic re-mapping to prevent sensitive data exposure
@@ -96,6 +89,13 @@
         - Fusion Architectures: Implemented early, mid, late, and bottleneck fusion variants on CMU MOSI/MOSEI
         - "Accuracy Gains: Designed hierarchical bottleneck fusion: +4.3% Acc2 and +2.8% F1 vs. strongest baseline"
         - Compute Tradeoffs: Analyzed accuracy-compute behavior through FLOPs-aware ablations
+    - title: Multimodal Financial Market Movement Prediction via Temporal Fusion
+        institution: Personal
+        year: Jun 2025 - Aug 2025
+        description:
+          - Built multimodal forecasting model combining stock prices, financial news, tweets, and firm metadata, achieving 14% accuracy gain over unimodal baselines
+          - Added a time-safe RAG layer that pulls latest news, turns it into JSON event tags, and provides short, cited explanations next to predictions, enhancing model interpretability
+          - Deployed an analyst UI that ranks tickers (top-10 gainers/losers), flags high-confidence signals, and links to the exact retrieved news powering each forecast
 
 - title: Research Projects
   type: time_table

@@ -220,8 +220,8 @@
         "Behavior Fine-Tuning: Fine-tuning a candidate-ranking multimodal agent on Mind2Web for grounded action selection",
         "Step Optimization: Preference-training in VisualWebArena to minimize steps and decision errors"
       ],
-      "startDate": "2025-01-01",
-      "endDate": "2025-12-01",
+      "startDate": "2026-02-01",
+      "endDate": "2026-12-01",
       "url": "#"
     },
     {
@@ -233,8 +233,8 @@
         "Inference Efficiency: Optimized token usage and latency via trigger-based invocation, rolling context windows, and message batching. Achieved sub-1-minute inference",
         "Clean Outputs: Citation-backed summaries with structured prompts; constraints to improve reliability, reduce injection risk"
       ],
-      "startDate": "2025-01-01",
-      "endDate": "2025-12-01",
+      "startDate": "2026-01-01",
+      "endDate": "2026-02-01",
       "url": "#"
     },
     {

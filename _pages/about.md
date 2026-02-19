@@ -30,10 +30,10 @@ latest_posts:
   limit: 3
 ---
 
-I'm a Master's student in **AI & Innovation** at [Carnegie Mellon University](https://www.cmu.edu) (expected May 2027), and I'm actively looking for **Summer '26 internships** in AI! I did my undergrad at [BITS Pilani](https://www.bits-pilani.ac.in) and have worked at [**American Express**](https://www.americanexpress.com), [**Adobe**](https://www.adobe.com), and the [Computer Vision Lab at University of Ljubljana](https://www.fri.uni-lj.si/en).
+I'm a Master's student in **AI & Innovation** at [Carnegie Mellon University](https://www.cmu.edu) (expected May 2027), where I build and deploy large machine learning models to solve real-world problems. I'm particularly interested in **LLMs**, **multimodal models**, and **AI agents**, with a focus on efficient model adaptation and building reliable, responsible AI applications.
 
-I'm passionate about **multimodal ML**, **web agents**, **LLMs**, and building systems that are both efficient and responsible. Think fusion models, fine-tuning, and privacy-aware design. I love geeking out about the latest in AI and turning research into something people can actually use.
+Previously, I completed my undergraduate studies at [BITS Pilani](https://www.bits-pilani.ac.in) and have worked across industry and research at [**American Express**](https://www.americanexpress.com), [**Adobe**](https://www.adobe.com), and the [Computer Vision Lab at University of Ljubljana](https://www.fri.uni-lj.si/en), developing ML solutions and working with large-scale data systems in production and research settings.
 
-When I'm not coding or reading papers, you'll find me at the gym, running, boxing, or dancing. I love to **travel** and explore new cultures, and I'm a big **reader**. I also run on caffeine, so I'm always up for a coffee chat.
+Through project-driven coursework at CMU, including Advanced NLP and Introduction to Deep Learning, I explore model adaptation, multimodal reasoning, and efficient learning approaches, designing, fine-tuning, and evaluating LLMs and multimodal models as end-to-end systems.
 
-Feel free to reach out via [email](mailto:mramnath@andrew.cmu.edu), [LinkedIn](https://linkedin.com/in/mrunalini-ramnath), or [GitHub](https://github.com/mrunalinir). You can also grab my [Resume](/cv/) for the full rundown.
+Feel free to explore my projects or reach out via [email](mailto:mramnath@andrew.cmu.edu), [LinkedIn](https://linkedin.com/in/mrunalini-ramnath), or [GitHub](https://github.com/mrunalinir). You can also grab my [Resume](/cv/) for the full rundown.

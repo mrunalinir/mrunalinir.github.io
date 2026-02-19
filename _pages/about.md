@@ -34,6 +34,6 @@ I'm a Master's student in **AI & Innovation** at [Carnegie Mellon University](ht
 
 Previously, I completed my undergraduate studies at [BITS Pilani](https://www.bits-pilani.ac.in) and have worked across industry and research at [**American Express**](https://www.americanexpress.com), [**Adobe**](https://www.adobe.com), and the [Computer Vision Lab at University of Ljubljana](https://www.fri.uni-lj.si/en), developing ML solutions and working with large-scale data systems in production and research settings.
 
-Through project-driven coursework at CMU, including Advanced NLP and Introduction to Deep Learning, I explore model adaptation, multimodal reasoning, and efficient learning approaches, designing, fine-tuning, and evaluating LLMs and multimodal models as end-to-end systems.
+Through project-driven coursework at CMU, I explore model adaptation, multimodal reasoning, and efficient learning approaches, designing, fine-tuning, and evaluating LLMs and multimodal models as end-to-end systems.
 
 Feel free to explore my projects or reach out via [email](mailto:mramnath@andrew.cmu.edu), [LinkedIn](https://linkedin.com/in/mrunalini-ramnath), or [GitHub](https://github.com/mrunalinir). You can also grab my [Resume](/cv/) for the full rundown.

@@ -3,7 +3,7 @@ layout: page
 title: Fine-Tuning a Step-Efficient Multimodal Web Agent
 description: Preference-based fine-tuning for multimodal web agents on Mind2Web and VisualWebArena
 importance: 2
-category: work
+category: projects
 github: 
 related_publications: false
 ---

@@ -6,6 +6,9 @@ description: Selected research and academic projects
 nav: true
 nav_order: 3
 horizontal: false
+display_categories:
+  - research
+  - projects
 ---
 <div class="projects">
 {% if site.enable_project_categories and page.display_categories %}

@@ -23,10 +23,9 @@
       "summary": "",
       "location": "Bengaluru, India",
       "highlights": [
-        "ML Pipeline Migration: Led migration of large-scale production ML feature pipelines from IBM mainframe to a proprietary cloud platform for online credit-risk decisioning; executed canary deployments and sustained 99.9% uptime",
-        "Data Reliability: Built lineage-aware ingestion and validation workflows to enforce feature freshness, access governance, and dependency integrity in production ML pipelines",
-        "Feature Compression: Used feature selection and clustering to compress feature space by 43%, boosting throughput",
-        "Awards: 3× SVP Star Performer Award (Q2 2023, Q4 2023, Q2 2025) for exceptional quality of work and high-impact outcomes"
+        "Owned feature analytics & optimization for global credit card POS real-time risk system processing 20M+ transactions/day, impacting 6M+ customers/day; drove 43% feature compression through clustering & variance-threshold pruning.",
+        "Achieved +6% Gini improvement on XGBoost/AXGBoost models; reduced compute/storage costs by 16% on 100M+ daily batch customer updates through intelligent feature selection, resulting in a $15M annual benefit.",
+        "Built & maintained feature performance dashboards; collaborated cross-functionally with data, platform engineers and business on a global feature rollout strategy; Recognized with SVP Star of the Quarter 3x (top 0.01% of org)."
       ]
     },
     {
@@ -39,9 +38,9 @@
       "summary": "",
       "location": "Bengaluru, India",
       "highlights": [
-        "Feature Optimization: Cut feature usage 32% via tree-based selection, correlation filtering, and mutual information",
-        "QA Automation: Built PySpark/HiveQL validation framework for production ML datasets, saving 2500+ QA hours/quarter",
-        "Business Impact: Scaled feature generation pipelines driving $15M/year impact"
+        "Owned feature enablement for global real-time payment risk system processing 2.5M+ payments/day across 1.5M+ customers; led complete system modernization from IBM mainframe to cloud (data, models, business strategy) globally.",
+        "Designed & built pre/post-migration production validation framework using Python, PySpark and HiveQL; automated feature quality checks, data drift detection during cutover to validate XGBoost/AXGBoost model consistency across migration.",
+        "Reduced feature dimensionality by 32% via tree-importance, correlation, mutual-information filtering leading to +4% Gini improvement on payment risk scoring, reduced compute/storage costs by 12%."
       ]
     },
     {
@@ -54,8 +53,8 @@
       "summary": "",
       "location": "Bengaluru, India",
       "highlights": [
-        "Alert Reporting: Automated triggered-alert retrieval and reporting, saving 1000+ QA hours/quarter",
-        "False Alerts: Reduced false-alert rate 13% by improving feature logic and alert filtering"
+        "Engineered production XGBoost credit-risk features impacting 80M+ cardholders; automated UAT & production integration validation for feature deployments saving 2500+ QA hours/quarter.",
+        "Remediated critical false-alert issues in data drift monitoring system by 13%; improved alert precision by reducing noise, enabling faster detection of actual data quality issues."
       ]
     },
     {

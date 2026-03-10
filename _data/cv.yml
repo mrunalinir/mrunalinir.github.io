@@ -87,12 +87,13 @@
         - Fusion Architectures: Implemented early, mid, late, and bottleneck fusion variants on CMU MOSI/MOSEI
         - "Accuracy Gains: Designed hierarchical bottleneck fusion: +4.3% Acc2 and +2.8% F1 vs. strongest baseline"
         - Compute Tradeoffs: Analyzed accuracy-compute behavior through FLOPs-aware ablations
-    - title: Neural Music Recommender for Personalized Playlists
+    - title: Real-Time Movie Recommendation Platform
       institution: Pittsburgh, PA
-      year: Jun 2025 - Aug 2025
+      year: Jan 2025 - Present
       description:
-        - Built a hybrid music recommendation system combining collaborative filtering signals with content-based audio and metadata features to improve cold-start performance.
-        - Modeled recent listening history with a sequence-aware architecture to capture short-term preferences and session context.
+        - Trained SVD collaborative filtering model on ~200K Kafka interactions; deployed Flask API (<50ms latency) with Docker and automated retraining every 3 days. Designed hybrid cold-start solution achieving 85%+ coverage on new users.
+        - Built end-to-end data pipeline (schema validation, drift detection, offline/online evaluation: NDCG@10 0.52, HR@10 0.68) with CI/CD testing (82% coverage). Set up monitoring dashboard tracking >99% availability, model accuracy, costs, data drift.
+        - Designed A/B testing infrastructure, experimented and found cold-start causes a +8% NDCG@10.
 
 - title: Research Projects
   type: time_table

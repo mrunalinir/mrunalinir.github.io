@@ -213,14 +213,14 @@
       "url": "#"
     },
     {
-      "name": "Neural Music Recommender for Personalized Playlists",
+      "name": "Real-Time Movie Recommendation Platform",
       "summary": "Pittsburgh, PA",
       "highlights": [
-        "Built a hybrid music recommendation system combining collaborative filtering signals with content-based audio and metadata features to improve cold-start performance.",
-        "Modeled recent listening history with a sequence-aware architecture to capture short-term preferences and session context.",
-        "Optimized for ranking metrics (NDCG@k, Recall@k) to improve top-k recommendation quality."
+        "Trained SVD collaborative filtering model on ~200K Kafka interactions; deployed Flask API (<50ms latency) with Docker and automated retraining every 3 days. Designed hybrid cold-start solution achieving 85%+ coverage on new users.",
+        "Built end-to-end data pipeline (schema validation, drift detection, offline/online evaluation: NDCG@10 0.52, HR@10 0.68) with CI/CD testing (82% coverage). Set up monitoring dashboard tracking >99% availability, model accuracy, costs, data drift.",
+        "Designed A/B testing infrastructure, experimented and found cold-start causes a +8% NDCG@10."
       ],
-      "startDate": "2025-06-01",
+      "startDate": "2025-01-01",
       "endDate": "2025-08-01",
       "url": "#"
     }

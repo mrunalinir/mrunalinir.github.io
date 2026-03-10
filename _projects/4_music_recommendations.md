@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Neural Music Recommender for Personalized Playlists
-description: Learning user and track representations to generate personalized, sequence-aware playlists
+title: Real-Time Movie Recommendation Platform
+description: Low-latency movie recommender with automated retraining, monitoring, and A/B testing
 importance: 1
 category: projects
 github: 
@@ -10,21 +10,19 @@ related_publications: false
 
 ## Project Overview
 
-Built a **neural music recommendation system** that learns joint representations of users and tracks to generate personalized, sequence-aware playlists.
+Built a **real-time movie recommendation platform** at **CMU** that serves low-latency recommendations over a streaming interaction pipeline, with automated retraining, evaluation, and monitoring.
 
 ## Key Achievements
 
-- **Hybrid Recommender**: Combined collaborative filtering signals (implicit feedback, co-listens) with content-based features (artist, genre, tempo, key) to improve cold-start performance on new tracks and users.
-- **Sequence-Aware Modeling**: Used a recurrent / Transformer-style architecture over recent listening history to capture **short-term preferences** and session-level context.
-- **Ranking Optimization**: Optimized for ranking metrics (NDCG@k, Recall@k) rather than pure reconstruction loss, improving top-k recommendation quality.
+- **Collaborative Filtering Backbone**: Trained an SVD collaborative filtering model on ~200K Kafka interactions and deployed a Flask API with **<50 ms latency**, containerized with Docker and scheduled **retraining every 3 days**.
+- **Cold-Start Coverage**: Designed a **hybrid cold-start solution** that combines interaction and content signals, achieving **85%+ coverage** on new users.
+- **End-to-End Data & Evaluation Pipeline**: Built a full pipeline including schema validation, drift detection, and offline/online evaluation with **NDCG@10 = 0.52** and **HR@10 = 0.68**, wired into CI/CD with ~82% test coverage.
+- **Production Monitoring**: Set up a monitoring dashboard tracking **>99% availability**, model accuracy, infrastructure costs, and data drift statistics.
+- **A/B Testing Infrastructure**: Designed and ran A/B experiments to quantify cold-start impact, finding that the cold-start strategy yields a **+8% lift in NDCG@10**.
 
 ## Technical Stack
 
-- **Data**: User–track interaction logs, basic audio/metadata features
-- **Techniques**: Collaborative filtering, sequence modeling, representation learning
-- **Tools**: Python, PyTorch, Pandas
-
-## Impact
-
-Demonstrated a practical path from raw listening logs to a production-like music recommender that can adapt to both long-term tastes and short-term session context.
+- **Data & Serving**: Kafka, Flask, Docker
+- **Modeling**: SVD collaborative filtering, cold-start hybrid design
+- **Tooling**: Python, Pandas, CI/CD, monitoring dashboards
 

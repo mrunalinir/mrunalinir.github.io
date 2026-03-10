@@ -44,9 +44,9 @@ ninja.data = [{
           description: "Preference-based fine-tuning for multimodal web agents on Mind2Web and VisualWebArena",
           section: "Projects",handler: () => {
               window.location.href = "/projects/1_project/";
-            },},{id: "projects-privacy-compliant-llm-feature-engineering-for-zulip",
-          title: 'Privacy-Compliant LLM Feature Engineering for Zulip',
-          description: "Chat summarization and inbox features with identity-masking and inference optimization",
+            },},{id: "projects-zulipgpt-llm-integration-for-chat-summarization-in-open-source-messaging",
+          title: 'ZulipGPT – LLM Integration for Chat Summarization in Open-Source Messaging',
+          description: "Privacy-safe chat and inbox summarization for the Zulip open-source messaging platform",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
             },},{id: "projects-efficient-multimodal-fusion-with-bottleneck-transformers",
@@ -54,6 +54,11 @@ ninja.data = [{
           description: "Hierarchical bottleneck fusion for multimodal sentiment analysis on MOSI/MOSEI",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
+            },},{id: "projects-real-time-movie-recommendation-platform",
+          title: 'Real-Time Movie Recommendation Platform',
+          description: "Low-latency movie recommender with automated retraining, monitoring, and A/B testing",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/4_music_recommendations/";
             },},{id: "teachings-data-science-fundamentals",
           title: 'Data Science Fundamentals',
           description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",

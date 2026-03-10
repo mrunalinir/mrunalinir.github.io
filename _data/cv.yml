@@ -67,12 +67,6 @@
 - title: Academic Projects
   type: time_table
   contents:
-    - title: Fine-Tuning a Step-Efficient Multimodal Web Agent
-      institution: Pittsburgh, PA
-      year: Feb 2026 - Present
-      description:
-        - Behavior Fine-Tuning: Fine-tuning a candidate-ranking multimodal agent on Mind2Web for grounded action selection
-        - Step Optimization: Preference-training in VisualWebArena to minimize steps and decision errors
     - title: "ZulipGPT: LLM Integration for Chat Summarization in Open-Source Messaging"
       institution: Pittsburgh, PA
       year: Jan 2026 - Feb 2026
@@ -80,13 +74,6 @@
         - Shipped chat and inbox summarization into the Zulip open-source codebase with topic-drift detection and citation-backed prompts to reduce hallucination and injection risk.
         - Built a deterministic identity-masking pipeline using keyed pseudonym mapping before inference, providing a stronger privacy guarantee than post-hoc PII filtering since the model never sees real identities.
         - Cut summarization latency to under 15 seconds via trigger-based invocation, rolling context windows, and message batching.
-    - title: Efficient Multimodal Fusion with Bottleneck Transformers
-      institution: Pittsburgh, PA
-      year: Oct 2025 - Dec 2025
-      description:
-        - Fusion Architectures: Implemented early, mid, late, and bottleneck fusion variants on CMU MOSI/MOSEI
-        - "Accuracy Gains: Designed hierarchical bottleneck fusion: +4.3% Acc2 and +2.8% F1 vs. strongest baseline"
-        - Compute Tradeoffs: Analyzed accuracy-compute behavior through FLOPs-aware ablations
     - title: Real-Time Movie Recommendation Platform
       institution: Pittsburgh, PA
       year: Jan 2025 - Present
@@ -94,35 +81,41 @@
         - Trained SVD collaborative filtering model on ~200K Kafka interactions; deployed Flask API (<50ms latency) with Docker and automated retraining every 3 days. Designed hybrid cold-start solution achieving 85%+ coverage on new users.
         - Built end-to-end data pipeline (schema validation, drift detection, offline/online evaluation: NDCG@10 0.52, HR@10 0.68) with CI/CD testing (82% coverage). Set up monitoring dashboard tracking >99% availability, model accuracy, costs, data drift.
         - Designed A/B testing infrastructure, experimented and found cold-start causes a +8% NDCG@10.
+    - title: "SteelRAG: Hybrid Sparse-Dense Retrieval over a Crawled Local Knowledge Corpus"
+      institution: Carnegie Mellon University (CMU), Pittsburgh, PA
+      year: Jan 2026 - Mar 2026
+      description:
+        - Built a 5,334-document corpus from 20+ sources via three targeted scraping rounds guided by gap analysis of ~117 unanswered question clusters; corpus expansion alone drove a +6.8% absolute gain in a hybrid F-1, LLM-judge score.
+        - Implemented BM25 (bm25s), FAISS (all-MiniLM-L6-v2, 384-dim), and RRF from scratch; hybrid RRF outperformed dense-only by +4.46% across F1, Recall, ROUGE-L, and LLM Judge.
+        - Deployed Qwen2-7B-Instruct on Modal A10G GPU; batch embedding cut index build from 3hrs to under 15 mins, and reducing chunk size 200 to 100 words improved F1 by +1.40% with no recall loss.
 
 - title: Research Projects
   type: time_table
   contents:
     - title: "PRISM: Probing Routed Information Flow via Structured Multimodal Bottlenecks"
-      institution: Pittsburgh, PA
-      year: 2025 - Present
+      institution: Carnegie Mellon University (CMU), Pittsburgh, PA
+      year: Sep 2025 – Dec 2025
       description:
         - "Designed & validated hierarchical fusion variant outperforming symmetric design by +2.7% (Acc2/F1); identified asymmetric (AV/VA) fusion matches symmetric performance with fewer parameters; a key insight for production multimodal model design."
-        - "Researched fusion efficiency in multimodal models; discovered that scaling fusion capacity (4 to 12 tokens) on CMU-MOSEI/MOSI actually hurts performance (-6% correlation), revealing architectural waste."
+        - "Researched fusion efficiency in multimodal models; discovered that scaling fusion capacity (4 to 12 tokens) on CMU-MOSEI/MOSI hurts performance (-6% correlation), revealing architectural waste."
     - title: "ScleraNext: Lightweight CNN Segmentation for Real-Time Biometric Identification"
-      institution: Ljubljana, Slovenia (Remote)
-      year: 2021 - 2021
+      institution: University of Ljubljana (UL), Ljubljana, Slovenia (Remote)
+      year: Jun 2021 – Dec 2021
       description:
-        - "Optimized production iris/retinal segmentation pipeline: replaced cascaded 2-stage segmentation CNN with single compact model, reducing inference latency by 73% for edge deployment (mobile/IoT)."
+        - "Optimized production iris/retinal segmentation pipeline: replaced cascaded 2-stage segmentation CNN with single compact model, reducing inference latency by 73% for edge deployment."
         - "Benchmarked YOLO, U-Net, MobileNet, DenseNet on accuracy/latency tradeoffs and selected optimal U-net based model."
-    - title: "GraphAct: Graph-Structured Action Prediction for Web Agents"
-      institution: Pittsburgh, PA
-      year: 2025 - Present
-      description:
-        - "Benchmarked 10 baselines on Multimodal Mind2Web using Qwen3-VL and InternVL2-8B; found all prior work (MindAct, SeeAct, CogAgent) serializes DOM as flat text, making hierarchical element reasoning impossible."
-        - "Added a Graphormer-style Graph Transformer Encoder over explicit DOM graphs to a frozen Qwen3-VL backbone, projecting node embeddings into the LLM token space as a first-class relational modality."
-        - "Training with InfoNCE visual-graph alignment, masked DOM attribute prediction, and action history consistency loss."
     - title: "WorldVLM: Tuning Vision-Language Models as World Models for Web Agent Action Prediction"
-      institution: Pittsburgh, PA
-      year: 2025 - Present
+      institution: Carnegie Mellon University (CMU), Pittsburgh, PA
+      year: Jan 2026 – Present
       description:
         - "Fine-tuned Qwen2.5-VL on Mind2Web trajectories to jointly predict the next action and resulting visual page state, an upgrade to the current SoTA which simulate next states via text description with no visual grounding."
         - "Framed web browsing as a transition function over (state, action) pairs, enabling consequence-aware planning rather than reactive step-by-step execution."
+    - title: "GraphAct: Graph-Structured Action Prediction for Web Agents"
+      institution: Carnegie Mellon University (CMU), Pittsburgh, PA
+      year: Jan 2025 – Present
+      description:
+        - "Benchmarked 10 baselines on Multimodal Mind2Web using Qwen3-VL and InternVL2-8B; integrating hierarchical structure to HTML DOM for this task, which has been lacking in the current State-of-The-Art."
+        - "Adding a Graph Transformer Encoder over DOM graphs to a frozen Qwen3-VL backbone, projecting node embeddings into the LLM token space, and training with composite loss to account for alignment, prediction and action history consistency."
 
 - title: Leadership / Extracurricular
   type: time_table

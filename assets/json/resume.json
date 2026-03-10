@@ -224,5 +224,51 @@
       "endDate": "2025-08-01",
       "url": "#"
     }
+  ],
+  "research": [
+    {
+      "name": "PRISM: Probing Routed Information Flow via Structured Multimodal Bottlenecks",
+      "summary": "Carnegie Mellon University (CMU) · Pittsburgh, PA",
+      "highlights": [
+        "Designed & validated hierarchical fusion variant outperforming symmetric design by +2.7% (Acc2/F1); identified asymmetric (AV/VA) fusion matches symmetric performance with fewer parameters; a key insight for production multimodal model design.",
+        "Researched fusion efficiency in multimodal models; discovered that scaling fusion capacity (4 to 12 tokens) on CMU-MOSEI/MOSI hurts performance (-6% correlation), revealing architectural waste."
+      ],
+      "startDate": "2025-09-01",
+      "endDate": "2025-12-01",
+      "url": "#"
+    },
+    {
+      "name": "ScleraNext: Lightweight CNN Segmentation for Real-Time Biometric Identification",
+      "summary": "University of Ljubljana (UL) · Ljubljana, Slovenia (Remote)",
+      "highlights": [
+        "Optimized production iris/retinal segmentation pipeline: replaced cascaded 2-stage segmentation CNN with single compact model, reducing inference latency by 73% for edge deployment.",
+        "Benchmarked YOLO, U-Net, MobileNet, DenseNet on accuracy/latency tradeoffs and selected optimal U-net based model."
+      ],
+      "startDate": "2021-06-01",
+      "endDate": "2021-12-01",
+      "url": "#"
+    },
+    {
+      "name": "WorldVLM: Tuning Vision-Language Models as World Models for Web Agent Action Prediction",
+      "summary": "Carnegie Mellon University (CMU) · Pittsburgh, PA",
+      "highlights": [
+        "Fine-tuned Qwen2.5-VL on Mind2Web trajectories to jointly predict the next action and resulting visual page state, an upgrade to the current SoTA which simulate next states via text description with no visual grounding.",
+        "Framed web browsing as a transition function over (state, action) pairs, enabling consequence-aware planning rather than reactive step-by-step execution."
+      ],
+      "startDate": "2026-01-01",
+      "endDate": "",
+      "url": "#"
+    },
+    {
+      "name": "GraphAct: Graph-Structured Action Prediction for Web Agents",
+      "summary": "Carnegie Mellon University (CMU) · Pittsburgh, PA",
+      "highlights": [
+        "Benchmarked 10 baselines on Multimodal Mind2Web using Qwen3-VL and InternVL2-8B; integrating hierarchical structure to HTML DOM for this task, which has been lacking in the current State-of-The-Art.",
+        "Adding a Graph Transformer Encoder over DOM graphs to a frozen Qwen3-VL backbone, projecting node embeddings into the LLM token space, and training with composite loss to account for alignment, prediction and action history consistency."
+      ],
+      "startDate": "2025-01-01",
+      "endDate": "",
+      "url": "#"
+    }
   ]
 }

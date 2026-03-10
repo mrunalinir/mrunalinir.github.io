@@ -89,13 +89,6 @@
         - Fusion Architectures: Implemented early, mid, late, and bottleneck fusion variants on CMU MOSI/MOSEI
         - "Accuracy Gains: Designed hierarchical bottleneck fusion: +4.3% Acc2 and +2.8% F1 vs. strongest baseline"
         - Compute Tradeoffs: Analyzed accuracy-compute behavior through FLOPs-aware ablations
-    - title: Multimodal Financial Market Movement Prediction via Temporal Fusion
-      institution: Personal
-      year: Jun 2025 - Aug 2025
-      description:
-        - Built multimodal forecasting model combining stock prices, financial news, tweets, and firm metadata, achieving 14% accuracy gain over unimodal baselines
-        - Added a time-safe RAG layer that pulls latest news, turns it into JSON event tags, and provides short, cited explanations next to predictions, enhancing model interpretability
-        - Deployed an analyst UI that ranks tickers (top-10 gainers/losers), flags high-confidence signals, and links to the exact retrieved news powering each forecast
 
 - title: Research Projects
   type: time_table

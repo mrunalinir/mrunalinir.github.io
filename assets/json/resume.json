@@ -202,18 +202,6 @@
   "references": [],
   "projects": [
     {
-      "name": "Multimodal Financial Market Movement Prediction via Temporal Fusion",
-      "summary": "Personal",
-      "highlights": [
-        "Built multimodal forecasting model combining stock prices, financial news, tweets, and firm metadata, achieving 14% accuracy gain over unimodal baselines",
-        "Added a time-safe RAG layer that pulls latest news, turns it into JSON event tags, and provides short, cited explanations next to predictions, enhancing model interpretability",
-        "Deployed an analyst UI that ranks tickers (top-10 gainers/losers), flags high-confidence signals, and links to the exact retrieved news powering each forecast"
-      ],
-      "startDate": "2025-07-01",
-      "endDate": "2025-08-01",
-      "url": "#"
-    },
-    {
       "name": "Fine-Tuning a Step-Efficient Multimodal Web Agent",
       "summary": "Pittsburgh, PA",
       "highlights": [

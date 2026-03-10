@@ -54,11 +54,6 @@ ninja.data = [{
           description: "Hierarchical bottleneck fusion for multimodal sentiment analysis on MOSI/MOSEI",
           section: "Projects",handler: () => {
               window.location.href = "/projects/3_project/";
-            },},{id: "projects-multimodal-financial-market-movement-prediction-via-temporal-fusion",
-          title: 'Multimodal Financial Market Movement Prediction via Temporal Fusion',
-          description: "Multimodal forecasting with stock prices, news, tweets and firm metadata",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/4_project/";
             },},{id: "teachings-data-science-fundamentals",
           title: 'Data Science Fundamentals',
           description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",

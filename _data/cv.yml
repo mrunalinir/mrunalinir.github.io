@@ -73,14 +73,13 @@
       description:
         - Behavior Fine-Tuning: Fine-tuning a candidate-ranking multimodal agent on Mind2Web for grounded action selection
         - Step Optimization: Preference-training in VisualWebArena to minimize steps and decision errors
-    - title: Privacy-Compliant LLM Feature Engineering for Zulip
+    - title: "ZulipGPT: LLM Integration for Chat Summarization in Open-Source Messaging"
       institution: Pittsburgh, PA
       year: Jan 2026 - Feb 2026
       description:
-        - LLM Integration: Engineered chat and inbox summarization, with topic-drift detection in the Zulip open-source codebase
-        - Privacy-Safe Inference: Implemented identity-masking with deterministic re-mapping to prevent sensitive data exposure
-        - Inference Efficiency: Optimized token usage and latency via trigger-based invocation, rolling context windows, and message batching. Achieved sub-1-minute inference
-        - Clean Outputs: Citation-backed summaries with structured prompts; constraints to improve reliability, reduce injection risk
+        - Shipped chat and inbox summarization into the Zulip open-source codebase with topic-drift detection and citation-backed prompts to reduce hallucination and injection risk.
+        - Built a deterministic identity-masking pipeline using keyed pseudonym mapping before inference, providing a stronger privacy guarantee than post-hoc PII filtering since the model never sees real identities.
+        - Cut summarization latency to under 15 seconds via trigger-based invocation, rolling context windows, and message batching.
     - title: Efficient Multimodal Fusion with Bottleneck Transformers
       institution: Pittsburgh, PA
       year: Oct 2025 - Dec 2025
@@ -88,17 +87,41 @@
         - Fusion Architectures: Implemented early, mid, late, and bottleneck fusion variants on CMU MOSI/MOSEI
         - "Accuracy Gains: Designed hierarchical bottleneck fusion: +4.3% Acc2 and +2.8% F1 vs. strongest baseline"
         - Compute Tradeoffs: Analyzed accuracy-compute behavior through FLOPs-aware ablations
+    - title: Neural Music Recommender for Personalized Playlists
+      institution: Pittsburgh, PA
+      year: Jun 2025 - Aug 2025
+      description:
+        - Built a hybrid music recommendation system combining collaborative filtering signals with content-based audio and metadata features to improve cold-start performance.
+        - Modeled recent listening history with a sequence-aware architecture to capture short-term preferences and session context.
 
 - title: Research Projects
   type: time_table
   contents:
-    - title: Machine Learning Research Intern
-      institution: Computer Vision Lab, University of Ljubljana, Ljubljana, Slovenia (Remote)
-      year: Jun 2021 - Dec 2021
+    - title: "PRISM: Probing Routed Information Flow via Structured Multimodal Bottlenecks"
+      institution: Pittsburgh, PA
+      year: 2025 - Present
       description:
-        - Segmentation Module: Integrated CNN segmentation into a biometric eye-ID multi-step model pipeline
-        - Model Benchmarking: Benchmarked U-Net, MobileNet, and DenseNet variants for vascular-feature identification
-        - Latency Reduction: Cut inference latency to 27% via a single compact model with no accuracy regression
+        - "Designed & validated hierarchical fusion variant outperforming symmetric design by +2.7% (Acc2/F1); identified asymmetric (AV/VA) fusion matches symmetric performance with fewer parameters; a key insight for production multimodal model design."
+        - "Researched fusion efficiency in multimodal models; discovered that scaling fusion capacity (4 to 12 tokens) on CMU-MOSEI/MOSI actually hurts performance (-6% correlation), revealing architectural waste."
+    - title: "ScleraNext: Lightweight CNN Segmentation for Real-Time Biometric Identification"
+      institution: Ljubljana, Slovenia (Remote)
+      year: 2021 - 2021
+      description:
+        - "Optimized production iris/retinal segmentation pipeline: replaced cascaded 2-stage segmentation CNN with single compact model, reducing inference latency by 73% for edge deployment (mobile/IoT)."
+        - "Benchmarked YOLO, U-Net, MobileNet, DenseNet on accuracy/latency tradeoffs and selected optimal U-net based model."
+    - title: "GraphAct: Graph-Structured Action Prediction for Web Agents"
+      institution: Pittsburgh, PA
+      year: 2025 - Present
+      description:
+        - "Benchmarked 10 baselines on Multimodal Mind2Web using Qwen3-VL and InternVL2-8B; found all prior work (MindAct, SeeAct, CogAgent) serializes DOM as flat text, making hierarchical element reasoning impossible."
+        - "Added a Graphormer-style Graph Transformer Encoder over explicit DOM graphs to a frozen Qwen3-VL backbone, projecting node embeddings into the LLM token space as a first-class relational modality."
+        - "Training with InfoNCE visual-graph alignment, masked DOM attribute prediction, and action history consistency loss."
+    - title: "WorldVLM: Tuning Vision-Language Models as World Models for Web Agent Action Prediction"
+      institution: Pittsburgh, PA
+      year: 2025 - Present
+      description:
+        - "Fine-tuned Qwen2.5-VL on Mind2Web trajectories to jointly predict the next action and resulting visual page state, an upgrade to the current SoTA which simulate next states via text description with no visual grounding."
+        - "Framed web browsing as a transition function over (state, action) pairs, enabling consequence-aware planning rather than reactive step-by-step execution."
 
 - title: Leadership / Extracurricular
   type: time_table

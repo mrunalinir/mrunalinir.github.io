@@ -201,52 +201,28 @@
   "references": [],
   "projects": [
     {
-      "name": "Fine-Tuning a Step-Efficient Multimodal Web Agent",
+      "name": "ZulipGPT: LLM Integration for Chat Summarization in Open-Source Messaging",
       "summary": "Pittsburgh, PA",
       "highlights": [
-        "Behavior Fine-Tuning: Fine-tuning a candidate-ranking multimodal agent on Mind2Web for grounded action selection",
-        "Step Optimization: Preference-training in VisualWebArena to minimize steps and decision errors"
-      ],
-      "startDate": "2026-02-01",
-      "endDate": "2026-12-01",
-      "url": "#"
-    },
-    {
-      "name": "Privacy-Compliant LLM Feature Engineering for Zulip",
-      "summary": "Pittsburgh, PA",
-      "highlights": [
-        "LLM Integration: Engineered chat and inbox summarization, with topic-drift detection in the Zulip open-source codebase",
-        "Privacy-Safe Inference: Implemented identity-masking with deterministic re-mapping to prevent sensitive data exposure",
-        "Inference Efficiency: Optimized token usage and latency via trigger-based invocation, rolling context windows, and message batching. Achieved sub-1-minute inference",
-        "Clean Outputs: Citation-backed summaries with structured prompts; constraints to improve reliability, reduce injection risk"
+        "Shipped chat and inbox summarization into the Zulip open-source codebase with topic-drift detection and citation-backed prompts to reduce hallucination and injection risk.",
+        "Built a deterministic identity-masking pipeline using keyed pseudonym mapping before inference, providing a stronger privacy guarantee than post-hoc PII filtering since the model never sees real identities.",
+        "Cut summarization latency to under 15s via trigger-based invocation, rolling context windows, and message batching."
       ],
       "startDate": "2026-01-01",
       "endDate": "2026-02-01",
       "url": "#"
     },
     {
-      "name": "Efficient Multimodal Fusion with Bottleneck Transformers",
+      "name": "Neural Music Recommender for Personalized Playlists",
       "summary": "Pittsburgh, PA",
       "highlights": [
-        "Fusion Architectures: Implemented early, mid, late, and bottleneck fusion variants on CMU MOSI/MOSEI",
-        "Accuracy Gains: Designed hierarchical bottleneck fusion: +4.3% Acc2 and +2.8% F1 vs. strongest baseline",
-        "Compute Tradeoffs: Analyzed accuracy-compute behavior through FLOPs-aware ablations"
+        "Built a hybrid music recommendation system combining collaborative filtering signals with content-based audio and metadata features to improve cold-start performance.",
+        "Modeled recent listening history with a sequence-aware architecture to capture short-term preferences and session context.",
+        "Optimized for ranking metrics (NDCG@k, Recall@k) to improve top-k recommendation quality."
       ],
-      "startDate": "2025-10-01",
-      "endDate": "2025-12-01",
+      "startDate": "2025-06-01",
+      "endDate": "2025-08-01",
       "url": "#"
-    },
-    {
-      "name": "Machine Learning Research Intern",
-      "summary": "Computer Vision Lab, University of Ljubljana — Ljubljana, Slovenia (Remote)",
-      "highlights": [
-        "Segmentation Module: Integrated CNN segmentation into a biometric eye-ID multi-step model pipeline",
-        "Model Benchmarking: Benchmarked U-Net, MobileNet, and DenseNet variants for vascular-feature identification",
-        "Latency Reduction: Cut inference latency to 27% via a single compact model with no accuracy regression"
-      ],
-      "startDate": "2021-06-01",
-      "endDate": "2021-12-01",
-      "url": "https://www.fri.uni-lj.si/en"
     }
   ]
 }

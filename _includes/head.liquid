@@ -64,12 +64,29 @@
     href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>{{ site.icon }}</text></svg>"
   >
 {% elsif site.icon != blank %}
-  <link rel="shortcut icon" href="{{ site.icon | prepend: '/assets/img/' | relative_url | bust_file_cache}}">
+  <link rel="shortcut icon" id="site-favicon" href="{{ site.icon | prepend: '/assets/img/' | relative_url | bust_file_cache}}">
 {% endif %}
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url | bust_css_cache }}">
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
 
 {% if site.enable_darkmode %}
+  <!-- Favicon theme switcher -->
+  <script>
+    (function() {
+      var faviconLight = '{{ "/assets/img/favicon_light.png" | relative_url }}';
+      var faviconDark  = '{{ "/assets/img/favicon_dark.png"  | relative_url }}';
+      function updateFavicon() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        var link = document.getElementById('site-favicon');
+        if (link) link.href = isDark ? faviconDark : faviconLight;
+      }
+      updateFavicon();
+      new MutationObserver(updateFavicon).observe(
+        document.documentElement,
+        { attributes: true, attributeFilter: ['data-theme'] }
+      );
+    })();
+  </script>
   <!-- Dark Mode -->
   <script src="{{ '/assets/js/theme.js' | relative_url | bust_file_cache }}"></script>
   <link

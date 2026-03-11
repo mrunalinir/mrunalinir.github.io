@@ -1,10 +1,8 @@
 ---
-# Only the main Sass file needs front matter (the dashes are enough)
 ---
-@charset "utf-8";
 
 // Dimensions
-$max-content-width: {{ site.max_width }};
+$max-content-width: 1060px;
 
 @import
   "variables",
@@ -31,15 +29,22 @@ $max-content-width: {{ site.max_width }};
 // ============================================================================
 
 :root {
-  --bg: #f5f0e8;
-  --bg2: #ede7d8;
-  --bg3: #e5dece;
+  --bg: #faf7f2;
+  --bg2: #f2ece1;
+  --bg3: #e9e2d2;
   --ink: #1a1714;
   --ink2: #3d3830;
   --muted: #9a8f80;
   --red: #b83232;
   --red-dim: #7a2020;
   --rule: rgba(26, 23, 20, 0.10);
+  --shadow: 0 2px 12px rgba(26, 23, 20, 0.09), 0 1px 3px rgba(26, 23, 20, 0.06);
+
+  // Override al-folio's default purple theme color → site red
+  --global-theme-color: #b83232;
+  --global-hover-color: #b83232;
+  --global-highlight-color: #b83232;
+  --global-code-bg-color: rgba(184, 50, 50, 0.05);
 }
 
 html,
@@ -53,9 +58,12 @@ body {
 
 // paper grain overlay
 body::after {
-  content: '';
+  content: "";
   position: fixed;
-  inset: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   pointer-events: none;
   z-index: 9999;
   opacity: 0.5;
@@ -67,7 +75,7 @@ body::after {
   background: var(--bg) !important;
   border-bottom: 1px solid var(--rule) !important;
   padding: 0 !important;
-  box-shadow: none !important;
+  box-shadow: var(--shadow) !important;
 }
 
 .navbar .container {
@@ -75,7 +83,7 @@ body::after {
   max-width: 100% !important;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
 }
 
 .navbar-brand.title {
@@ -90,6 +98,10 @@ body::after {
 .navbar-brand.title::after {
   content: '.';
   color: var(--red);
+}
+
+.navbar-brand.title {
+  display: none !important;
 }
 
 .navbar-nav {
@@ -114,23 +126,78 @@ body::after {
   border-bottom: 1px solid var(--red);
 }
 
+// ── NAVBAR LOGO ──
+.navbar-logo {
+  height: 28px !important;
+  width: auto !important;
+  display: block !important;
+  object-fit: contain !important;
+}
+.navbar-logo-dark  { display: none !important; }
+.navbar-logo-light { display: block !important; }
+html[data-theme="dark"] .navbar-logo-light { display: none !important; }
+html[data-theme="dark"] .navbar-logo-dark  { display: block !important; }
+.navbar-logo-link { padding: 4px 0 !important; }
+
+// Fix dark mode toggle: moon in light mode, sun in dark mode, hide system icon
+:root #light-toggle-system {
+  display: none !important;
+}
+
+// Light mode: show moon (dark toggle button)
+:root #light-toggle-dark {
+  display: flex !important;
+  align-items: center !important;
+  padding-top: 0 !important;
+  padding-left: 10px !important;
+}
+
+// Light mode: hide sun
+:root #light-toggle-light {
+  display: none !important;
+}
+
+// Dark mode: show sun (light toggle button)
+html[data-theme="dark"] #light-toggle-light {
+  display: flex !important;
+  align-items: center !important;
+  padding-top: 0 !important;
+  padding-left: 10px !important;
+}
+
+// Dark mode: hide moon
+html[data-theme="dark"] #light-toggle-dark {
+  display: none !important;
+}
+
+html[data-theme="light"] #light-toggle-dark {
+  display: flex !important;
+  align-items: center !important;
+  padding-top: 0 !important;
+  padding-left: 10px !important;
+}
+
+html[data-theme="light"] #light-toggle-light {
+  display: none !important;
+}
+
 // Shared page container
 .container.mt-5 {
   max-width: 1060px !important;
-  padding-top: 76px !important;
+  padding-top: 2px !important;
   padding-left: 72px !important;
   padding-right: 72px !important;
 }
 
 // ── ABOUT PAGE ELEMENTS (mapped onto existing al-folio classes) ──
-.post-title {
+.post .post-title {
   font-family: 'EB Garamond', serif !important;
   font-size: 74px !important;
   font-weight: 500 !important;
-  font-style: italic !important;
+  font-style: normal !important;
   color: var(--ink) !important;
   line-height: 1.0 !important;
-  letter-spacing: -0.01em !important;
+  letter-spacing: 0.02em !important;
   margin-bottom: 12px !important;
 }
 
@@ -145,15 +212,22 @@ body::after {
   line-height: 1.5 !important;
 }
 
-// map profile card to existing profile include
+.post-description a,
+.post .desc a {
+  color: var(--red) !important;
+}
+
+// map profile card to existing profile include (scaled to 0.75x)
 .profile {
   float: right !important;
   background: var(--bg2) !important;
   border: 1px solid var(--rule) !important;
-  padding: 24px !important;
-  width: 210px !important;
-  margin-left: 44px !important;
-  margin-bottom: 28px !important;
+  padding: 18px !important;
+  width: 236px !important;
+  margin-left: 33px !important;
+  margin-bottom: 21px !important;
+  text-align: center !important;
+  box-shadow: var(--shadow) !important;
 }
 
 .profile img {
@@ -163,17 +237,19 @@ body::after {
   border: none !important;
   box-shadow: none !important;
   display: block !important;
-  margin-bottom: 18px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-bottom: 14px !important;
 }
 
 .profile .address {
   font-family: 'Space Mono', monospace !important;
-  font-size: 10px !important;
+  font-size: 8px !important;
   color: var(--muted) !important;
   letter-spacing: 0.08em !important;
   line-height: 1.9 !important;
   border-top: 1px solid var(--rule) !important;
-  padding-top: 14px !important;
+  padding-top: 10px !important;
   word-break: break-word;
   overflow-wrap: anywhere;
 }
@@ -183,33 +259,22 @@ body::after {
   text-decoration: none !important;
 }
 
-.profile .social {
-  margin-top: 14px !important;
-  display: flex !important;
-  gap: 10px !important;
-  flex-wrap: wrap !important;
+.profile .more-info {
+  text-align: center !important;
+}
+
+.profile .more-info p {
+  display: block !important;
+  margin: 3px 0 !important;
+  font-size: 19px !important;
+}
+
+.profile .address {
+  text-align: center !important;
 }
 
 .profile .btn-resume {
-  display: block !important;
-  width: 100% !important;
-  background: transparent !important;
-  border: 1px solid var(--ink) !important;
-  color: var(--ink) !important;
-  font-family: 'Space Mono', monospace !important;
-  font-size: 10px !important;
-  letter-spacing: 0.15em !important;
-  text-transform: uppercase !important;
-  border-radius: 0 !important;
-  padding: 10px !important;
-  margin-top: 14px !important;
-  text-align: center !important;
-  text-decoration: none;
-}
-
-.profile .btn-resume:hover {
-  background: var(--ink) !important;
-  color: var(--bg) !important;
+  display: none !important;
 }
 
 article p {
@@ -226,13 +291,14 @@ article strong {
 }
 
 article a {
-  color: var(--red-dim) !important;
+  color: var(--red) !important;
   text-decoration-underline-offset: 3px;
   text-decoration-color: rgba(184, 50, 50, 0.3) !important;
 }
 
 article a:hover {
   color: var(--red) !important;
+  text-decoration-color: var(--red) !important;
 }
 
 // ── CV PAGE (will mostly affect any custom cv markup using these classes) ──
@@ -269,6 +335,248 @@ article a:hover {
   margin: 0 0 24px !important;
 }
 
+// ── CV ACTUAL LAYOUT ──
+
+// PDF download icon in CV page header
+.post-title a i.fa-file-pdf {
+  color: var(--global-theme-color) !important;
+}
+
+// Date badge — subtle chip
+.badge.danger-color-dark {
+  background-color: var(--bg3) !important;
+  color: var(--red) !important;
+  border-radius: 4px !important;
+  padding: 2px 8px !important;
+  box-shadow: none !important;
+  display: inline-block !important;
+}
+
+// Date column: fixed width, flex column
+.cv-date-col {
+  flex: 0 0 115px !important;
+  width: 115px !important;
+  min-width: 115px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  padding-top: 3px !important;
+  padding-right: 16px !important;
+}
+
+// Year label inside date column
+.cv-year-label {
+  font-family: 'Space Mono', monospace !important;
+  font-size: 9px !important;
+  font-weight: 400 !important;
+  color: var(--red) !important;
+  letter-spacing: 0.04em !important;
+  line-height: 1.5 !important;
+  white-space: nowrap !important;
+  text-align: left !important;
+  text-transform: none !important;
+}
+
+// Entry body: takes the remaining width
+.cv-entry-body {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+// Make each list-group-item a flex row so date+body align
+.cv .list-group-item > .row {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: flex-start !important;
+}
+
+// Fix all CV icon colors
+i.iconinstitution,
+i.iconlocation,
+i.icondepartment {
+  color: var(--red) !important;
+}
+
+// Single-column layout: all sections stack top to bottom
+.cv {
+  display: block !important;
+}
+
+// Hide anchor elements — they create unwanted spacing
+.cv > a.anchor {
+  display: none !important;
+}
+
+// All CV section cards get consistent border styling
+.cv > div {
+  background: var(--bg2) !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 0 !important;
+  margin-bottom: 16px !important;
+  box-shadow: var(--shadow) !important;
+}
+
+// Section card titles (Education, Experience, etc.)
+.cv .card-title {
+  font-family: 'EB Garamond', serif !important;
+  font-size: 15px !important;
+  letter-spacing: 0.3em !important;
+  text-transform: uppercase !important;
+  color: var(--red) !important;
+  font-weight: 500 !important;
+  border-bottom: 1px solid var(--rule) !important;
+  padding-bottom: 10px !important;
+  margin-bottom: 16px !important;
+}
+
+// CV list group items
+.cv .list-group-item {
+  background-color: transparent !important;
+  border-color: var(--rule) !important;
+}
+
+// General Info icon column
+.cv-info-icon {
+  color: var(--red) !important;
+  width: 20px !important;
+  min-width: 20px !important;
+  text-align: center !important;
+  font-size: 11px !important;
+  padding-right: 4px !important;
+  vertical-align: middle !important;
+}
+
+// General Info field name
+.cv-info-name {
+  font-family: 'EB Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 13px !important;
+  color: var(--muted) !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+}
+
+// General Info field value
+.cv-info-value {
+  font-family: 'EB Garamond', serif !important;
+  font-size: 14px !important;
+  color: var(--ink2) !important;
+  word-break: break-word !important;
+  vertical-align: middle !important;
+  line-height: 1.4 !important;
+}
+
+.cv-info-value a {
+  color: var(--red) !important;
+  text-decoration: none !important;
+}
+
+.cv-info-value a:hover {
+  text-decoration: underline !important;
+}
+
+// Institution logo image
+.cv-institution-logo {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 6px !important;
+  object-fit: contain !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  background: #fff !important;
+  padding: 3px !important;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.13) !important;
+}
+
+// General badge reset inside CV (don't override cv-year-label specifics)
+.cv .badge {
+  white-space: normal !important;
+  line-height: 1.45 !important;
+}
+
+// ── CV TYPOGRAPHY — unified font system ──
+
+// Role / project title (h6)
+.cv h6.title {
+  font-family: 'EB Garamond', serif !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: var(--ink) !important;
+  line-height: 1.3 !important;
+  margin-bottom: 3px !important;
+}
+
+// Institution and department cell text
+.cv table.institution td.institution,
+.cv table.institution td.department {
+  font-family: 'Space Mono', monospace !important;
+  font-size: 10px !important;
+  color: var(--muted) !important;
+  vertical-align: middle !important;
+  padding-left: 6px !important;
+}
+
+// Location tag (appears under year, inside date column)
+.cv p.location {
+  font-family: 'Space Mono', monospace !important;
+  font-size: 9px !important;
+  color: var(--muted) !important;
+  margin-top: 5px !important;
+  margin-bottom: 0 !important;
+  line-height: 1.4 !important;
+  text-align: left !important;
+  word-break: break-word !important;
+}
+
+.cv p.location i {
+  color: var(--muted) !important;
+  font-size: 8px !important;
+  margin-right: 3px !important;
+}
+
+// Description bullet text
+.cv ul.items li .item,
+.cv ul.items li .item-title {
+  font-family: 'EB Garamond', serif !important;
+  font-size: 14.5px !important;
+  color: var(--ink) !important;
+  line-height: 1.6 !important;
+}
+
+// Nested list section titles (Languages, ML Libraries, etc.)
+.cv .list-group-item h5 {
+  font-family: 'Space Mono', monospace !important;
+  font-size: 9px !important;
+  font-style: normal !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  color: var(--ink) !important;
+  margin-bottom: 6px !important;
+}
+
+// Nested list subitem values
+.cv ul.subitems li .subitem {
+  font-family: 'EB Garamond', serif !important;
+  font-size: 13px !important;
+  color: var(--ink) !important;
+}
+
+// Responsive: collapse to single column on narrow screens
+@media (max-width: 768px) {
+  .cv {
+    grid-template-columns: 1fr !important;
+  }
+  .cv > div:first-of-type,
+  .cv > div:not(:first-of-type) {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+    position: static !important;
+  }
+}
+
 // ── PROJECTS PAGE ──
 .projects h1 {
   font-family: 'EB Garamond', serif !important;
@@ -291,25 +599,25 @@ article a:hover {
 }
 
 .projects h2.category {
-  font-family: 'Space Mono', monospace !important;
-  font-size: 9px !important;
+  font-family: 'EB Garamond', serif !important;
+  font-size: 15px !important;
   letter-spacing: 0.3em !important;
   text-transform: uppercase !important;
   color: var(--red) !important;
   border-bottom: 1px solid var(--rule) !important;
   padding-bottom: 10px !important;
   margin: 40px 0 22px !important;
-  font-weight: 400 !important;
+  font-weight: 500 !important;
 }
 
 .projects .card.hoverable {
   background: var(--bg2) !important;
   border: 1px solid var(--rule) !important;
   border-radius: 0 !important;
-  box-shadow: none !important;
+  box-shadow: var(--shadow) !important;
   height: 100%;
   margin-bottom: 20px !important;
-  transition: border-color 0.15s, transform 0.15s;
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
   text-decoration: none;
   color: inherit;
   display: block;
@@ -341,24 +649,73 @@ article a:hover {
   line-height: 1.6 !important;
 }
 
+// ── CONTACT ICONS (about page bottom) ──
+.post .social .contact-icons {
+  font-size: 2rem !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+}
+
+.post .social .contact-icons a {
+  color: var(--red) !important;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.post .social .contact-icons a:hover {
+  color: var(--red) !important;
+  opacity: 0.85;
+  transform: translateY(-2px);
+  text-decoration: none !important;
+}
+
+.post .social .contact-icons a i,
+.post .social .contact-icons a i::before {
+  color: var(--red) !important;
+}
+
+.post .social .contact-icons a svg,
+.post .social .contact-icons a img {
+  width: 1.75rem !important;
+  height: 1.75rem !important;
+  margin-bottom: 0.25rem !important;
+  color: var(--red) !important;
+  fill: var(--red) !important;
+}
+
+.post .social .contact-icons a:hover i::before,
+.post .social .contact-icons a:hover svg {
+  color: var(--red) !important;
+  fill: var(--red) !important;
+}
+
 // ── FOOTER ──
 footer {
   background: var(--bg) !important;
   border-top: 1px solid var(--rule) !important;
   padding: 18px 72px !important;
   margin-top: 48px !important;
+  color: var(--ink) !important;
+  box-shadow: 0 -2px 12px rgba(26, 23, 20, 0.07) !important;
 }
 
-footer span,
-footer a {
+footer .container {
+  color: #000000 !important;
+}
+
+footer span {
   font-family: 'Space Mono', monospace !important;
   font-size: 10px !important;
-  color: var(--muted) !important;
+  color: var(--ink) !important;
   letter-spacing: 0.08em !important;
 }
 
 footer a {
-  color: var(--red-dim) !important;
+  font-family: 'Space Mono', monospace !important;
+  font-size: 10px !important;
+  color: var(--red) !important;
+  letter-spacing: 0.08em !important;
   text-decoration: none;
 }
 
@@ -380,7 +737,7 @@ footer a {
   background: var(--bg2) !important;
   border: 1px solid var(--rule) !important;
   border-radius: 0 !important;
-  box-shadow: none !important;
+  box-shadow: var(--shadow) !important;
   padding: 32px 36px !important;
   margin-top: 40px !important;
 }
@@ -404,27 +761,54 @@ footer a {
 }
 
 // ── DARK MODE OVERRIDES ──
+// Re-define all custom tokens so every var(--ink), var(--bg) etc. resolves correctly
+html[data-theme="dark"] {
+  --bg:   #111111;
+  --bg2:  #1a1a1a;
+  --bg3:  #222222;
+  --ink:  #e8e2d9;
+  --ink2: #c8c0b4;
+  --muted: #6e6459;
+  --red:  #c84040;
+  --red-dim: #8a2424;
+  --rule: rgba(232, 226, 217, 0.10);
+
+  --global-theme-color: #b83232;
+  --global-hover-color: #d04040;
+  --global-hover-text-color: #b83232;
+  --global-bg-color: #111111;
+  --global-text-color: #e8e2d9;
+  --global-text-color-light: #6e6459;
+  --global-footer-bg-color: #111111;
+  --global-footer-text-color: #e8e2d9;
+  --global-footer-link-color: #c84040;
+  --global-card-bg-color: #1a1a1a;
+  --global-code-bg-color: #1e1e1e;
+  --global-divider-color: #2e2e2e;
+}
+
 html[data-theme="dark"],
 html[data-theme="dark"] body {
-  background: #101010 !important;
-  color: #f5f0e8 !important;
+  background: var(--bg) !important;
+  color: var(--ink) !important;
 }
 
 html[data-theme="dark"] body::after {
-  opacity: 0.15;
+  opacity: 0.12;
 }
 
+// Navbar
 html[data-theme="dark"] .navbar {
-  background: #101010 !important;
-  border-bottom-color: #333 !important;
+  background: var(--bg) !important;
+  border-bottom-color: var(--rule) !important;
 }
 
 html[data-theme="dark"] .navbar-brand.title {
-  color: #f5f0e8 !important;
+  color: var(--ink) !important;
 }
 
 html[data-theme="dark"] .nav-item .nav-link {
-  color: #b6a999 !important;
+  color: var(--muted) !important;
 }
 
 html[data-theme="dark"] .nav-item.active .nav-link {
@@ -432,15 +816,93 @@ html[data-theme="dark"] .nav-item.active .nav-link {
   border-bottom-color: var(--red) !important;
 }
 
-html[data-theme="dark"] .projects .card.hoverable,
+// Cards & containers
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .card.hoverable,
 html[data-theme="dark"] .project-page,
-html[data-theme="dark"] .profile {
-  background: #181818 !important;
-  border-color: #333 !important;
+html[data-theme="dark"] .profile,
+html[data-theme="dark"] .cv > div,
+html[data-theme="dark"] .list-group-item {
+  background: var(--bg) !important;
+  border-color: var(--rule) !important;
+  color: var(--ink) !important;
 }
 
+// Tables
+html[data-theme="dark"] table,
+html[data-theme="dark"] .table {
+  color: var(--ink) !important;
+}
+
+html[data-theme="dark"] .table td,
+html[data-theme="dark"] .table th {
+  border-color: var(--rule) !important;
+  color: var(--ink) !important;
+}
+
+// Footer
 html[data-theme="dark"] footer {
-  background: #101010 !important;
-  border-top-color: #333 !important;
+  background: var(--bg) !important;
+  border-top-color: var(--rule) !important;
+}
+
+html[data-theme="dark"] footer .container,
+html[data-theme="dark"] footer span,
+html[data-theme="dark"] footer p {
+  color: var(--ink) !important;
+}
+
+html[data-theme="dark"] footer a {
+  color: var(--red) !important;
+}
+
+// ── DARK MODE: CV PAGE ──
+// Bootstrap's .list-group-item and .card have hardcoded white backgrounds
+html[data-theme="dark"] .cv > div {
+  background: var(--bg2) !important;
+  border-color: var(--rule) !important;
+}
+
+html[data-theme="dark"] .cv .list-group-item {
+  background-color: var(--bg2) !important;
+  border-color: var(--rule) !important;
+  color: var(--ink) !important;
+}
+
+html[data-theme="dark"] .cv .card {
+  background: var(--bg2) !important;
+  border-color: var(--rule) !important;
+}
+
+html[data-theme="dark"] .cv .card-body {
+  background: var(--bg2) !important;
+}
+
+// CV table cells
+html[data-theme="dark"] .cv table td,
+html[data-theme="dark"] .cv table.table-cv td {
+  color: var(--ink) !important;
+  background: transparent !important;
+}
+
+// Post-title (CV page heading & PDF icon link)
+html[data-theme="dark"] .post-title,
+html[data-theme="dark"] .post-title a {
+  color: var(--ink) !important;
+}
+
+// CV page subtitle
+html[data-theme="dark"] .cv-page .cv-subtitle {
+  color: var(--muted) !important;
+  border-left-color: var(--red) !important;
+}
+
+// Scrollbars
+html[data-theme="dark"] ::-webkit-scrollbar-track {
+  background: var(--bg2);
+}
+
+html[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--muted);
 }
 

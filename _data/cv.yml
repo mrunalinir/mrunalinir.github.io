@@ -17,11 +17,13 @@
   contents:
     - title: Master of Science, Artificial Intelligence & Innovation
       institution: Carnegie Mellon University, Pittsburgh, PA
+      logo: /assets/img/logos/cmu.png
       year: Expected May 2027
       description:
         - "Selected Coursework: Machine Learning (PhD), Deep Learning, AI Engineering, Adv. Natural Language Processing, Multimodal Machine Learning, Computational Data Science, Data Structures and Algorithms"
     - title: Bachelor of Engineering, Electronics & Communication Engineering; Master of Science, Physics
       institution: Birla Institute of Technology & Science, Pilani, Hyderabad, India
+      logo: /assets/img/logos/bits.png
       year: Jun 2022
       description:
         - "Selected Coursework: Artificial Intelligence, Object-Oriented Programming, Operating Systems, Digital Image Processing"
@@ -31,6 +33,7 @@
   contents:
     - title: Senior Analyst
       institution: American Express, Bengaluru, India
+      logo: /assets/img/logos/amex.png
       year: Feb 2024 - Jun 2025
       description:
         - Owned feature analytics & optimization for global credit card POS real-time risk system processing 20M+ transactions/day, impacting 6M+ customers/day; drove 43% feature compression through clustering & variance-threshold pruning.
@@ -38,6 +41,7 @@
         - Built & maintained feature performance dashboards; collaborated cross-functionally with data, platform engineers and business on a global feature rollout strategy; Recognized with SVP Star of the Quarter 3x (top 0.01% of org).
     - title: Analyst
       institution: American Express, Bengaluru, India
+      logo: /assets/img/logos/amex.png
       year: Jul 2022 - Jan 2024
       description:
         - Owned feature enablement for global real-time payment risk system processing 2.5M+ payments/day across 1.5M+ customers; led complete system modernization from IBM mainframe to cloud (data, models, business strategy) globally.
@@ -45,12 +49,14 @@
         - Reduced feature dimensionality by 32% via tree-importance, correlation, mutual-information filtering leading to +4% Gini improvement on payment risk scoring, reduced compute/storage costs by 12%.
     - title: Analyst Intern
       institution: American Express, Bengaluru, India
+      logo: /assets/img/logos/amex.png
       year: Jan 2022 - Jun 2022
       description:
         - Engineered production XGBoost credit-risk features impacting 80M+ cardholders; automated UAT & production integration validation for feature deployments saving 2500+ QA hours/quarter.
         - Remediated critical false-alert issues in data drift monitoring system by 13%; improved alert precision by reducing noise, enabling faster detection of actual data quality issues.
     - title: Software Development Intern
       institution: Adobe, Bengaluru, India (Remote)
+      logo: /assets/img/logos/adobe.png
       year: May 2021 - Jul 2021
       description:
         - Vulnerability Review: Analyzed and enhanced 10+ Kubernetes clusters; documented 15+ critical security gaps
@@ -58,6 +64,7 @@
         - Remediation Plan: Proposed remediations that cut monitoring overhead 15% with seamless integration
     - title: Summer Intern
       institution: Telangana E-Governance, Hyderabad, Telangana
+      logo: /assets/img/logos/telangana.png
       year: May 2019 - July 2019
       description:
         - Conceptualized and developed a website for automating municipality complaint registration and tracking
@@ -69,6 +76,7 @@
   contents:
     - title: "ZulipGPT: LLM Integration for Chat Summarization in Open-Source Messaging"
       institution: Pittsburgh, PA
+      logo: /assets/img/logos/zulip.png
       year: Jan 2026 - Feb 2026
       description:
         - Shipped chat and inbox summarization into the Zulip open-source codebase with topic-drift detection and citation-backed prompts to reduce hallucination and injection risk.
@@ -76,6 +84,7 @@
         - Cut summarization latency to under 15 seconds via trigger-based invocation, rolling context windows, and message batching.
     - title: Real-Time Movie Recommendation Platform
       institution: Pittsburgh, PA
+      logo: /assets/img/logos/cmu.png
       year: Jan 2025 - Present
       description:
         - Trained SVD collaborative filtering model on ~200K Kafka interactions; deployed Flask API (<50ms latency) with Docker and automated retraining every 3 days. Designed hybrid cold-start solution achieving 85%+ coverage on new users.
@@ -83,6 +92,7 @@
         - Designed A/B testing infrastructure, experimented and found cold-start causes a +8% NDCG@10.
     - title: "SteelRAG: Hybrid Sparse-Dense Retrieval over a Crawled Local Knowledge Corpus"
       institution: Carnegie Mellon University (CMU), Pittsburgh, PA
+      logo: /assets/img/logos/cmu.png
       year: Jan 2026 - Mar 2026
       description:
         - Built a 5,334-document corpus from 20+ sources via three targeted scraping rounds guided by gap analysis of ~117 unanswered question clusters; corpus expansion alone drove a +6.8% absolute gain in a hybrid F-1, LLM-judge score.
@@ -94,24 +104,28 @@
   contents:
     - title: "PRISM: Probing Routed Information Flow via Structured Multimodal Bottlenecks"
       institution: Carnegie Mellon University (CMU), Pittsburgh, PA
+      logo: /assets/img/logos/cmu.png
       year: Sep 2025 – Dec 2025
       description:
         - "Designed & validated hierarchical fusion variant outperforming symmetric design by +2.7% (Acc2/F1); identified asymmetric (AV/VA) fusion matches symmetric performance with fewer parameters; a key insight for production multimodal model design."
         - "Researched fusion efficiency in multimodal models; discovered that scaling fusion capacity (4 to 12 tokens) on CMU-MOSEI/MOSI hurts performance (-6% correlation), revealing architectural waste."
     - title: "ScleraNext: Lightweight CNN Segmentation for Real-Time Biometric Identification"
       institution: University of Ljubljana (UL), Ljubljana, Slovenia (Remote)
+      logo:
       year: Jun 2021 – Dec 2021
       description:
         - "Optimized production iris/retinal segmentation pipeline: replaced cascaded 2-stage segmentation CNN with single compact model, reducing inference latency by 73% for edge deployment."
         - "Benchmarked YOLO, U-Net, MobileNet, DenseNet on accuracy/latency tradeoffs and selected optimal U-net based model."
     - title: "WorldVLM: Tuning Vision-Language Models as World Models for Web Agent Action Prediction"
       institution: Carnegie Mellon University (CMU), Pittsburgh, PA
+      logo: /assets/img/logos/cmu.png
       year: Jan 2026 – Present
       description:
         - "Fine-tuned Qwen2.5-VL on Mind2Web trajectories to jointly predict the next action and resulting visual page state, an upgrade to the current SoTA which simulate next states via text description with no visual grounding."
         - "Framed web browsing as a transition function over (state, action) pairs, enabling consequence-aware planning rather than reactive step-by-step execution."
     - title: "GraphAct: Graph-Structured Action Prediction for Web Agents"
       institution: Carnegie Mellon University (CMU), Pittsburgh, PA
+      logo: /assets/img/logos/cmu.png
       year: Jan 2025 – Present
       description:
         - "Benchmarked 10 baselines on Multimodal Mind2Web using Qwen3-VL and InternVL2-8B; integrating hierarchical structure to HTML DOM for this task, which has been lacking in the current State-of-The-Art."
@@ -122,14 +136,17 @@
   contents:
     - title: Summer Internship Mentor
       institution: American Express
+      logo: /assets/img/logos/amex.png
       year: May 2024 - Jul 2024
       description: []
     - title: Training Coordinator
       institution: Placement Unit, BITS Pilani-Hyderabad Campus
+      logo: /assets/img/logos/bits.png
       year: April 2020 - April 2021
       description: []
     - title: Head of Web Development
       institution: Verba Maximus, BITS Pilani-Hyderabad Campus
+      logo: /assets/img/logos/bits.png
       year: Oct 2018 - Sept 2019
       description: []
 

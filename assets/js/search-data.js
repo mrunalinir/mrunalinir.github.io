@@ -39,26 +39,41 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "News",},{id: "projects-fine-tuning-a-step-efficient-multimodal-web-agent",
-          title: 'Fine-Tuning a Step-Efficient Multimodal Web Agent',
-          description: "Preference-based fine-tuning for multimodal web agents on Mind2Web and VisualWebArena",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/1_project/";
-            },},{id: "projects-zulipgpt-llm-integration-for-chat-summarization-in-open-source-messaging",
+          section: "News",},{id: "projects-zulipgpt-llm-integration-for-chat-summarization-in-open-source-messaging",
           title: 'ZulipGPT – LLM Integration for Chat Summarization in Open-Source Messaging',
           description: "Privacy-safe chat and inbox summarization for the Zulip open-source messaging platform",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
-            },},{id: "projects-efficient-multimodal-fusion-with-bottleneck-transformers",
-          title: 'Efficient Multimodal Fusion with Bottleneck Transformers',
-          description: "Hierarchical bottleneck fusion for multimodal sentiment analysis on MOSI/MOSEI",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/3_project/";
             },},{id: "projects-real-time-movie-recommendation-platform",
           title: 'Real-Time Movie Recommendation Platform',
           description: "Low-latency movie recommender with automated retraining, monitoring, and A/B testing",
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_music_recommendations/";
+            },},{id: "projects-graphact-graph-structured-action-prediction-for-web-agents",
+          title: 'GraphAct – Graph-Structured Action Prediction for Web Agents',
+          description: "Graph Transformer over DOM graphs for multimodal web agents on Mind2Web",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/research_graphact/";
+            },},{id: "projects-prism-probing-routed-information-flow-via-structured-multimodal-bottlenecks",
+          title: 'PRISM – Probing Routed Information Flow via Structured Multimodal Bottlenecks',
+          description: "Hierarchical multimodal fusion study on CMU-MOSEI/MOSI",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/research_prism/";
+            },},{id: "projects-scleranext-lightweight-cnn-segmentation-for-real-time-biometric-identification",
+          title: 'ScleraNext – Lightweight CNN Segmentation for Real-Time Biometric Identification',
+          description: "Real-time iris/retinal segmentation optimized for edge deployment",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/research_sclera/";
+            },},{id: "projects-worldvlm-tuning-vision-language-models-as-world-models-for-web-agents",
+          title: 'WorldVLM – Tuning Vision-Language Models as World Models for Web Agents',
+          description: "World-model-style training of Qwen2.5-VL on Mind2Web trajectories",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/research_worldvlm/";
+            },},{id: "projects-steelrag-hybrid-sparse-dense-retrieval-over-a-crawled-local-knowledge-corpus",
+          title: 'SteelRAG – Hybrid Sparse-Dense Retrieval over a Crawled Local Knowledge Corpus',
+          description: "Hybrid BM25 + dense retrieval over a curated local corpus",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/steelrag/";
             },},{id: "teachings-data-science-fundamentals",
           title: 'Data Science Fundamentals',
           description: "This course covers the foundational aspects of data science, including data collection, cleaning, analysis, and visualization. Students will learn practical skills for working with real-world datasets.",

@@ -13,7 +13,7 @@ profile:
       <p><a href="mailto:mramnath@andrew.cmu.edu">Email</a></p>
       <p><a href="https://linkedin.com/in/mrunalini-ramnath" target="_blank">LinkedIn</a></p>
       <p><a href="https://github.com/mrunalinir" target="_blank">GitHub</a></p>
-      <p><a href="https://drive.google.com/file/d/1NzU8DMzGB0oSgwaqWZnkl9ZeA1rvjdyV/view?usp=drive_link" target="_blank">Resume </a></p>
+      <p><a href="https://docs.google.com/document/d/1_Yrv5PJ6GdAGcb4XuSP5HxfS3lrRID0o2zguPVFMv5A/edit?usp=sharing" target="_blank">Resume</a></p>
 
 # selected_papers: true  # Hidden - not currently used
 selected_papers: false

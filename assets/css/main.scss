@@ -220,8 +220,8 @@ html[data-theme="light"] #light-toggle-light {
 // map profile card to existing profile include (scaled to 0.75x)
 .profile {
   float: right !important;
-  background: var(--bg2) !important;
-  border: 1px solid var(--rule) !important;
+  background: var(--red) !important;
+  border: 1px solid var(--red-dim) !important;
   padding: 18px !important;
   width: 236px !important;
   margin-left: 33px !important;
@@ -244,19 +244,32 @@ html[data-theme="light"] #light-toggle-light {
 
 .profile .address {
   font-family: 'Space Mono', monospace !important;
-  font-size: 8px !important;
-  color: var(--muted) !important;
+  font-size: 10px !important;
+  color: #ffffff !important;
   letter-spacing: 0.08em !important;
-  line-height: 1.9 !important;
-  border-top: 1px solid var(--rule) !important;
-  padding-top: 10px !important;
+  line-height: 1.4 !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+  padding-top: 8px !important;
   word-break: break-word;
   overflow-wrap: anywhere;
 }
 
-.profile .address a {
-  color: var(--red) !important;
+// Override global article a red color — profile links must be white
+.post .profile a,
+.post .profile a:link,
+.post .profile a:visited,
+article .profile a,
+article .profile a:link,
+article .profile a:visited {
+  color: #ffffff !important;
   text-decoration: none !important;
+}
+
+.post .profile a:hover,
+article .profile a:hover {
+  color: #ffffff !important;
+  opacity: 0.8 !important;
+  text-decoration: underline !important;
 }
 
 .profile .more-info {
@@ -265,8 +278,9 @@ html[data-theme="light"] #light-toggle-light {
 
 .profile .more-info p {
   display: block !important;
-  margin: 3px 0 !important;
-  font-size: 19px !important;
+  margin: 2px 0 !important;
+  font-size: 14px !important;
+  color: #ffffff !important;
 }
 
 .profile .address {
@@ -477,6 +491,19 @@ i.icondepartment {
   text-decoration: underline !important;
 }
 
+// Resume section logo (left column: logo above date/location)
+.cv-resume-logo {
+  width: 135px !important;
+  height: 135px !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+  border-radius: 6px !important;
+  background: #fff !important;
+  padding: 4px !important;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.13) !important;
+}
+
 // Institution logo image
 .cv-institution-logo {
   width: 32px !important;
@@ -490,6 +517,39 @@ i.icondepartment {
   box-shadow: 0 1px 5px rgba(0,0,0,0.13) !important;
 }
 
+// Date column consistent flex alignment across all sections
+.cv .date-column {
+  padding-top: 3px !important;
+}
+
+// Basics table: Space Mono labels, EB Garamond values
+.cv .table-cv-map td:first-child {
+  font-family: 'Space Mono', monospace !important;
+  font-size: 9px !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
+  font-weight: 400 !important;
+  vertical-align: middle !important;
+  white-space: nowrap !important;
+}
+
+.cv .table-cv-map td:first-child b {
+  font-weight: 400 !important;
+}
+
+.cv .table-cv-map td:last-child {
+  font-family: 'EB Garamond', serif !important;
+  font-size: 16px !important;
+  color: var(--ink2) !important;
+  vertical-align: middle !important;
+}
+
+.cv .table-cv-map td:last-child a {
+  color: var(--red) !important;
+  text-decoration: none !important;
+}
+
 // General badge reset inside CV (don't override cv-year-label specifics)
 .cv .badge {
   white-space: normal !important;
@@ -498,14 +558,21 @@ i.icondepartment {
 
 // ── CV TYPOGRAPHY — unified font system ──
 
-// Role / project title (h6)
+// Role / project title (h6) — red, no link styling
 .cv h6.title {
   font-family: 'EB Garamond', serif !important;
   font-size: 17px !important;
   font-weight: 600 !important;
-  color: var(--ink) !important;
+  color: var(--red) !important;
   line-height: 1.3 !important;
   margin-bottom: 3px !important;
+}
+
+.cv h6.title a {
+  color: inherit !important;
+  text-decoration: none !important;
+  pointer-events: none !important;
+  cursor: default !important;
 }
 
 // Institution and department cell text
@@ -564,16 +631,233 @@ i.icondepartment {
   color: var(--ink) !important;
 }
 
-// Responsive: collapse to single column on narrow screens
+// ── RESPONSIVE: TABLET (≤ 992px) — hamburger kicks in here ──
+@media (max-width: 992px) {
+  // Reduce padding so boxes use full width
+  .navbar .container {
+    padding: 16px 24px !important;
+    flex-wrap: wrap !important;
+  }
+
+  .container.mt-5 {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+
+  // Scale down hero title
+  .post .post-title {
+    font-size: 52px !important;
+  }
+
+  // CV page title
+  .cv-page h1 {
+    font-size: 44px !important;
+  }
+
+  // Projects page title
+  .projects h1 {
+    font-size: 44px !important;
+  }
+
+  // Profile card: float at narrower width, slightly smaller text
+  .profile {
+    width: 200px !important;
+    margin-left: 20px !important;
+  }
+
+  .profile .address {
+    font-size: 9px !important;
+  }
+
+  .profile .more-info p {
+    font-size: 12px !important;
+  }
+
+  // Hamburger button styling
+  .navbar-toggler {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 5px !important;
+    border: 1px solid var(--rule) !important;
+    border-radius: 2px !important;
+    padding: 8px 10px !important;
+    background: transparent !important;
+    cursor: pointer !important;
+  }
+
+  .navbar-toggler .icon-bar {
+    display: block !important;
+    width: 20px !important;
+    height: 2px !important;
+    background: var(--ink) !important;
+    border-radius: 1px !important;
+    transition: opacity 0.2s !important;
+  }
+
+  // Collapsed nav: vertical list, full-width dropdown
+  .navbar-collapse {
+    flex-basis: 100% !important;
+    background: var(--bg) !important;
+    border-top: 1px solid var(--rule) !important;
+    padding: 12px 0 8px !important;
+    margin-top: 8px !important;
+  }
+
+  .navbar-nav {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    width: 100% !important;
+  }
+
+  .nav-item {
+    width: 100% !important;
+  }
+
+  .nav-item .nav-link {
+    padding: 10px 20px !important;
+    font-size: 10px !important;
+    letter-spacing: 0.2em !important;
+    border-bottom: none !important;
+    width: 100% !important;
+    display: block !important;
+  }
+
+  .nav-item.active .nav-link {
+    border-bottom: none !important;
+    border-left: 2px solid var(--red) !important;
+    padding-left: 18px !important;
+    color: var(--red) !important;
+  }
+
+  // Dark mode toggle sits inline after logo, not in collapsed menu visually
+  .toggle-container {
+    padding: 10px 20px !important;
+    width: 100% !important;
+  }
+
+  footer {
+    padding: 10px 24px !important;
+  }
+}
+
+// ── RESPONSIVE: MOBILE (≤ 768px) ──
 @media (max-width: 768px) {
+  // Gutters
+  .navbar .container {
+    padding: 12px 16px !important;
+  }
+
+  .container.mt-5 {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  // Hero title
+  .post .post-title {
+    font-size: 38px !important;
+    line-height: 1.1 !important;
+  }
+
+  // CV / projects page h1
+  .cv-page h1,
+  .projects h1 {
+    font-size: 32px !important;
+  }
+
+  // Post description subtitle
+  .post-description {
+    font-size: 15px !important;
+  }
+
+  // About page: single column — profile stacks above text
+  .profile {
+    float: none !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 0 auto 24px auto !important;
+    display: block !important;
+  }
+
+  .profile .address {
+    font-size: 10px !important;
+  }
+
+  .profile .more-info p {
+    font-size: 13px !important;
+  }
+
+  // Ensure article text flows below the profile card
+  .post article {
+    clear: both !important;
+  }
+
+  // CV section cards: force single column, full width
   .cv {
+    display: block !important;
     grid-template-columns: 1fr !important;
   }
+
   .cv > div:first-of-type,
   .cv > div:not(:first-of-type) {
     grid-column: 1 !important;
     grid-row: auto !important;
     position: static !important;
+  }
+
+  // CV list rows: allow wrapping so date stacks above content
+  .cv .list-group-item > .row {
+    flex-wrap: wrap !important;
+  }
+
+  // Date column: full width on mobile, horizontal badge
+  .cv .list-group-item > .row > .col-xs-2,
+  .cv .list-group-item > .row > .col-sm-2,
+  .cv .list-group-item > .row > .col-md-2 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    margin-bottom: 6px !important;
+    padding-top: 0 !important;
+  }
+
+  // Content column: full width
+  .cv .list-group-item > .row > .col-xs-10,
+  .cv .list-group-item > .row > .col-sm-10,
+  .cv .list-group-item > .row > .col-md-10 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+    margin-top: 0 !important;
+  }
+
+  // Logo: smaller on mobile, inline with badge
+  .cv-resume-logo {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  // Remove left margin indent on mobile
+  .cv h6.ml-1,
+  .cv h6.ml-md-4,
+  .cv ul.items {
+    margin-left: 0 !important;
+  }
+
+  // CV section header font
+  .cv .card-title {
+    font-size: 12px !important;
+  }
+
+  // CV entry title
+  .cv h6.title {
+    font-size: 15px !important;
+  }
+
+  footer {
+    padding: 10px 16px !important;
   }
 }
 
@@ -694,14 +978,16 @@ i.icondepartment {
 footer {
   background: var(--bg) !important;
   border-top: 1px solid var(--rule) !important;
-  padding: 18px 72px !important;
-  margin-top: 48px !important;
+  padding: 6px 72px !important;
+  margin-top: 0 !important;
   color: var(--ink) !important;
-  box-shadow: 0 -2px 12px rgba(26, 23, 20, 0.07) !important;
+  line-height: 1.4 !important;
 }
 
 footer .container {
-  color: #000000 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  text-align: center !important;
 }
 
 footer span {
@@ -820,12 +1106,24 @@ html[data-theme="dark"] .nav-item.active .nav-link {
 html[data-theme="dark"] .card,
 html[data-theme="dark"] .card.hoverable,
 html[data-theme="dark"] .project-page,
-html[data-theme="dark"] .profile,
 html[data-theme="dark"] .cv > div,
 html[data-theme="dark"] .list-group-item {
   background: var(--bg) !important;
   border-color: var(--rule) !important;
   color: var(--ink) !important;
+}
+
+// Profile card stays red in dark mode with white text
+html[data-theme="dark"] .profile {
+  background: var(--red) !important;
+  border-color: var(--red-dim) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="dark"] .profile .address,
+html[data-theme="dark"] .profile .address a,
+html[data-theme="dark"] .profile .more-info p {
+  color: #ffffff !important;
 }
 
 // Tables

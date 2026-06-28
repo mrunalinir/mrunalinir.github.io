@@ -40,7 +40,7 @@ ninja.data = [{
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
           section: "News",},{id: "projects-zulipgpt-llm-integration-for-chat-summarization-in-open-source-messaging",
-          title: 'ZulipGPT – LLM Integration for Chat Summarization in Open-Source Messaging',
+          title: 'ZulipGPT: LLM Integration for Chat Summarization in Open-Source Messaging',
           description: "Privacy-safe chat and inbox summarization for the Zulip open-source messaging platform",
           section: "Projects",handler: () => {
               window.location.href = "/projects/2_project/";
@@ -50,27 +50,32 @@ ninja.data = [{
           section: "Projects",handler: () => {
               window.location.href = "/projects/4_music_recommendations/";
             },},{id: "projects-graphact-graph-structured-action-prediction-for-web-agents",
-          title: 'GraphAct – Graph-Structured Action Prediction for Web Agents',
-          description: "Graph Transformer over DOM graphs for multimodal web agents on Mind2Web",
+          title: 'GraphAct: Graph-Structured Action Prediction for Web Agents',
+          description: "A DOM graph transformer fused into Qwen3-VL with LoRA to fix element grounding on Multimodal Mind2Web",
           section: "Projects",handler: () => {
               window.location.href = "/projects/research_graphact/";
+            },},{id: "projects-multilingual-hallucination-probes-do-english-correctness-probes-transfer-across-languages",
+          title: 'Multilingual Hallucination Probes: Do English Correctness Probes Transfer Across Languages?',
+          description: "Zero-shot cross-lingual hallucination detection by probing Qwen2.5-7B hidden states",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/research_multilingual_hallucination/";
+            },},{id: "projects-outcome-aware-web-agents-does-predicting-page-transitions-help-vlm-action-selection",
+          title: 'Outcome-Aware Web Agents: Does Predicting Page Transitions Help VLM Action Selection?',
+          description: "Controlled SFT study of outcome-aware supervision on Qwen3-VL for Multimodal Mind2Web",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/research_outcome_aware/";
             },},{id: "projects-prism-probing-routed-information-flow-via-structured-multimodal-bottlenecks",
-          title: 'PRISM – Probing Routed Information Flow via Structured Multimodal Bottlenecks',
+          title: 'PRISM: Probing Routed Information Flow via Structured Multimodal Bottlenecks',
           description: "Hierarchical multimodal fusion study on CMU-MOSEI/MOSI",
           section: "Projects",handler: () => {
               window.location.href = "/projects/research_prism/";
             },},{id: "projects-scleranext-lightweight-cnn-segmentation-for-real-time-biometric-identification",
-          title: 'ScleraNext – Lightweight CNN Segmentation for Real-Time Biometric Identification',
+          title: 'ScleraNext: Lightweight CNN Segmentation for Real-Time Biometric Identification',
           description: "Real-time iris/retinal segmentation optimized for edge deployment",
           section: "Projects",handler: () => {
               window.location.href = "/projects/research_sclera/";
-            },},{id: "projects-worldvlm-tuning-vision-language-models-as-world-models-for-web-agents",
-          title: 'WorldVLM – Tuning Vision-Language Models as World Models for Web Agents',
-          description: "World-model-style training of Qwen2.5-VL on Mind2Web trajectories",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/research_worldvlm/";
             },},{id: "projects-steelrag-hybrid-sparse-dense-retrieval-over-a-crawled-local-knowledge-corpus",
-          title: 'SteelRAG – Hybrid Sparse-Dense Retrieval over a Crawled Local Knowledge Corpus',
+          title: 'SteelRAG: Hybrid Sparse-Dense Retrieval over a Crawled Local Knowledge Corpus',
           description: "Hybrid BM25 + dense retrieval over a curated local corpus",
           section: "Projects",handler: () => {
               window.location.href = "/projects/steelrag/";

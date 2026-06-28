@@ -39,29 +39,28 @@
         - Experimented with cache-aware routing methods for LLM deployments so requests are directed to pods that already hold the relevant cache, and extended cache usage through tiered caching across CPU, local storage, and GPU VRAM.
         - Tested deployment strategies such as prefill-decode disaggregation to improve GPU utilization for Endor use cases.
         - Integrated a high-GPU-throughput hybrid strategy into production models.
-    - title: Senior Analyst
+    - title: Sr Machine Learning Engineer (Sr Analyst)
       institution: American Express, Bengaluru, India
       logo: /assets/img/logos/amex.png
       year: Feb 2024 - Jun 2025
       description:
-        - Owned feature analytics & optimization for global credit card POS real-time risk system processing 20M+ transactions/day, impacting 6M+ customers/day; drove 43% feature compression through clustering & variance-threshold pruning.
-        - Achieved +6% Gini improvement on XGBoost/AXGBoost models; reduced compute/storage costs by 16% on 100M+ daily batch customer updates through intelligent feature selection, resulting in a $15M annual benefit.
-        - Built & maintained feature performance dashboards; collaborated cross-functionally with data, platform engineers and business on a global feature rollout strategy; Recognized with SVP Star of the Quarter 3x (top 0.01% of org).
-    - title: Analyst
+        - Engineered feature optimization and modernisation for global credit card POS risk (20M+ transactions, 6M+ customers daily); drove 43% feature compression via clustering and variance-threshold pruning, achieving +6% Gini on XGBoost/AXGBoost.
+        - Reduced compute/storage costs by 16% on 100M+ daily batch updates through intelligent feature selection; built feature performance dashboards and led global rollout strategy; recognized with SVP Star of the Quarter 3x (top 0.01% of org).
+    - title: Machine Learning Engineer (Analyst)
       institution: American Express, Bengaluru, India
       logo: /assets/img/logos/amex.png
       year: Jul 2022 - Jan 2024
       description:
-        - Owned feature enablement for global real-time payment risk system processing 2.5M+ payments/day across 1.5M+ customers; led complete system modernization from IBM mainframe to cloud (data, models, business strategy) globally.
-        - Designed & built pre/post-migration production validation framework using Python, PySpark and HiveQL; automated feature quality checks, data drift detection during cutover to validate XGBoost/AXGBoost model consistency across migration.
-        - Reduced feature dimensionality by 32% via tree-importance, correlation, mutual-information filtering leading to +4% Gini improvement on payment risk scoring, reduced compute/storage costs by 12%.
-    - title: Analyst Intern
+        - Engineered feature enablement for global real-time payment risk system (2.5M+ payments, 1.5M+ customers daily); led full IBM mainframe-to-cloud migration of data across models, business strategy, and logs, leading to an annual $15M+ benefit.
+        - Designed and built a pre/post-migration production validation framework (Python, PySpark, HiveQL) with automated feature quality checks and drift detection to validate XGBoost/AXGBoost model consistency across cutover.
+        - Reduced feature dimensionality by 32% via tree-importance, correlation, and mutual-information filtering; achieved +4% Gini improvement and 12% compute/storage cost reduction on payment risk scoring.
+    - title: Machine Learning Engineer Intern (Analyst Intern)
       institution: American Express, Bengaluru, India
       logo: /assets/img/logos/amex.png
       year: Jan 2022 - Jun 2022
       description:
-        - Engineered production XGBoost credit-risk features impacting 80M+ cardholders; automated UAT & production integration validation for feature deployments saving 2500+ QA hours/quarter.
-        - Remediated critical false-alert issues in data drift monitoring system by 13%; improved alert precision by reducing noise, enabling faster detection of actual data quality issues.
+        - Engineered production XGBoost credit-risk features impacting 80M+ cardholders; automated UAT and production integration validation for feature deployments saving 2500+ QA hours/quarter.
+        - Remediated critical false-alerts in data drift monitoring system by 13%; improved alert precision by reducing feature noise.
     - title: Software Development Intern
       institution: Adobe, Bengaluru, India (Remote)
       logo: /assets/img/logos/adobe.png

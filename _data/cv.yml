@@ -31,6 +31,14 @@
 - title: Professional Experience
   type: time_table
   contents:
+    - title: Machine Learning Engineer
+      institution: Apple, Austin, TX
+      logo: /assets/img/logos/apple.png
+      year: May 2026 - Present
+      description:
+        - Experimented with cache-aware routing methods for LLM deployments so requests are directed to pods that already hold the relevant cache, and extended cache usage through tiered caching across CPU, local storage, and GPU VRAM.
+        - Tested deployment strategies such as prefill-decode disaggregation to improve GPU utilization for Endor use cases.
+        - Integrated a high-GPU-throughput hybrid strategy into production models.
     - title: Senior Analyst
       institution: American Express, Bengaluru, India
       logo: /assets/img/logos/amex.png
@@ -102,6 +110,22 @@
 - title: Research Projects
   type: time_table
   contents:
+    - title: "Outcome-Aware Fine-Tuning of Vision-Language Models for Web Agents"
+      institution: Carnegie Mellon University (CMU), Pittsburgh, PA
+      logo: /assets/img/logos/cmu.png
+      year: Jan 2026 – May 2026
+      description:
+        - "Ran a controlled study isolating outcome supervision for web agents: LoRA fine-tuned Qwen3-VL-8B on 6,445 matched Multimodal Mind2Web examples, nearly doubling Step Success Rate over the zero-shot baseline (31.99% to 62.32%)."
+        - "Showed that adding structured page-transition labels to the training target gave no measurable gain over action-only SFT (task-level 95% CIs overlap), a null result that replicated across all three test splits."
+        - "Led dataset and schema analysis, ran the AXTree and chain-of-thought ablations, and traced the regression to a terminal-action bias (predicting a child click over the parent hover) through failure-case analysis."
+    - title: "Cross-Lingual Hallucination Detection in Multilingual LLMs"
+      institution: Carnegie Mellon University (CMU), Pittsburgh, PA
+      logo: /assets/img/logos/cmu.png
+      year: Sep 2025 – Dec 2025
+      description:
+        - "Tested whether correctness probes trained only on English hidden states of Qwen2.5-7B-Instruct can flag hallucinations zero-shot in Chinese, Thai, Vietnamese, and Indonesian; best probe reached 0.704 AUC on English and 0.64 to 0.68 across target languages with no target-language supervision."
+        - "Ran a full 28-layer sweep across six probe families and two extraction points, showing post-answer features and deeper layers transfer best and that the correctness signal is low-dimensional (random forests within 0.01 AUC of the MLP)."
+        - "Traced the dominant failure to confident hallucinations the hidden state does not expose, and to conflating knowledge absence with hallucination, motivating a three-way correct/uncertain/hallucinating labeling scheme."
     - title: "PRISM: Probing Routed Information Flow via Structured Multimodal Bottlenecks"
       institution: Carnegie Mellon University (CMU), Pittsburgh, PA
       logo: /assets/img/logos/cmu.png
@@ -116,20 +140,14 @@
       description:
         - "Optimized production iris/retinal segmentation pipeline: replaced cascaded 2-stage segmentation CNN with single compact model, reducing inference latency by 73% for edge deployment."
         - "Benchmarked YOLO, U-Net, MobileNet, DenseNet on accuracy/latency tradeoffs and selected optimal U-net based model."
-    - title: "WorldVLM: Tuning Vision-Language Models as World Models for Web Agent Action Prediction"
-      institution: Carnegie Mellon University (CMU), Pittsburgh, PA
-      logo: /assets/img/logos/cmu.png
-      year: Jan 2026 – Present
-      description:
-        - "Fine-tuned Qwen2.5-VL on Mind2Web trajectories to jointly predict the next action and resulting visual page state, an upgrade to the current SoTA which simulate next states via text description with no visual grounding."
-        - "Framed web browsing as a transition function over (state, action) pairs, enabling consequence-aware planning rather than reactive step-by-step execution."
     - title: "GraphAct: Graph-Structured Action Prediction for Web Agents"
       institution: Carnegie Mellon University (CMU), Pittsburgh, PA
       logo: /assets/img/logos/cmu.png
-      year: Jan 2025 – Present
+      year: Sep 2025 – Dec 2025
       description:
-        - "Benchmarked 10 baselines on Multimodal Mind2Web using Qwen3-VL and InternVL2-8B; integrating hierarchical structure to HTML DOM for this task, which has been lacking in the current State-of-The-Art."
-        - "Adding a Graph Transformer Encoder over DOM graphs to a frozen Qwen3-VL backbone, projecting node embeddings into the LLM token space, and training with composite loss to account for alignment, prediction and action history consistency."
+        - "Identified element grounding, not action prediction, as the core failure mode on Multimodal Mind2Web, then fused a DOM graph attention network into a frozen Qwen3-VL-8B backbone via a gated cross-attention adapter and LoRA, all within a single 24GB GPU."
+        - "Lifted element accuracy from 12.7% (no graph) to 49.5% and beat the strongest multimodal baseline by ~12 points with step accuracy reaching ~41%; showed these gains did not fully reach task success (7.75%) due to error accumulation over long trajectories."
+        - "Designed the model architecture and training pipeline and led the limitations and future-work analysis, tracing fixation and anchor-bias failures to the static per-step graph and fragile node pruning."
 
 - title: Leadership / Extracurricular
   type: time_table

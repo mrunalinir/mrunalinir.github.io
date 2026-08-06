@@ -28,16 +28,17 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
+            },},{id: "news-started-my-ms-in-artificial-intelligence-amp-amp-innovation-at-carnegie-mellon-university",
+          title: 'Started my MS in Artificial Intelligence &amp;amp;amp; Innovation at Carnegie Mellon University.',
           description: "",
-          section: "News",},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
+          section: "News",},{id: "news-presented-the-web-graph-project-as-a-poster-to-the-school-of-computer-science-at-cmu",
+          title: 'Presented the web graph project as a poster to the School of Computer...',
           description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
+          section: "News",},{id: "news-presented-the-hallucination-detection-project-as-a-poster-to-the-school-of-computer-science-at-cmu",
+          title: 'Presented the hallucination detection project as a poster to the School of Computer...',
+          description: "",
+          section: "News",},{id: "news-joined-apple-as-a-machine-learning-intern-on-the-applied-machine-learning-team",
+          title: 'Joined Apple as a Machine Learning Intern on the Applied Machine Learning team....',
           description: "",
           section: "News",},{id: "projects-zulipgpt-llm-integration-for-chat-summarization-in-open-source-messaging",
           title: 'ZulipGPT: LLM Integration for Chat Summarization in Open-Source Messaging',

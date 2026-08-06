@@ -19,6 +19,10 @@ display_categories:
   </a>
   {% assign categorized_projects = site.projects | where: "category", category %}
   {% assign sorted_projects = categorized_projects | sort: "importance" %}
+  <!-- Projects with images come first so they fill the top row -->
+  {% assign projects_with_img = sorted_projects | where_exp: "project", "project.img" %}
+  {% assign projects_without_img = sorted_projects | where_exp: "project", "project.img == nil" %}
+  {% assign sorted_projects = projects_with_img | concat: projects_without_img %}
   <!-- Generate cards for each project -->
   {% if page.horizontal %}
   <div class="container">

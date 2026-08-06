@@ -31,8 +31,6 @@ We represent each page as a directed graph of DOM elements and fuse it into a fr
 
 **Honest failure analysis.** A static graph snapshot at every step causes an anchor and fixation bias (the model re-selects a previously correct index), and cosine-similarity node pruning sometimes drops structurally critical but text-sparse nodes such as a hover-trigger menu item. We documented these with concrete step traces and proposed fixes like dynamic node masking and topology-aware retention.
 
-**My focus.** I worked on the model architecture (the DOM graph transformer, the gated cross-attention adapter, and where to inject it), the training pipeline, and the future-work and limitations analysis.
-
 ## Why it matters
 
 Treating the DOM as a graph instead of flat text goes straight at the part of web navigation that actually fails, which is grounding an action to the right element. It nearly quadrupled element accuracy over the no-graph model and beat strong multimodal baselines, while the capped task success is an honest reminder that fixing per-step grounding is necessary but not sufficient for reliable long-horizon agents.

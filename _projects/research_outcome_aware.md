@@ -31,8 +31,6 @@ To rule out the obvious objection that the outcome-aware model was simply undert
 
 **Baselines and ablations.** Confirmed that HTML and screenshot inputs are both necessary, and that few-shot and chain-of-thought prompting actually hurt under log-likelihood scoring (AXTree dropped 13.6pp, few-shot 4.6pp, CoT 10.7pp). Those gaps are what pushed the team toward fine-tuning in the first place.
 
-**My focus.** I led the dataset and schema analysis, ran the AXTree and chain-of-thought ablations, and owned the failure-case and error analysis that traced the regression to the terminal-action bias, plus the final presentation.
-
 ## Why it matters
 
 The clean negative result is the point. Under a controlled comparison, adding categorical outcome labels did not help, so anyone tempted to bolt this signal onto an agent can skip it and spend the effort on richer outcome representations instead. The terminal-action bias we found also explains how a coarse outcome label can quietly nudge an agent toward the wrong action.

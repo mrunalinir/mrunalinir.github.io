@@ -148,7 +148,7 @@
       "highlights": [
         "Ran a controlled study isolating outcome supervision for web agents: LoRA fine-tuned Qwen3-VL-8B on 6,445 matched Multimodal Mind2Web examples, nearly doubling Step Success Rate over the zero-shot baseline (31.99% to 62.32%).",
         "Showed that adding structured page-transition labels to the training target gave no measurable gain over action-only SFT (task-level 95% CIs overlap), a null result that replicated across all three test splits.",
-        "Led dataset and schema analysis, ran the AXTree and chain-of-thought ablations, and traced the regression to a terminal-action bias (predicting a child click over the parent hover) through failure-case analysis."
+        "Traced the regression to a terminal-action bias (predicting a child click over the parent hover) through dataset, schema, and failure-case analysis, supported by AXTree and chain-of-thought ablations."
       ],
       "startDate": "2026-01-01",
       "endDate": "2026-05-01",
@@ -194,7 +194,7 @@
       "highlights": [
         "Identified element grounding, not action prediction, as the core failure mode on Multimodal Mind2Web, then fused a DOM graph attention network into a frozen Qwen3-VL-8B backbone via a gated cross-attention adapter and LoRA, all within a single 24GB GPU.",
         "Lifted element accuracy from 12.7% (no graph) to 49.5% and beat the strongest multimodal baseline by ~12 points with step accuracy reaching ~41%; showed these gains did not fully reach task success (7.75%) due to error accumulation over long trajectories.",
-        "Designed the model architecture and training pipeline and led the limitations and future-work analysis, tracing fixation and anchor-bias failures to the static per-step graph and fragile node pruning."
+        "Traced fixation and anchor-bias failures to the static per-step graph and fragile node pruning, and proposed dynamic node masking and topology-aware retention as fixes."
       ],
       "startDate": "2025-09-01",
       "endDate": "2025-12-01",

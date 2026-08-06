@@ -15,11 +15,32 @@
           {% assign news_limit = news_size %}
         {% endif %}
         {% for item in news limit: news_limit %}
+          {% if item.href contains '://' %}
+            {% assign item_href = item.href %}
+            {% assign item_external = true %}
+          {% else %}
+            {% assign item_href = item.href | relative_url %}
+            {% assign item_external = false %}
+          {% endif %}
           <tr>
             <th scope="row" style="width: 20%">{{ item.date | date: '%b %d, %Y' }}</th>
             <td>
+              {% if item.img %}
+                {% if item.href %}
+                  <a href="{{ item_href }}"{% if item_external %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                    <img class="news-img rounded z-depth-1" src="{{ item.img | relative_url }}" alt="{{ item.alt }}" loading="lazy" />
+                  </a>
+                {% else %}
+                  <img class="news-img rounded z-depth-1" src="{{ item.img | relative_url }}" alt="{{ item.alt }}" loading="lazy" />
+                {% endif %}
+              {% endif %}
               {% if item.inline %}
-                {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
+                {% assign item_body = item.content | remove: '<p>' | remove: '</p>' | strip %}
+                {% if item.href %}
+                  <a href="{{ item_href }}"{% if item_external %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item_body | emojify }}</a>
+                {% else %}
+                  {{ item_body | emojify }}
+                {% endif %}
               {% else %}
                 <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
               {% endif %}

@@ -19,9 +19,8 @@ profile:
 selected_papers: false
 social: false
 
-# announcements:  # News section - hidden, not currently used
 announcements:
-  enabled: false
+  enabled: true
   scrollable: true
   limit: 5
 

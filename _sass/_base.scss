@@ -1262,6 +1262,21 @@ ninja-keys::part(ninja-input-wrapper) {
   background: var(--global-bg-color);
 }
 
+// news
+.news-img {
+  display: block;
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 576px) {
+  .news-img {
+    max-width: 100%;
+  }
+}
+
 // newsletter
 .newsletter-form-container {
   margin-bottom: 20px;

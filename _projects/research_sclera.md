@@ -8,18 +8,19 @@ github:
 related_publications: false
 ---
 
-## Overview
+## Problem
 
-ScleraNext is a collaboration with the **University of Ljubljana** to make iris and retinal segmentation fast enough to run on phones and IoT devices for biometric identification, where the segmentation step is usually what slows everything down.
+Iris and retinal segmentation for biometric ID is usually too slow to run on a phone or IoT device. The segmentation step is what bottlenecks the whole pipeline.
 
-## Highlights
+## Fix
 
-- **Cut inference latency by 73%.** Replaced a cascaded two-stage segmentation CNN with a single compact model, which made real-time segmentation feasible on edge hardware instead of a server.
-- **Picked the architecture on evidence, not defaults.** Benchmarked YOLO, U-Net, MobileNet, and DenseNet on the accuracy versus latency trade-off and settled on a streamlined U-Net-based model that held accuracy while being far cheaper to run.
+A collaboration with the **University of Ljubljana**. Replaced a cascaded two-stage segmentation CNN with a single compact model, picked after benchmarking YOLO, U-Net, MobileNet, and DenseNet on accuracy versus latency.
 
-## Why it matters
+## Impact
 
-Running segmentation on-device removes the round trip to a server, which lowers latency and keeps biometric data local rather than shipping it off the phone. That combination is what makes the system usable for real-time identification on phones and embedded sensors.
+- Cut inference latency by 73%, making real-time segmentation feasible on-device instead of on a server.
+- Held accuracy while running far cheaper, on evidence from the benchmark, not a default choice.
+- Removes the round trip to a server, so biometric data stays on the phone instead of shipping out.
 
 ## Keywords
 

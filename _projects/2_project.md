@@ -8,19 +8,19 @@ github:
 related_publications: false
 ---
 
-## Overview
+## Problem
 
-ZulipGPT adds chat and inbox summarization to **Zulip**, an open-source messaging platform, with privacy and latency treated as first-class constraints rather than afterthoughts. The work was shipped into the actual Zulip codebase.
+Catching up on a busy Zulip channel means reading everything. Bolt an LLM summarizer on top and you've got a new problem: raw messages, including real identities, now leave the app and head to a model.
 
-## Highlights
+## Fix
 
-- **Shipped summarization into a real product.** Added chat and inbox summaries with topic-drift detection and citation-backed prompts, so summaries stay grounded in real messages and resist prompt injection.
-- **Privacy before inference, not after.** Built a deterministic identity-masking pipeline that swaps real identities for keyed pseudonyms before anything reaches the model. Because the model never sees real identities, this is a stronger guarantee than scrubbing PII out of the output after the fact.
-- **Fast enough to actually use.** Brought summarization latency under 15 seconds with trigger-based invocation, rolling context windows, and message batching.
+Built chat and inbox summarization directly into Zulip. A deterministic masking pipeline swaps real identities for keyed pseudonyms before anything reaches the model, so the model never sees who said what. Summaries cite the messages they're drawn from to resist prompt injection, and a drift check keeps them from wandering off-topic.
 
-## Why it matters
+## Impact
 
-It shows a workable path to LLM features inside a live messaging system without sending raw user data to the model and without latency that breaks the flow of a conversation. Those two constraints are usually what block this kind of feature, and the project addresses both directly.
+- Shipped into the actual Zulip codebase, not a demo fork.
+- Summaries land in under 15 seconds, using trigger-based invocation, rolling context windows, and message batching.
+- Identity protection happens before inference, not as cleanup after. Stronger guarantee than scrubbing PII from the output.
 
 ## Technical Stack
 

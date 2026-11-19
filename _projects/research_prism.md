@@ -8,19 +8,21 @@ github:
 related_publications: false
 ---
 
-## Overview
+## Problem
 
-PRISM is a research project at **Carnegie Mellon University** that asks a practical question about multimodal models: where should audio, video, and text actually be combined, and how much fusion capacity is worth paying for? We studied how information moves through hierarchical fusion modules on the CMU-MOSEI and CMU-MOSI sentiment benchmarks.
+Multimodal fusion papers mostly guess at where audio, video, and text should combine, and how much fusion capacity to pay for. Nobody tests it directly.
 
-## Highlights
+## Fix
 
-- **A hierarchical fusion design beat the symmetric baseline by 2.7% (Acc2/F1).** Routing the modalities through a structured bottleneck, instead of fusing everything at once, made better use of the same budget.
-- **Asymmetric fusion matched symmetric fusion with fewer parameters.** Fusing one modality into another reached the same accuracy as full symmetric fusion at lower cost, which is exactly the kind of trade-off that matters when a model has to ship.
-- **More fusion capacity made things worse.** Scaling the bottleneck from 4 to 12 tokens dropped correlation by 6%, so the extra capacity was wasted rather than helpful.
+A research project at **Carnegie Mellon University**. We tracked how information moves through hierarchical fusion modules on the CMU-MOSEI and CMU-MOSI sentiment benchmarks, comparing fusion structure and bottleneck size head to head.
 
-## Why it matters
+## Impact
 
-The findings give a concrete design rule for multimodal systems: spend parameters on where and how you fuse, not on how much. A small, well-placed bottleneck can match or beat a larger one, which keeps models cheaper to train and serve.
+- Hierarchical fusion beat the symmetric baseline by 2.7% (Acc2/F1). Routing modalities through a structured bottleneck beats dumping them together.
+- Asymmetric fusion (one modality into another) matched symmetric fusion at lower parameter cost. The trade-off that matters when a model has to ship.
+- Scaling the bottleneck from 4 to 12 tokens dropped correlation by 6%. More capacity, worse model.
+
+Design rule for multimodal systems: spend parameters on where and how you fuse, not on how much.
 
 ## Keywords
 

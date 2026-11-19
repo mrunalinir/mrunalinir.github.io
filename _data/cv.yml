@@ -68,14 +68,14 @@
       description:
         - Vulnerability Review: Analyzed and enhanced 10+ Kubernetes clusters; documented 15+ critical security gaps
         - Benchmarking: Evaluated kube-bench/kube-hunter/AquaSecurity/kube-score/kubesec, improving coverage 26%
-        - Remediation Plan: Proposed remediations that cut monitoring overhead 15% with seamless integration
+        - Remediation Plan: Proposed remediations that cut monitoring overhead 15% without disrupting existing workflows
     - title: Summer Intern
       institution: Telangana E-Governance, Hyderabad, Telangana
       logo: /assets/img/logos/telangana.png
       year: May 2019 - July 2019
       description:
         - Conceptualized and developed a website for automating municipality complaint registration and tracking
-        - Streamlined complaint handling by implementing a multi-level user hierarchy using Django and PostgreSQL
+        - Cut complaint-handling time by building a multi-level user hierarchy with Django and PostgreSQL
         - Published dashboards for regular tracking using JS, HTML and CSS for the front-end of the website
 
 - title: Academic Projects

@@ -19,11 +19,6 @@ profile:
 selected_papers: false
 social: false
 
-announcements:
-  enabled: true
-  scrollable: true
-  limit: 5
-
 # latest_posts:  # Blog section - hidden, not currently used
 latest_posts:
   enabled: false
@@ -31,8 +26,13 @@ latest_posts:
   limit: 3
 ---
 
-I'm a Master's student in [AI & Innovation](https://www.lti.cs.cmu.edu/academics/masters-programs/msaii.html) at [Carnegie Mellon University](https://www.cmu.edu) (expected May 2027), where I build and deploy ML models to solve real-world problems. I'm particularly interested in **VLMs**, **LLMs**, **Multimodal Models**, and **AI agents**, with a focus on efficient model adaptation and building reliable, responsible AI applications.
+<blockquote class="intro-quote">
+  <p>"A system is intelligent to the extent that it does the right thing."</p>
+  <footer>Stuart Russell &amp; Peter Norvig</footer>
+</blockquote>
 
-I completed my undergraduate studies at [BITS Pilani](https://www.bits-pilani.ac.in) and have worked across industry and research at [**American Express**](https://www.americanexpress.com), [**Adobe**](https://www.adobe.com), and the [Computer Vision Lab at University of Ljubljana](https://www.fri.uni-lj.si/en), developing ML solutions and working with large-scale data systems in research and production settings.
+**I love working on ML systems and reinforcement learning.** I build fast, reliable models and teach them to reason.
 
-Feel free to explore my projects or reach out via [email](mailto:mramnath@andrew.cmu.edu), [LinkedIn](https://linkedin.com/in/mrunalini-ramnath), or [GitHub](https://github.com/mrunalinir). You can also check my [CV](/cv/) for the complete rundown.
+Master's student in [AI & Innovation](https://www.lti.cs.cmu.edu/academics/masters-programs/msaii.html) at [Carnegie Mellon University](https://www.cmu.edu), May 2027. Before this: [BITS Pilani](https://www.bits-pilani.ac.in), and ML roles at [American Express](https://www.americanexpress.com), [Adobe](https://www.adobe.com), and the [Computer Vision Lab, University of Ljubljana](https://www.fri.uni-lj.si/en).
+
+Reach me via [email](mailto:mramnath@andrew.cmu.edu), [LinkedIn](https://linkedin.com/in/mrunalini-ramnath), or [GitHub](https://github.com/mrunalinir). Full rundown in my [CV](/cv/).

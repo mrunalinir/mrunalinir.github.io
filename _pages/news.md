@@ -2,7 +2,8 @@
 layout: page
 title: news
 permalink: /news/
-nav: false # Not in the menu; reached via the "news" heading on the about page
+nav: true
+nav_order: 4
 ---
 
 {% include news.liquid %}

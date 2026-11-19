@@ -39,6 +39,8 @@ $max-content-width: 1060px;
   --red-dim: #7a2020;
   --rule: rgba(26, 23, 20, 0.10);
   --shadow: 0 2px 12px rgba(26, 23, 20, 0.09), 0 1px 3px rgba(26, 23, 20, 0.06);
+  --grid-minor: rgba(184, 50, 50, 0.07);
+  --grid-major: rgba(184, 50, 50, 0.15);
 
   // Override al-folio's default purple theme color → site red
   --global-theme-color: #b83232;
@@ -49,7 +51,14 @@ $max-content-width: 1060px;
 
 html,
 body {
-  background: var(--bg) !important;
+  background-color: var(--bg) !important;
+  background-image:
+    linear-gradient(to right, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-minor) 1px, transparent 1px) !important;
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px !important;
+  background-position: -1px -1px !important;
   color: var(--ink) !important;
   font-family: 'Space Mono', monospace !important;
   font-size: 13px;
@@ -297,6 +306,31 @@ article p {
   line-height: 1.75 !important;
   color: var(--ink2) !important;
   margin-bottom: 1.2em !important;
+}
+
+// Intro quote (about page)
+.intro-quote {
+  border-left: 5px solid var(--red) !important;
+  background: transparent !important;
+  margin: 0 0 1.6em 0 !important;
+  padding: 0 0 0 22px !important;
+}
+
+.intro-quote p {
+  font-family: 'EB Garamond', serif !important;
+  font-style: italic !important;
+  font-size: 30px !important;
+  line-height: 1.4 !important;
+  color: var(--ink) !important;
+  margin-bottom: 0.3em !important;
+}
+
+.intro-quote footer {
+  font-family: 'Space Mono', monospace !important;
+  font-size: 11px !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--muted) !important;
 }
 
 article strong {
@@ -1058,6 +1092,8 @@ html[data-theme="dark"] {
   --red:  #c84040;
   --red-dim: #8a2424;
   --rule: rgba(232, 226, 217, 0.10);
+  --grid-minor: rgba(200, 64, 64, 0.07);
+  --grid-major: rgba(200, 64, 64, 0.16);
 
   --global-theme-color: #b83232;
   --global-hover-color: #d04040;
@@ -1075,7 +1111,14 @@ html[data-theme="dark"] {
 
 html[data-theme="dark"],
 html[data-theme="dark"] body {
-  background: var(--bg) !important;
+  background-color: var(--bg) !important;
+  background-image:
+    linear-gradient(to right, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-major) 1px, transparent 1px),
+    linear-gradient(to right, var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-minor) 1px, transparent 1px) !important;
+  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px !important;
+  background-position: -1px -1px !important;
   color: var(--ink) !important;
 }
 

@@ -1263,15 +1263,33 @@ ninja-keys::part(ninja-input-wrapper) {
 }
 
 // news
+.news-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.news-item-media {
+  flex: 0 0 auto;
+}
+
+.news-item-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
 .news-img {
   display: block;
   width: 100%;
   max-width: 220px;
   height: auto;
-  margin-bottom: 0.5rem;
 }
 
 @media (max-width: 576px) {
+  .news-item {
+    flex-direction: column;
+  }
+
   .news-img {
     max-width: 100%;
   }

@@ -25,25 +25,31 @@
           <tr>
             <th scope="row" style="width: 20%">{{ item.date | date: '%b %d, %Y' }}</th>
             <td>
-              {% if item.img %}
-                {% if item.href %}
-                  <a href="{{ item_href }}"{% if item_external %} target="_blank" rel="noopener noreferrer"{% endif %}>
-                    <img class="news-img rounded z-depth-1" src="{{ item.img | relative_url }}" alt="{{ item.alt }}" loading="lazy" />
-                  </a>
-                {% else %}
-                  <img class="news-img rounded z-depth-1" src="{{ item.img | relative_url }}" alt="{{ item.alt }}" loading="lazy" />
+              <div class="news-item">
+                {% if item.img %}
+                  <div class="news-item-media">
+                    {% if item.href %}
+                      <a href="{{ item_href }}"{% if item_external %} target="_blank" rel="noopener noreferrer"{% endif %}>
+                        <img class="news-img rounded z-depth-1" src="{{ item.img | relative_url }}" alt="{{ item.alt }}" loading="lazy" />
+                      </a>
+                    {% else %}
+                      <img class="news-img rounded z-depth-1" src="{{ item.img | relative_url }}" alt="{{ item.alt }}" loading="lazy" />
+                    {% endif %}
+                  </div>
                 {% endif %}
-              {% endif %}
-              {% if item.inline %}
-                {% assign item_body = item.content | remove: '<p>' | remove: '</p>' | strip %}
-                {% if item.href %}
-                  <a href="{{ item_href }}"{% if item_external %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item_body | emojify }}</a>
-                {% else %}
-                  {{ item_body | emojify }}
-                {% endif %}
-              {% else %}
-                <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-              {% endif %}
+                <div class="news-item-body">
+                  {% if item.inline %}
+                    {% assign item_body = item.content | remove: '<p>' | remove: '</p>' | strip %}
+                    {% if item.href %}
+                      <a href="{{ item_href }}"{% if item_external %} target="_blank" rel="noopener noreferrer"{% endif %}>{{ item_body | emojify }}</a>
+                    {% else %}
+                      {{ item_body | emojify }}
+                    {% endif %}
+                  {% else %}
+                    <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                  {% endif %}
+                </div>
+              </div>
             </td>
           </tr>
         {% endfor %}

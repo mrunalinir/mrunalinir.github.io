@@ -1,0 +1,2025 @@
+<!DOCTYPE html>
+<html lang="en"><head><script data-bard-client-injected="true">(function(firebaseConfig, initialAuthToken, appId) {
+        window.__firebase_config = firebaseConfig;
+        window.__initial_auth_token = initialAuthToken;
+        window.__app_id = appId;
+            })("\n{\n  \"apiKey\": \"AIzaSyCqyCcs2R2e7AegGjvFAwG98wlamtbHvZY\",\n  \"authDomain\": \"bard-frontend.firebaseapp.com\",\n  \"projectId\": \"bard-frontend\",\n  \"storageBucket\": \"bard-frontend.firebasestorage.app\",\n  \"messagingSenderId\": \"175205271074\",\n  \"appId\": \"1:175205271074:web:2b7bd4d34d33bf38e6ec7b\"\n}\n","eyJhbGciOiJSUzI1NiIsImtpZCI6IjExNjRiNzdiNDMzZDdhMDAyMWI4NjE4YjhjYTU3ZTMyZGI5MWUxMTMiLCJ0eXAiOiJKV1QifQ.eyJzdWIiOiJmaXJlYmFzZS1hZG1pbnNkay1mYnN2Y0BiYXJkLWZyb250ZW5kLmlhbS5nc2VydmljZWFjY291bnQuY29tIiwiYXVkIjoiaHR0cHM6Ly9pZGVudGl0eXRvb2xraXQuZ29vZ2xlYXBpcy5jb20vZ29vZ2xlLmlkZW50aXR5LmlkZW50aXR5dG9vbGtpdC52MS5JZGVudGl0eVRvb2xraXQiLCJ1aWQiOiIxNzkwODYwNDkyMzIzODA3NDEwMSIsImlzcyI6ImZpcmViYXNlLWFkbWluc2RrLWZic3ZjQGJhcmQtZnJvbnRlbmQuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLCJjbGFpbXMiOnsiYXBwSWQiOiJjXzcyMTJlMjE2ZDk2Yzg1OTFfaW5kZXguaHRtbC04NTIifSwiZXhwIjoxNzk0OTc3NzA2LCJpYXQiOjE3OTQ5NzQxMDYsImFsZyI6IlJTMjU2In0.FCANzPLj-Ee5dpUuJELRaLK7tAlt6o-6zhjAQu48NJvE_zccKVfyr7d2XKmoiFhJxob31PDETc3uvitI5KY9Jfrt6P2qmTz70rfyZ2C-T8lydLNXHpXYjqtTtKpysbnbLCpICIlv-s8wk5xGaMuWNkvR7tjhg-LHvTNTq2PC-lTUsyTxQuICcQ_uvrMHjvtJtTU6WHa-HXEx7s5y81KKqdpEZA0G2x09d3F63L6Q9F0jHKje_M1hsjI-HYw_rGYOfXWA87ifahJzamTa5A6NFVTN8MFRpFf-QHkr1-jq1JFJlXoeXf9TkGjKxFInWdglOjvXFZo_eIN0k9pY0ls-nQ","c_7212e216d96c8591_index.html-852")</script><script data-bard-client-injected="true">
+  document.addEventListener('input', (event) => {
+    if (event.target && (event.target.isContentEditable || event.target.hasAttribute('contenteditable'))) {
+      const clonedDoc = document.cloneNode(true);
+      const injectedScripts = clonedDoc.querySelectorAll('[data-bard-client-injected="true"]');
+      injectedScripts.forEach(el => el.remove());
+      window.parent.postMessage({
+        type: 'inlineEdit',
+        html: '<!DOCTYPE html>\n' + clonedDoc.documentElement.outerHTML
+      }, '*');
+    }
+  });
+</script><script data-bard-client-injected="true">(function(){'use strict';window.addEventListener("message",a=>{a.data&&a.data.type==="SUPPLEMENTAL_DATA_UPDATE"&&window.dispatchEvent(new CustomEvent("supplementaldataupdate",{detail:a.data.data}))});}).call(this);
+</script><script data-bard-client-injected="true">(function() {
+  const SCROLL_KEYS = new Set([
+    'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
+    ' ', 'Spacebar', 'PageUp', 'PageDown', 'Home', 'End',
+  ]);
+  const HORIZONTAL_KEYS = new Set(['ArrowLeft', 'ArrowRight']);
+
+  function isTextEntryTarget(target) {
+    if (!target) return false;
+    const tagName = target.tagName;
+    return tagName === 'INPUT' || tagName === 'TEXTAREA' ||
+        tagName === 'SELECT' || target.isContentEditable === true;
+  }
+
+  // An element absorbs the key only if it both overflows on the axis being
+  // scrolled and is configured to scroll on that axis. The cheap dimension
+  // test runs first because getComputedStyle forces a style recalc, and this
+  // runs on every keypress. Each axis is read from its own longhand: the
+  // 'overflow' shorthand serializes as two values when the axes differ, which
+  // is the common 'overflow-x: hidden; overflow-y: auto' pane.
+  function canScroll(node, horizontal) {
+    const overflows = horizontal ? node.scrollWidth > node.clientWidth
+                                 : node.scrollHeight > node.clientHeight;
+    if (!overflows) return false;
+    const style = window.getComputedStyle(node);
+    const overflow = horizontal ? style.overflowX : style.overflowY;
+    return overflow === 'auto' || overflow === 'scroll';
+  }
+
+  // Walks up from the event target so nested scrollers keep their behavior.
+  // <body> is included because pages that pin the root height make it the
+  // scroll container.
+  function hasScrollableAncestor(target, horizontal) {
+    let node = target;
+    while (node && node !== document.documentElement) {
+      if (canScroll(node, horizontal)) return true;
+      node = node.parentElement;
+    }
+    return false;
+  }
+
+  function rootCanScroll(horizontal) {
+    const scroller = document.scrollingElement || document.documentElement;
+    if (!scroller) return false;
+    // Tolerate a pixel of rounding so subpixel layouts do not look scrollable.
+    return horizontal ? scroller.scrollWidth > window.innerWidth + 1
+                      : scroller.scrollHeight > window.innerHeight + 1;
+  }
+
+  window.addEventListener('keydown', function(event) {
+    if (!SCROLL_KEYS.has(event.key)) return;
+    if (event.defaultPrevented) return;
+    // Alt and Meta turn arrows into browser history navigation, and Ctrl is
+    // reserved for shortcuts, so none of them are scroll intent.
+    if (event.altKey || event.metaKey || event.ctrlKey) return;
+
+    const target = event.target;
+    if (isTextEntryTarget(target)) return;
+
+    // Anything that can still absorb the scroll gets to keep it.
+    const horizontal = HORIZONTAL_KEYS.has(event.key);
+    if (rootCanScroll(horizontal)) return;
+    if (hasScrollableAncestor(target, horizontal)) return;
+
+    event.preventDefault();
+  }, {capture: true, passive: false});
+})();</script><script data-bard-client-injected="true">(function() {
+  // Ensure this script is executed only once
+  if (window.firebaseAuthBridgeScriptLoaded) {
+    return;
+  }
+  window.firebaseAuthBridgeScriptLoaded = true;
+
+  let nextTokenPromiseId = 0;
+
+  // Stores { resolve, reject } for ongoing token requests
+  const pendingTokenPromises = {};
+
+  // Listen for messages from the Host Application
+  window.addEventListener('message', function(event) {
+
+    const messageData = event.data;
+
+  if (messageData && messageData.type === 'RESOLVE_NEW_FIREBASE_TOKEN') {
+      const { success, token, error, promiseId } = messageData ?? {};
+      if (pendingTokenPromises[promiseId]) {
+        if (success) {
+          pendingTokenPromises[promiseId].resolve(token);
+        } else {
+          pendingTokenPromises[promiseId].reject(new Error(error || 'Token refresh failed from host.'));
+        }
+        delete pendingTokenPromises[promiseId];
+      }
+    }
+  });
+
+  // Expose a function for the Generated App to request a new Firebase token
+  window.requestNewFirebaseToken = function() {
+    const currentPromiseId = nextTokenPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingTokenPromises[currentPromiseId] = { resolve, reject };
+    });
+    if (window.parent && window.parent !== window) {
+      window.parent.postMessage({
+        type: 'REQUEST_NEW_FIREBASE_TOKEN',
+        promiseId: currentPromiseId
+      }, '*');
+    } else {
+      pendingTokenPromises[currentPromiseId].reject(new Error('No parent window to request token from.'));
+      delete pendingTokenPromises[currentPromiseId];
+    }
+    return promise;
+  };
+})();</script><script data-bard-client-injected="true">
+let realOriginalGetUserMedia = null;
+if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+  realOriginalGetUserMedia = navigator.mediaDevices.getUserMedia.bind(navigator.mediaDevices);
+}
+
+(function() {
+  if (navigator.mediaDevices && navigator.mediaDevices.__proto__) {
+    try {
+      Object.defineProperty(navigator.mediaDevices.__proto__, 'getUserMedia', {
+        get: function() {
+          return undefined; // Or throw an error
+        },
+        configurable: false
+      });
+    } catch (error) {
+      console.error("Error defining prototype getter:", error);
+    }
+  }
+})();
+
+(function() {
+  const pendingMediaResolvers = {};
+  let nextMediaPromiseId = 0;
+
+  function requestMediaPermissions(constraints) {
+    const mediaPromiseId = nextMediaPromiseId++;
+    const promise = new Promise((resolve, reject) => {
+      pendingMediaResolvers[mediaPromiseId] = (granted) => {
+        delete pendingMediaResolvers[mediaPromiseId];
+        resolve(granted);
+      };
+    });
+
+    window.parent.postMessage({
+      type: 'requestMediaPermission',
+      constraints: constraints,
+      promiseId: mediaPromiseId,
+    }, '*');
+
+    return promise;
+  }
+
+  let originalGetUserMedia = realOriginalGetUserMedia;
+
+  function interceptGetUserMedia() {
+    if (navigator.mediaDevices) {
+      Object.defineProperty(navigator.mediaDevices, 'getUserMedia', {
+        value: function(constraints) {
+          return requestMediaPermissions(constraints).then((granted) => {
+            if (granted) {
+              if (originalGetUserMedia) {
+                return originalGetUserMedia(constraints);
+              } else {
+                throw new Error("Original getUserMedia not available.");
+              }
+            } else {
+              throw new DOMException('Permission denied', 'NotAllowedError');
+            }
+          });
+        },
+        writable: false,
+        configurable: false
+      });
+    }
+  }
+
+  interceptGetUserMedia();
+
+  const observer = new MutationObserver(function(mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'reconfigured' && mutation.name === 'getUserMedia' && mutation.object === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'attributes' && mutation.attributeName === 'getUserMedia' && mutation.target === navigator.mediaDevices) {
+        interceptGetUserMedia();
+      } else if (mutation.type === 'childList' && mutation.addedNodes) {
+        mutation.addedNodes.forEach(node => {
+          if (node === navigator.mediaDevices) {
+            interceptGetUserMedia();
+          }
+        });
+      }
+    }
+  });
+
+  function interceptSpeechRecognition() {
+    if (!window.SpeechRecognition && !window.webkitSpeechRecognition) {
+      return;
+    }
+
+    const OriginalSpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    const SpeechRecognitionWrapper = function(...args) {
+      const recognizer = new OriginalSpeechRecognition(...args);
+      const originalStart = recognizer.start.bind(recognizer);
+
+      recognizer.start = function() {
+        requestMediaPermissions({ audio: true }).then(granted => {
+          if (granted) {
+            originalStart();
+          } else {
+            const errorEvent = new SpeechRecognitionErrorEvent('error');
+            errorEvent.error = 'not-allowed'; // This is the standard error for permission denial.
+            recognizer.dispatchEvent(errorEvent);
+          }
+        });
+      };
+
+      return recognizer;
+    };
+
+    SpeechRecognitionWrapper.prototype = OriginalSpeechRecognition.prototype;
+    SpeechRecognitionWrapper.prototype.constructor = SpeechRecognitionWrapper;
+
+    if (window.SpeechRecognition) {
+      window.SpeechRecognition = SpeechRecognitionWrapper;
+    }
+    if (window.webkitSpeechRecognition) {
+      window.webkitSpeechRecognition = SpeechRecognitionWrapper;
+    }
+  }
+
+  interceptSpeechRecognition();
+
+  window.addEventListener('message', function(event) {
+    if (event.data) {
+      if (event.data.type === 'resolveMediaPermission') {
+        const { promiseId, granted } = event.data;
+        if (pendingMediaResolvers[promiseId]) {
+          pendingMediaResolvers[promiseId](granted);
+        }
+      }
+    }
+  });
+
+})();</script><script ws-interception-config="{&quot;parentOrigin&quot;:&quot;https://gemini.google.com&quot;,&quot;proxiedDomains&quot;:[]}" data-bard-client-injected="true">(function(){'use strict';var u=typeof Object.defineProperties=="function"?Object.defineProperty:function(b,d,e){if(b==Array.prototype||b==Object.prototype)return b;b[d]=e.value;return b};function v(b){b=["object"==typeof globalThis&&globalThis,b,"object"==typeof window&&window,"object"==typeof self&&self,"object"==typeof global&&global];for(var d=0;d<b.length;++d){var e=b[d];if(e&&e.Math==Math)return e}throw Error("Cannot find global object");}var w=v(this);
+function y(b,d){if(d)a:{var e=w;b=b.split(".");for(var h=0;h<b.length-1;h++){var k=b[h];if(!(k in e))break a;e=e[k]}b=b[b.length-1];h=e[b];d=d(h);d!=h&&d!=null&&u(e,b,{configurable:!0,writable:!0,value:d})}}function z(b){function d(h){return b.next(h)}function e(h){return b.throw(h)}return new Promise(function(h,k){function m(n){n.done?h(n.value):Promise.resolve(n.value).then(d,e).then(m,k)}m(b.next())})}y("globalThis",function(b){return b||w});/*
+
+ Copyright The Closure Library Authors.
+ SPDX-License-Identifier: Apache-2.0
+*/
+function A(b,d){function e(){}e.prototype=d.prototype;b.i=d.prototype;b.prototype=new e;b.prototype.constructor=b;b.h=function(h,k,m){for(var n=Array(arguments.length-2),p=2;p<arguments.length;p++)n[p-2]=arguments[p];return d.prototype[k].apply(h,n)}};function B(b,d,e="*"){function h(a){if(typeof a==="string")return F.encode(a).buffer;if(a instanceof ArrayBuffer)return a.slice(0);if(ArrayBuffer.isView(a))return a.buffer.slice(a.byteOffset,a.byteOffset+a.byteLength);throw Error("Invalid data type");}function k(a){a=h(a);var f={type:"send",data:new Uint8Array(a)},g;(g=r)==null||g.postMessage(f,[a])}function m(){if(!r)throw Error("Data port not captured yet.");r.onmessage=a=>{if(a.data.type==="message"){a=new MessageEvent("message",{data:G.decode(a.data.data)});
+let f;(f=c.onmessage)==null||f.call(c,a);c.dispatchEvent(a)}}}function n(){if(!t)throw Error("Control port not captured yet.");t.onmessage=a=>{switch(a.data.type){case "open":l=1;var f=new Event("open"),g;(g=c.onopen)==null||g.call(c,f);c.dispatchEvent(f);q.forEach(H=>{k(H)});q=[];break;case "close":g=a.data;l=3;g=new CloseEvent("close",{code:g.code,reason:g.reason,wasClean:g.wasClean});(f=c.onclose)==null||f.call(c,g);c.dispatchEvent(g);break;case "error":l=3;f=new Event("error");let x;(x=c.onerror)==
+null||x.call(c,f);c.dispatchEvent(f)}}}function p(a){return z(function*(){var f=new MessageChannel;t=f.port1;var g=new MessageChannel;r=g.port1;n();m();window.parent.postMessage({type:"websocket_open",portOrdering:["control","data"],url:b,protocols:a||[],connectionId:I},e,[f.port2,g.port2])}())}var c=Reflect.construct(EventTarget,[],new.target);c.CONNECTING=0;c.OPEN=1;c.CLOSING=2;c.CLOSED=3;c.url=b;c.binaryType="arraybuffer";c.protocol="";c.extensions="";var l=0,t=null,r=null,q=[],F=new TextEncoder,
+G=new TextDecoder;c.onopen=null;c.onmessage=null;c.onclose=null;c.onerror=null;Object.defineProperty(c,"readyState",{get:()=>l,enumerable:!0,configurable:!0});Object.defineProperty(c,"bufferedAmount",{get:()=>{var a=0;q.forEach(f=>{a+=typeof f==="string"?f.length:f.byteLength});return a},enumerable:!0,configurable:!0});var I=function(){var a;return((a=globalThis.crypto)==null?0:a.randomUUID)?globalThis.crypto.randomUUID():"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,f=>{var g=Math.random()*
+16|0;return(f==="x"?g:g&3|8).toString(16)})}();c.send=a=>{if(l===1)a instanceof Blob?a.arrayBuffer().then(f=>{k(f)}):k(a);else if(l===0)if(typeof a==="string")q.push(a);else if(a instanceof ArrayBuffer||ArrayBuffer.isView(a))q.push(h(a));else throw Error("Sending Blob is not supported before the connection is open.");else console.debug("WebSocket send called in CLOSING or CLOSED state; ignored.")};c.close=(a=1E3,f="")=>{if(l!==2&&l!==3){l=2;a={type:"close",code:a,reason:f,wasClean:a===1E3};var g;
+(g=t)==null||g.postMessage(a)}};Promise.resolve().then(()=>p(d));return c}A(B,EventTarget);var C=document.currentScript,D=C==null?void 0:C.getAttribute("ws-interception-config");if(!D)throw Error("WebSocket Interceptor: Missing ws-interception-config attribute in the script tag.");var E=JSON.parse(D);if(!E.parentOrigin||typeof E.parentOrigin!=="string")throw Error("WebSocket Interceptor: Invalid parentOrigin in ws-interception-config");
+(function(b){var d=Object.getOwnPropertyDescriptor(window,"WebSocket");if(!d||d.writable||d.configurable)d=Object.assign(function(e,h){try{let k=(new URL(e)).hostname;if(b.proxiedDomains.some(m=>k===m||k.endsWith(`.${m}`)))return new B(e,h,b.parentOrigin)}catch(k){throw window.parent.postMessage({type:"websocket_blocked",url:e,reason:"blocked_invalid_url"},b.parentOrigin),new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");}window.parent.postMessage({type:"websocket_blocked",
+url:e,reason:"blocked_domain_not_allowlisted"},b.parentOrigin);throw new DOMException(`WebSocket connection to '${e}' is not allowed in Canvas.`,"SecurityError");},{CONNECTING:0,OPEN:1,CLOSING:2,CLOSED:3}),Object.defineProperty(window,"WebSocket",{value:d,writable:!1,configurable:!1})})({proxiedDomains:E.proxiedDomains||[],parentOrigin:E.parentOrigin});}).call(this);
+</script><script data-bard-client-injected="true">((function(modelInformation) {
+  const originalFetch = window.fetch;
+  // TODO: b/421908508 - Move these out of the script and match all generative AI model calls.
+  let googleLlmBaseApiUrls = [
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':streamGenerateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.textModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageEditModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.imageTransformModelName + ':generateContent',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predict',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.videoModelName + ':predictLongRunning',
+    'https://generativelanguage.googleapis.com/v1beta/models/' + modelInformation.ttsModelName + ':generateContent',
+  ];
+  modelInformation.deprecatedTextModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+    );
+  });
+  modelInformation.deprecatedImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predict',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':predictLongRunning',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedGenerateImageModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+  modelInformation.deprecatedImageTransformModelNames.forEach((modelName) => {
+    googleLlmBaseApiUrls.push(
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/' + modelName + ':streamGenerateContent',
+    );
+  });
+
+  const pendingFetchResolvers = {};
+  let nextPromiseId = 0;
+
+  function handleStringInput(input, optionsArgument) {
+    const actualUrl = input;
+    const fetchCallArgs = [actualUrl, optionsArgument];
+    const effectiveOptions = optionsArgument || {};
+    const bodyForApiKeyCheck = effectiveOptions.body;
+    const bodyForPostMessage = effectiveOptions.body;
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  function handleRequestInput(input, optionsArgument) {
+    const actualUrl = input.url;
+    const fetchCallArgs = [input, optionsArgument];
+    const effectiveOptions = { method: input.method, headers: new Headers(input.headers) };
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (optionsArgument) {
+      if (optionsArgument.method) effectiveOptions.method = optionsArgument.method;
+      if (optionsArgument.headers) effectiveOptions.headers = new Headers(optionsArgument.headers);
+      if ('body' in optionsArgument) {
+        bodyForApiKeyCheck = optionsArgument.body;
+        bodyForPostMessage = optionsArgument.body;
+      } else {
+        bodyForApiKeyCheck = undefined;
+        bodyForPostMessage = input.body;
+      }
+    } else {
+      bodyForApiKeyCheck = undefined;
+      bodyForPostMessage = input.body;
+    }
+    return { actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage };
+  }
+
+  window.fetch = function(input, optionsArgument) {
+    let actualUrl;
+    let fetchCallArgs;
+    let effectiveOptions = {};
+    let bodyForApiKeyCheck;
+    let bodyForPostMessage;
+
+    if (typeof input === 'string') {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleStringInput(input, optionsArgument));
+    } else if (input instanceof Request) {
+      ({actualUrl, fetchCallArgs, effectiveOptions, bodyForApiKeyCheck, bodyForPostMessage} = handleRequestInput(input, optionsArgument));
+    } else {
+      return originalFetch.apply(window, [input, optionsArgument]);
+    }
+
+    effectiveOptions.method = effectiveOptions.method || 'GET';
+    if (!effectiveOptions.headers) {
+      effectiveOptions.headers = new Headers();
+    }
+
+
+    if (typeof actualUrl === 'string' && googleLlmBaseApiUrls.some((url) => actualUrl.startsWith(url))) {
+      let apiKeyIsNull = true;
+
+      const regex = new RegExp("models/([^:]+)");
+      const modelNameMatch = actualUrl.match(regex);
+      const modelName = modelNameMatch ? modelNameMatch[1] : 'unspecified';
+
+
+      try {
+        const urlObject = new URL(actualUrl);  // Use URL object for robust parsing
+        const apiKeyParam = urlObject.searchParams.get('key');
+        if (apiKeyParam) {
+          apiKeyIsNull = false;
+        }
+      } catch (e) {
+        // Continue checks even if URL parsing fails
+      }
+
+      if (apiKeyIsNull && effectiveOptions.headers) {
+        const h = new Headers(effectiveOptions.headers);
+        const apiKeyHeaderValue = h.get('X-API-Key') || h.get('x-api-key');
+        if (apiKeyHeaderValue) {
+          apiKeyIsNull = false;
+          return originalFetch.apply(window, fetchCallArgs);
+        }
+      }
+
+      if (apiKeyIsNull && effectiveOptions.method && ['POST', 'PUT', 'PATCH'].includes(effectiveOptions.method.toUpperCase()) && typeof bodyForApiKeyCheck === 'string') {
+        try {
+          const bodyData = JSON.parse(bodyForApiKeyCheck);
+          if (bodyData && bodyData.apiKey) {
+            apiKeyIsNull = false;
+            return originalFetch.apply(window, fetchCallArgs);
+          }
+        } catch (e) {
+          // Ignore JSON parsing errors
+        }
+      }
+
+      if(apiKeyIsNull) {
+        const promiseId = nextPromiseId++;
+        const promise = new Promise((resolve) => {
+          pendingFetchResolvers[promiseId] = (resolvedResponse) => {
+            delete pendingFetchResolvers[promiseId];
+            resolve(resolvedResponse);
+          };
+        });
+
+        let serializedBodyForPostMessage;
+        if (typeof bodyForPostMessage === 'string' || bodyForPostMessage == null) {
+            serializedBodyForPostMessage = bodyForPostMessage;
+        } else if (bodyForPostMessage instanceof ReadableStream) {
+            serializedBodyForPostMessage = null;
+        } else {
+            try {
+                serializedBodyForPostMessage = JSON.stringify(bodyForPostMessage);
+            } catch (e) {
+                serializedBodyForPostMessage = null;
+            }
+        }
+
+        const messageOptions = {
+            method: effectiveOptions.method,
+            headers: Object.fromEntries(new Headers(effectiveOptions.headers).entries()),
+            body: serializedBodyForPostMessage
+        };
+
+        window.parent.postMessage({
+          type: 'requestFetch',
+          url: actualUrl,
+          modelName: modelName,
+          options: messageOptions,
+          promiseId: promiseId,
+        }, '*');
+
+        return promise;
+      }
+      return originalFetch.apply(window, fetchCallArgs);
+    }
+    return originalFetch.apply(window, fetchCallArgs);
+  };
+
+  window.addEventListener('message', function(event) {
+    if (event.data && event.data.type === 'resolveFetch') {
+      const { promiseId, response } = event.data;
+      if (pendingFetchResolvers[promiseId]) {
+        try {
+          const reconstructedResponse = new Response(response.body, {
+            status: response.status,
+            statusText: response.statusText,
+            headers: new Headers(response.headers),
+          });
+          pendingFetchResolvers[promiseId](reconstructedResponse);
+        } catch (error) {
+          pendingFetchResolvers[promiseId](new Response(null, { status: 500, statusText: "Interceptor Response Reconstruction Error" }));
+        }
+      }
+    }
+  });
+
+}))({"textModelName":"gemini-3-flash-preview","imageModelName":"imagen-4.0-generate-001","imageEditModelName":"gemini-3.1-flash-image","imageTransformModelName":"gemini-3-pro-image","videoModelName":"veo-2.0-generate-001","ttsModelName":"gemini-2.5-flash-preview-tts","deprecatedTextModelNames":["gemini-2.0-flash","gemini-2.5-flash","gemini-2.5-flash-preview-04-17","gemini-2.5-flash-preview-05-20","gemini-2.5-flash-preview-09-2025"],"deprecatedImageModelNames":["imagen-3.0-generate-001","imagen-3.0-generate-002"],"deprecatedGenerateImageModelNames":["gemini-2.5-flash-image-preview","gemini-2.5-flash-image","gemini-3.1-flash-image-preview"],"deprecatedImageTransformModelNames":["gemini-3-pro-image-preview-11-2025"]})</script><script data-bard-client-injected="true">(function() {
+  const OVERLAY_SELECTOR =
+    'dialog[open], [role="dialog"], [role="alertdialog"], [role="menu"], [role="listbox"], [role="combobox"]';
+
+  function isVisibleOverlay(element) {
+    if (element.closest('[hidden], [aria-hidden="true"], [inert]')) {
+      return false;
+    }
+    if (window.getComputedStyle(element).visibility === 'hidden') {
+      return false;
+    }
+    for (let cur = element; cur; cur = cur.parentElement) {
+      if (window.getComputedStyle(cur).display === 'none') {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function hasOpenOverlay() {
+    const candidates = document.querySelectorAll(OVERLAY_SELECTOR);
+    for (let i = 0; i < candidates.length; i++) {
+      if (isVisibleOverlay(candidates[i])) {
+        return true;
+      }
+    }
+    try {
+      if (document.querySelector('[popover]:popover-open')) {
+        return true;
+      }
+    } catch (e) {
+      // Ignore engines that do not support :popover-open.
+    }
+    return false;
+  }
+
+  function isNonEmptySearchInput(target) {
+    return (
+      Boolean(target) &&
+      target.tagName === 'INPUT' &&
+      typeof target.type === 'string' &&
+      target.type.toLowerCase() === 'search' &&
+      typeof target.value === 'string' &&
+      target.value.length > 0
+    );
+  }
+
+  function shouldIgnoreEscape(event) {
+    return (
+      event.key !== 'Escape' ||
+      event.altKey ||
+      event.ctrlKey ||
+      event.metaKey ||
+      event.shiftKey ||
+      event.isComposing ||
+      event.repeat ||
+      event.keyCode === 229 ||
+      isNonEmptySearchInput(event.target)
+    );
+  }
+
+  let shouldIgnoreCaptureState = false;
+
+  window.addEventListener(
+    'keydown',
+    function(event) {
+      if (event.key === 'Escape') {
+        shouldIgnoreCaptureState =
+          hasOpenOverlay() || isNonEmptySearchInput(event.target);
+      }
+    },
+    {capture: true},
+  );
+
+  window.addEventListener('keydown', function(event) {
+    if (
+      shouldIgnoreEscape(event) ||
+      event.defaultPrevented ||
+      shouldIgnoreCaptureState
+    ) {
+      return;
+    }
+    const wasBlockedOnCapture = shouldIgnoreCaptureState;
+    queueMicrotask(function() {
+      if (event.defaultPrevented || wasBlockedOnCapture) {
+        return;
+      }
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({'type': 'escapeKey'}, '*');
+      }
+    });
+  });
+})();</script><script data-bard-client-injected="true">(function() {
+  function normalizeSlug(str) {
+    try {
+      return str
+        .trim()
+        .toLowerCase()
+        .replace(/[^p{L}p{N}s_-]/gu, '')
+        .replace(/s+/g, '-');
+    } catch (e) {
+      return str
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9s_-]/g, '')
+        .replace(/s+/g, '-');
+    }
+  }
+
+  function findTargetElement(hash) {
+    if (!hash || hash === '#') {
+      return null;
+    }
+    const rawId = hash.startsWith('#') ? hash.slice(1) : hash;
+    let decodedId = rawId;
+    try {
+      decodedId = decodeURIComponent(rawId);
+    } catch (e) {
+      // Ignore URI malformed errors.
+    }
+
+    // 1. Direct ID match (raw and decoded).
+    let target = document.getElementById(rawId) || document.getElementById(decodedId);
+    if (target) {
+      return target;
+    }
+
+    // 2. Name attribute match (<a name="...">).
+    try {
+      if (typeof CSS !== 'undefined' && CSS.escape) {
+        target =
+          document.querySelector('[name="' + CSS.escape(rawId) + '"]') ||
+          document.querySelector('[name="' + CSS.escape(decodedId) + '"]');
+      } else {
+        const namedElements = document.getElementsByName(rawId);
+        if (namedElements && namedElements.length > 0) {
+          return namedElements[0];
+        }
+      }
+    } catch (e) {
+      // Ignore querySelector syntax errors.
+    }
+    if (target) {
+      return target;
+    }
+
+    // 3. Match heading text by slug (for Markdown TOCs where headings lack explicit IDs).
+    const targetSlug = normalizeSlug(decodedId);
+    if (targetSlug) {
+      for (const heading of document.querySelectorAll('h1, h2, h3, h4, h5, h6')) {
+        if (normalizeSlug(heading.textContent || '') === targetSlug) {
+          return heading;
+        }
+      }
+    }
+
+    return null;
+  }
+
+  document.addEventListener('click', function(event) {
+    const target = event.target;
+    const anchor = target && typeof target.closest === 'function' ? target.closest('a') : null;
+    if (!anchor) {
+      return;
+    }
+
+    const href = anchor.getAttribute('href');
+    if (
+      !href ||
+      href.trim().toLowerCase().startsWith('javascript:') ||
+      anchor.hasAttribute('download')
+    ) {
+      return;
+    }
+
+    // Check if the link is an in-page hash / anchor link.
+    if (href.startsWith('#')) {
+      event.preventDefault();
+      const targetElement = findTargetElement(href);
+      if (targetElement) {
+        targetElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+      return;
+    }
+
+    // Check if the URL has the same origin/pathname but with a hash.
+    try {
+      const url = new URL(anchor.href, window.location.href);
+      if (
+        url.hash &&
+        url.origin === window.location.origin &&
+        url.pathname === window.location.pathname
+      ) {
+        event.preventDefault();
+        const targetElement = findTargetElement(url.hash);
+        if (targetElement) {
+          targetElement.scrollIntoView({behavior: 'smooth', block: 'start'});
+        }
+        return;
+      }
+    } catch (e) {
+      // Fall through if URL parsing fails.
+    }
+
+    // For all external or full navigation links, prevent iframe-level navigation
+    // (which breaks in AGSA WebView or sandboxed iframes) and ensure they open
+    // safely in a new tab/window.
+    if (anchor.target !== '_blank') {
+      event.preventDefault();
+      window.open(anchor.href, '_blank', 'noopener,noreferrer');
+    }
+  }, {capture: true});
+})();</script><script data-bard-client-injected="true">(function(){'use strict';function a(){window.parent.postMessage({type:"interaction"},"*")}window.addEventListener("click",a,{capture:!0,passive:!0});window.addEventListener("touchstart",a,{capture:!0,passive:!0});window.addEventListener("keydown",a,{capture:!0,passive:!0});}).call(this);
+</script><script data-bard-client-injected="true">(function() {
+  const originalConsoleLog = console.log;
+  const originalConsoleError = console.error;
+
+    /**
+   * Normalizes an error event or a promise rejection reason into a structured error object.
+   * @param {*} errorEventOrReason The error object or reason.
+   * @return {object} Structured error data { message, name, stack }.
+   */
+  function getErrorObject(errorEventOrReason) {
+    if (errorEventOrReason instanceof Error) {
+      return {
+        message: errorEventOrReason.message,
+        name: errorEventOrReason.name,
+        stack: errorEventOrReason.stack,
+      };
+    }
+    // Fallback for non-Error objects.
+    try {
+      return {
+        message: JSON.stringify(errorEventOrReason),
+        name: 'UnknownErrorType',
+        stack: null,
+      };
+    } catch (e) {
+      return {
+        message: String(errorEventOrReason),
+        name: 'UnknownErrorTypeNonStringifiable',
+        stack: null,
+      };
+    }
+  }
+
+  /**
+   * Converts an array of arguments (from log/error) into a single string.
+   * Handles Error objects specially to include their message and stack.
+   * @param {Array<*>} args - Arguments passed to console methods.
+   * @return {string} A string representation of the arguments.
+   */
+  function stringifyArgs(args) {
+    return args
+      .map((arg) => {
+        if (arg instanceof Error) {
+          const {message, stack} = arg;
+          return `Error: ${message}${stack ? ('\nStack: ' + stack) : ''}`;
+        }
+        if (typeof arg === 'object' && arg !== null) {
+          try {
+            return JSON.stringify(arg);
+          } catch (error) {
+            return '[Circular Object]';
+          }
+        } else {
+          return String(arg);
+        }
+      })
+      .join(' ');
+  }
+
+  console.log = function(...args) {
+    const logString = stringifyArgs(args);
+    window.parent.postMessage({ type: 'log', message: logString }, '*');
+    originalConsoleLog.apply(console, args);
+  };
+
+  console.error = function(...args) {
+    let errorData;
+    if (args.length > 0 && args[0] instanceof Error) {
+      const err = args[0];
+      // If the first arg is an Error, capture its details.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        ...getErrorObject(err),
+        rawArgsString: stringifyArgs(args.slice(1)),
+        timestamp: new Date().toISOString(),
+      };
+    } else {
+      // If not an Error object, treat all args as a general error message.
+      errorData = {
+        type: 'error',
+        source: 'CONSOLE_ERROR',
+        message: stringifyArgs(args),
+        name: 'ConsoleLoggedError',
+        stack: null,
+        timestamp: new Date().toISOString(),
+      };
+    }
+    window.parent.postMessage(errorData, '*');
+    originalConsoleError.apply(console, args);
+  };
+
+  // Listen for global unhandled synchronous errors.
+  window.addEventListener('error', function(event) {
+    const errorDetails = event.error ? getErrorObject(event.error) : {
+      message: event.message,
+      name: 'GlobalError',
+      stack: null,
+      filename: event.filename,
+      lineno: event.lineno,
+      colno: event.colno,
+    };
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'global',
+      ...errorDetails,
+      message: errorDetails.message || event.message,
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+  // Listen for unhandled promise rejections (asynchronous errors).
+  window.addEventListener('unhandledrejection', function(event) {
+    const errorDetails = getErrorObject(event.reason);
+
+    window.parent.postMessage({
+      type: 'error',
+      source: 'unhandledrejection',
+      ...errorDetails,
+      message: errorDetails.message || 'Unhandled Promise Rejection',
+      timestamp: new Date().toISOString(),
+    }, '*');
+  });
+
+})();</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Graph Paper Studio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: JetBrains Mono for crisp typewriter aesthetics & Inter for clean UI -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&amp;display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Graph Paper Grid Backgrounds */
+        :root {
+            --paper-bg: #FAF9F6;
+            --grid-minor: rgba(59, 130, 246, 0.09);
+            --grid-major: rgba(59, 130, 246, 0.20);
+            --margin-line: rgba(239, 68, 68, 0.25);
+            --ink-color: #1e293b;
+            --ink-muted: #64748b;
+        }
+
+        html.dark {
+            --paper-bg: #0b1120;
+            --grid-minor: rgba(56, 189, 248, 0.08);
+            --grid-major: rgba(56, 189, 248, 0.22);
+            --margin-line: rgba(244, 63, 94, 0.22);
+            --ink-color: #f1f5f9;
+            --ink-muted: #94a3b8;
+        }
+
+        body {
+            background-color: var(--paper-bg);
+            color: var(--ink-color);
+            transition: background-color 0.35s ease, color 0.35s ease;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        /* Crisp Engineering Graph Paper Grid */
+        .graph-paper {
+            background-image:
+                linear-gradient(to right, var(--grid-major) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-major) 1px, transparent 1px),
+                linear-gradient(to right, var(--grid-minor) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-minor) 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+            background-position: -1px -1px;
+        }
+
+        /* Subtle Paper Grain Overlay */
+        .paper-grain::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 5;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        html.dark .paper-grain::before {
+            opacity: 0.045;
+        }
+
+        /* Subtle vertical engineering margin line on desktop */
+        @media (min-width: 768px) {
+            .margin-guide {
+                border-left: 1.5px solid var(--margin-line);
+            }
+        }
+
+        /* Thruster Flicker Animation for Tiny Spaceship */
+        @keyframes thrusterFlicker {
+            0%, 100% { transform: scaleY(1) scaleX(1); opacity: 0.95; }
+            33% { transform: scaleY(1.35) scaleX(0.85); opacity: 1; }
+            66% { transform: scaleY(0.8) scaleX(1.1); opacity: 0.8; }
+        }
+        .thruster-flame {
+            transform-origin: 16px 26px;
+            animation: thrusterFlicker 0.16s infinite ease-in-out;
+        }
+
+        /* Slow Galaxy Spin */
+        @keyframes galaxySpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .galaxy-swirl {
+            transform-origin: 16px 16px;
+            animation: galaxySpin 14s linear infinite;
+        }
+
+        /* Matcha Steam Wisp */
+        @keyframes steamRise {
+            0% { transform: translateY(0px); opacity: 0.2; }
+            50% { transform: translateY(-2px); opacity: 0.75; }
+            100% { transform: translateY(-4px); opacity: 0.2; }
+        }
+        .matcha-steam {
+            animation: steamRise 2.8s ease-in-out infinite;
+        }
+
+        /* Ambient Idle Float for Strewn Background Stickers */
+        @keyframes ambientFloat {
+            0%, 100% {
+                transform: translate(-50%, -50%) translateY(0px) rotate(var(--tilt, 0deg)) scale(var(--scale, 1));
+            }
+            50% {
+                transform: translate(-50%, -50%) translateY(-6px) rotate(calc(var(--tilt, 0deg) + 3deg)) scale(var(--scale, 1));
+            }
+        }
+
+        /* Click Micro-Animation Pop & Spin */
+        @keyframes stickerBoing {
+            0% {
+                transform: translate(-50%, -50%) scale(calc(var(--scale, 1) * 1.15)) rotate(var(--tilt, 0deg));
+            }
+            35% {
+                transform: translate(-50%, -50%) scale(calc(var(--scale, 1) * 1.42)) rotate(calc(var(--tilt, 0deg) + 18deg));
+            }
+            70% {
+                transform: translate(-50%, -50%) scale(calc(var(--scale, 1) * 0.94)) rotate(calc(var(--tilt, 0deg) - 10deg));
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(calc(var(--scale, 1) * 1.12)) rotate(var(--tilt, 0deg));
+            }
+        }
+
+        /* Strewn Background Sticker Layer */
+        .strewn-sticker {
+            position: fixed;
+            pointer-events: auto;
+            cursor: pointer;
+            z-index: 12;
+            will-change: transform;
+            filter: drop-shadow(0 5px 8px rgba(15, 23, 42, 0.12));
+            animation: ambientFloat var(--float-dur, 6s) ease-in-out infinite;
+            animation-delay: var(--float-delay, 0s);
+            transition: opacity 0.25s ease, filter 0.2s ease;
+        }
+
+        .strewn-sticker:hover {
+            animation-play-state: paused;
+            transform: translate(-50%, -50%) translateY(-5px) rotate(calc(var(--tilt, 0deg) + 7deg)) scale(calc(var(--scale, 1) * 1.18)) !important;
+            filter: drop-shadow(0 10px 16px rgba(15, 23, 42, 0.2));
+            z-index: 18;
+        }
+
+        .strewn-sticker.is-popping {
+            animation: stickerBoing 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+        }
+
+        html.dark .strewn-sticker {
+            filter: drop-shadow(0 5px 12px rgba(56, 189, 248, 0.2));
+        }
+
+        html.dark .strewn-sticker:hover {
+            filter: drop-shadow(0 10px 20px rgba(56, 189, 248, 0.36));
+        }
+
+        /* Tiny Sparkle Burst on Sticker Click */
+        @keyframes sparkleBurst {
+            0% {
+                transform: translate(-50%, -50%) scale(0.4);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.1);
+                opacity: 0;
+            }
+        }
+
+        .click-sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 25;
+            font-size: 12px;
+            animation: sparkleBurst 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:"JetBrains Mono", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.pointer-events-auto{pointer-events:auto}.fixed{position:fixed}.relative{position:relative}.inset-0{inset:0px}.z-20{z-index:20}.z-30{z-index:30}.z-50{z-index:50}.mx-0\.5{margin-left:0.125rem;margin-right:0.125rem}.mx-auto{margin-left:auto;margin-right:auto}.my-7{margin-top:1.75rem;margin-bottom:1.75rem}.my-auto{margin-top:auto;margin-bottom:auto}.mb-6{margin-bottom:1.5rem}.ml-2{margin-left:0.5rem}.mt-0\.5{margin-top:0.125rem}.mt-3\.5{margin-top:0.875rem}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.hidden{display:none}.h-2{height:0.5rem}.h-5{height:1.25rem}.h-8{height:2rem}.h-12{height:3rem}.h-4{height:1rem}.max-h-\[88vh\]{max-height:88vh}.max-h-24{max-height:6rem}.min-h-screen{min-height:100vh}.w-2{width:0.5rem}.w-24{width:6rem}.w-8{width:2rem}.w-\[1px\]{width:1px}.w-full{width:100%}.w-12{width:3rem}.w-4{width:1rem}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-full{max-width:100%}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}.scale-75{--tw-scale-x:.75;--tw-scale-y:.75;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.select-all{-webkit-user-select:all;user-select:all}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-md{border-radius:0.375rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-slate-200\/90{border-color:rgb(226 232 240 / 0.9)}.border-slate-300{--tw-border-opacity:1;border-color:rgb(203 213 225 / var(--tw-border-opacity, 1))}.border-slate-300\/80{border-color:rgb(203 213 225 / 0.8)}.border-sky-200{--tw-border-opacity:1;border-color:rgb(186 230 253 / var(--tw-border-opacity, 1))}.bg-\[\#FAF9F6\]{--tw-bg-opacity:1;background-color:rgb(250 249 246 / var(--tw-bg-opacity, 1))}.bg-\[\#FAF9F6\]\/85{background-color:rgb(250 249 246 / 0.85)}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-200\/70{background-color:rgb(226 232 240 / 0.7)}.bg-slate-900{--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.bg-slate-950\/50{background-color:rgb(2 6 23 / 0.5)}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.bg-white\/85{background-color:rgb(255 255 255 / 0.85)}.bg-sky-50{--tw-bg-opacity:1;background-color:rgb(240 249 255 / var(--tw-bg-opacity, 1))}.bg-slate-100\/90{background-color:rgb(241 245 249 / 0.9)}.bg-slate-800{--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.bg-white\/90{background-color:rgb(255 255 255 / 0.9)}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-2\.5{padding:0.625rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-3{padding-bottom:0.75rem}.pb-5{padding-bottom:1.25rem}.pl-0{padding-left:0px}.pt-2{padding-top:0.5rem}.pt-5{padding-top:1.25rem}.font-mono{font-family:"JetBrains Mono", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[11px\]{font-size:11px}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-\[10px\]{font-size:10px}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-snug{line-height:1.375}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-slate-900{--tw-text-opacity:1;color:rgb(15 23 42 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-65{opacity:0.65}.opacity-80{opacity:0.8}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-slate-900\/5{--tw-shadow-color:rgb(15 23 42 / 0.05);--tw-shadow:var(--tw-shadow-colored)}.backdrop-blur-\[2px\]{--tw-backdrop-blur:blur(2px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.backdrop-blur-xl{--tw-backdrop-blur:blur(24px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.selection\:bg-sky-200 *::selection{--tw-bg-opacity:1;background-color:rgb(186 230 253 / var(--tw-bg-opacity, 1))}.selection\:bg-sky-200::selection{--tw-bg-opacity:1;background-color:rgb(186 230 253 / var(--tw-bg-opacity, 1))}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:bg-slate-100:hover{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-200\/70:hover{background-color:rgb(226 232 240 / 0.7)}.hover\:opacity-90:hover{opacity:0.9}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.dark\:border:is(.dark *){border-width:1px}.dark\:border-sky-500\/25:is(.dark *){border-color:rgb(14 165 233 / 0.25)}.dark\:border-sky-500\/30:is(.dark *){border-color:rgb(14 165 233 / 0.3)}.dark\:border-slate-700:is(.dark *){--tw-border-opacity:1;border-color:rgb(51 65 85 / var(--tw-border-opacity, 1))}.dark\:border-slate-700\/80:is(.dark *){border-color:rgb(51 65 85 / 0.8)}.dark\:border-slate-800:is(.dark *){--tw-border-opacity:1;border-color:rgb(30 41 59 / var(--tw-border-opacity, 1))}.dark\:border-sky-500\/40:is(.dark *){border-color:rgb(14 165 233 / 0.4)}.dark\:border-sky-700\/60:is(.dark *){border-color:rgb(3 105 161 / 0.6)}.dark\:bg-\[\#0b1120\]\/85:is(.dark *){background-color:rgb(11 17 32 / 0.85)}.dark\:bg-sky-500:is(.dark *){--tw-bg-opacity:1;background-color:rgb(14 165 233 / var(--tw-bg-opacity, 1))}.dark\:bg-slate-700:is(.dark *){--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.dark\:bg-slate-800:is(.dark *){--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}.dark\:bg-slate-800\/80:is(.dark *){background-color:rgb(30 41 59 / 0.8)}.dark\:bg-slate-900:is(.dark *){--tw-bg-opacity:1;background-color:rgb(15 23 42 / var(--tw-bg-opacity, 1))}.dark\:bg-slate-900\/80:is(.dark *){background-color:rgb(15 23 42 / 0.8)}.dark\:bg-slate-900\/85:is(.dark *){background-color:rgb(15 23 42 / 0.85)}.dark\:bg-sky-500\/20:is(.dark *){background-color:rgb(14 165 233 / 0.2)}.dark\:bg-sky-950\/70:is(.dark *){background-color:rgb(8 47 73 / 0.7)}.dark\:bg-slate-950\/60:is(.dark *){background-color:rgb(2 6 23 / 0.6)}.dark\:text-sky-300:is(.dark *){--tw-text-opacity:1;color:rgb(125 211 252 / var(--tw-text-opacity, 1))}.dark\:text-slate-100:is(.dark *){--tw-text-opacity:1;color:rgb(241 245 249 / var(--tw-text-opacity, 1))}.dark\:text-slate-300:is(.dark *){--tw-text-opacity:1;color:rgb(203 213 225 / var(--tw-text-opacity, 1))}.dark\:text-slate-400:is(.dark *){--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.dark\:text-slate-950:is(.dark *){--tw-text-opacity:1;color:rgb(2 6 23 / var(--tw-text-opacity, 1))}.dark\:text-sky-200:is(.dark *){--tw-text-opacity:1;color:rgb(186 230 253 / var(--tw-text-opacity, 1))}.dark\:text-slate-200:is(.dark *){--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.dark\:shadow-black\/40:is(.dark *){--tw-shadow-color:rgb(0 0 0 / 0.4);--tw-shadow:var(--tw-shadow-colored)}.dark\:selection\:bg-sky-800 *:is(.dark *)::selection{--tw-bg-opacity:1;background-color:rgb(7 89 133 / var(--tw-bg-opacity, 1))}.dark\:selection\:bg-sky-800:is(.dark *)::selection{--tw-bg-opacity:1;background-color:rgb(7 89 133 / var(--tw-bg-opacity, 1))}.dark\:hover\:bg-slate-700:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(51 65 85 / var(--tw-bg-opacity, 1))}.dark\:hover\:bg-slate-800:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(30 41 59 / var(--tw-bg-opacity, 1))}@media (min-width: 640px){.sm\:inline-block{display:inline-block}.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:gap-1\.5{gap:0.375rem}.sm\:gap-2{gap:0.5rem}.sm\:rounded-full{border-radius:9999px}.sm\:p-6{padding:1.5rem}.sm\:p-9{padding:2.25rem}.sm\:px-10{padding-left:2.5rem;padding-right:2.5rem}.sm\:px-12{padding-left:3rem;padding-right:3rem}.sm\:text-4xl{font-size:2.25rem;line-height:2.5rem}.sm\:text-base{font-size:1rem;line-height:1.5rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 768px){.md\:inline{display:inline}.md\:pl-8{padding-left:2rem}.md\:text-\[40px\]{font-size:40px}}</style></head>
+<body class="graph-paper paper-grain min-h-screen w-full flex flex-col justify-between relative selection:bg-sky-200 dark:selection:bg-sky-800">
+
+    <!-- Top Minimal Engineering Sheet Header -->
+    <header class="w-full px-5 sm:px-10 pt-5 pb-3 flex items-center justify-between text-xs font-mono opacity-80 z-30 pointer-events-none">
+        <div class="flex items-center gap-3 pointer-events-auto">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>MLE // LOGBOOK 01</span>
+            <span id="sticker-count" class="hidden sm:inline-block opacity-65 ml-2">ELEMENTS: 06</span>
+        </div>
+
+        <div class="flex items-center gap-2 pointer-events-auto">
+            <!-- Theme Toggle (Graph Paper vs Blueprint Dark Mode) -->
+            <button id="theme-toggle" type="button" title="Toggle Graph Paper / Blueprint Mode" class="px-3 py-1.5 rounded-full border border-slate-300/80 dark:border-sky-500/30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md hover:scale-105 active:scale-95 transition flex items-center gap-2 text-xs font-mono shadow-sm">
+                <span id="theme-icon">☀️</span>
+                <span id="theme-label">PAPER</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Center Stage: Static Monospace Guiding Quote & MLE Bio -->
+    <main class="flex-1 w-full max-w-4xl mx-auto px-6 sm:px-12 flex flex-col justify-center items-start z-20 my-auto py-12 pointer-events-none">
+        <div id="text-safe-zone" class="margin-guide pl-0 md:pl-8 w-full pointer-events-auto rounded-2xl p-6 sm:p-9 bg-[#FAF9F6]/85 dark:bg-[#0b1120]/85 backdrop-blur-[2px]">
+            <!-- Subtle Guiding Axiom Tag -->
+            <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-slate-200/70 dark:bg-slate-800/80 text-[11px] font-mono tracking-wider uppercase mb-6 text-slate-600 dark:text-sky-300">
+                <span>GUIDING AXIOM</span>
+                <span>•</span>
+                <span>01</span>
+            </div>
+
+            <!-- Static Guiding Quote in Crisp Monospace Font -->
+            <blockquote class="w-full">
+                <h1 class="font-mono text-2xl sm:text-4xl md:text-[40px] font-medium leading-snug tracking-tight text-slate-800 dark:text-slate-100">
+                    “A system is intelligent to the extent that it does the right thing.”
+                </h1>
+                <footer class="mt-3.5 font-mono text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                    — Stuart Russell &amp; Peter Norvig
+                </footer>
+            </blockquote>
+
+            <!-- Subtle Divider -->
+            <hr class="my-7 border-slate-300/80 dark:border-slate-700/80 w-24">
+
+            <!-- Concise MLE Bio & Research Focus -->
+            <div class="font-mono space-y-2 max-w-2xl">
+                <p class="text-sm sm:text-base font-semibold text-slate-900 dark:text-sky-300">
+                    Machine Learning Engineer
+                </p>
+                <p id="sub-note" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Currently obsessing over <span class="text-slate-900 dark:text-slate-100 font-medium">LLM Systems</span> &amp; <span class="text-slate-900 dark:text-slate-100 font-medium">Reinforcement Learning in LLMs</span> — fast inference, fused kernels, verifiable rewards, and teaching models to reason.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Bottom Control Pill -->
+    <footer class="w-full px-4 pb-5 pt-2 flex justify-center z-30 pointer-events-none">
+        <div id="control-pill" class="pointer-events-auto max-w-full overflow-x-auto flex items-center gap-1.5 sm:gap-2 px-3 py-2 rounded-2xl sm:rounded-full bg-white/85 dark:bg-slate-900/85 backdrop-blur-xl border border-slate-200/90 dark:border-sky-500/25 shadow-lg shadow-slate-900/5 dark:shadow-black/40">
+            
+            <!-- Shuffle Layout Button -->
+            <button id="shuffle-btn" type="button" title="Rearrange strewn background stickers" class="px-3 py-1.5 rounded-full text-xs font-mono font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-sky-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition shrink-0 flex items-center gap-1.5">
+                <span>🎲</span>
+                <span>SHUFFLE</span>
+            </button>
+
+            <div class="h-5 w-[1px] bg-slate-200 dark:bg-slate-700 mx-0.5 shrink-0"></div>
+
+            <!-- Individual Mini-Sticker Category Toggles -->
+            <div id="sticker-toggles" class="flex items-center gap-1 sm:gap-1.5 shrink-0">
+                <!-- Populated cleanly via JS with custom mini SVG badges -->
+            <button type="button" title="Show/Hide Spaceship stickers" class="px-2.5 py-1.5 rounded-full text-xs font-mono flex items-center gap-1.5 transition border bg-sky-50 dark:bg-sky-950/70 border-sky-200 dark:border-sky-700/60 text-slate-800 dark:text-sky-200 shadow-xs"><span class="w-4 h-4 inline-flex items-center justify-center scale-75"><svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Thruster Flame -->
+    <path class="thruster-flame" d="M13 25L16 31L19 25H13Z" fill="#F97316"></path>
+    <path class="thruster-flame" d="M14.5 25L16 28.5L17.5 25H14.5Z" fill="#FDE047"></path>
+    <!-- Side Fins -->
+    <path d="M9 19L5 24H10V19H9Z" fill="#EF4444" stroke="#1E293B" stroke-width="1.4" stroke-linejoin="round"></path>
+    <path d="M23 19L27 24H22V19H23Z" fill="#EF4444" stroke="#1E293B" stroke-width="1.4" stroke-linejoin="round"></path>
+    <!-- Main Fuselage -->
+    <path d="M16 3C11.5 8 10 14.5 10 22H22C22 14.5 20.5 8 16 3Z" fill="#F8FAFC" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"></path>
+    <!-- Nose Cone Tip -->
+    <path d="M16 3C14.2 5 13.1 6.8 12.5 8.5H19.5C18.9 6.8 17.8 5 16 3Z" fill="#EF4444"></path>
+    <!-- Porthole Window -->
+    <circle cx="16" cy="14" r="3" fill="#38BDF8" stroke="#1E293B" stroke-width="1.4"></circle>
+    <circle cx="15" cy="13" r="0.9" fill="#FFFFFF"></circle>
+    <!-- Engine Base -->
+    <rect x="12" y="22" width="8" height="3" rx="1" fill="#475569" stroke="#1E293B" stroke-width="1.3"></rect>
+</svg></span><span class="hidden md:inline">Spaceship</span></button><button type="button" title="Show/Hide Barbell stickers" class="px-2.5 py-1.5 rounded-full text-xs font-mono flex items-center gap-1.5 transition border bg-sky-50 dark:bg-sky-950/70 border-sky-200 dark:border-sky-700/60 text-slate-800 dark:text-sky-200 shadow-xs"><span class="w-4 h-4 inline-flex items-center justify-center scale-75"><svg viewBox="0 0 36 32" width="42" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Steel Bar -->
+    <rect x="2" y="14.5" width="32" height="3" rx="1.5" fill="#94A3B8" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Left Plates -->
+    <rect x="5" y="7" width="3.5" height="18" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.4"></rect>
+    <rect x="9" y="9.5" width="2.8" height="13" rx="1.2" fill="#38BDF8" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Right Plates -->
+    <rect x="27.5" y="7" width="3.5" height="18" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.4"></rect>
+    <rect x="24.2" y="9.5" width="2.8" height="13" rx="1.2" fill="#38BDF8" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Center Knurling Highlight -->
+    <line x1="15" y1="16" x2="21" y2="16" stroke="#F8FAFC" stroke-width="1.2" stroke-dasharray="1 1"></line>
+</svg></span><span class="hidden md:inline">Barbell</span></button><button type="button" title="Show/Hide Matcha stickers" class="px-2.5 py-1.5 rounded-full text-xs font-mono flex items-center gap-1.5 transition border bg-sky-50 dark:bg-sky-950/70 border-sky-200 dark:border-sky-700/60 text-slate-800 dark:text-sky-200 shadow-xs"><span class="w-4 h-4 inline-flex items-center justify-center scale-75"><svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Gentle Steam -->
+    <path class="matcha-steam" d="M12 8C12 6.5 13.5 6 13.5 4.5" stroke="#94A3B8" stroke-width="1.3" stroke-linecap="round"></path>
+    <path class="matcha-steam" style="animation-delay: 0.9s" d="M18.5 8.5C18.5 7 20 6.5 20 5" stroke="#94A3B8" stroke-width="1.3" stroke-linecap="round"></path>
+    <!-- Ceramic Chawan Bowl -->
+    <path d="M5 13H27L25.2 22.5C24.7 25 22.5 26.8 20 26.8H12C9.5 26.8 7.3 25 6.8 22.5L5 13Z" fill="#F5F5F4" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"></path>
+    <!-- Foot Ring -->
+    <rect x="11" y="26.8" width="10" height="2.2" rx="1" fill="#D6D3D1" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Vibrant Ceremonial Matcha Liquid & Froth -->
+    <ellipse cx="16" cy="13" rx="11" ry="3.2" fill="#65A30D" stroke="#1E293B" stroke-width="1.4"></ellipse>
+    <ellipse cx="16" cy="13" rx="8" ry="1.8" fill="#84CC16"></ellipse>
+    <!-- Microfoam Bubbles -->
+    <circle cx="13.5" cy="12.7" r="0.7" fill="#ECFCCB"></circle>
+    <circle cx="17.5" cy="13.3" r="0.6" fill="#ECFCCB"></circle>
+    <circle cx="15.5" cy="12.5" r="0.5" fill="#ECFCCB"></circle>
+</svg></span><span class="hidden md:inline">Matcha</span></button><button type="button" title="Show/Hide Galaxy stickers" class="px-2.5 py-1.5 rounded-full text-xs font-mono flex items-center gap-1.5 transition border bg-sky-50 dark:bg-sky-950/70 border-sky-200 dark:border-sky-700/60 text-slate-800 dark:text-sky-200 shadow-xs"><span class="w-4 h-4 inline-flex items-center justify-center scale-75"><svg viewBox="0 0 32 32" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="galaxy-swirl">
+        <!-- Outer Spiral Arms -->
+        <path d="M16 5C22.5 5 27 9.8 27 15.5C27 20.5 23 24.5 17.5 24.5C13 24.5 9.5 21 9.5 16.5C9.5 13 12.2 10.5 15.5 10.5" stroke="#8B5CF6" stroke-width="2.2" stroke-linecap="round"></path>
+        <path d="M16 27C9.5 27 5 22.2 5 16.5C5 11.5 9 7.5 14.5 7.5C19 7.5 22.5 11 22.5 15.5C22.5 19 19.8 21.5 16.5 21.5" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round"></path>
+        <!-- Glowing Core -->
+        <circle cx="16" cy="16" r="4" fill="#FDE047" opacity="0.5"></circle>
+        <circle cx="16" cy="16" r="2.3" fill="#FFFFFF"></circle>
+        <!-- Tiny Orbiting Stars -->
+        <circle cx="7" cy="9" r="1.1" fill="#F472B6"></circle>
+        <circle cx="25" cy="23" r="1.1" fill="#38BDF8"></circle>
+        <circle cx="24" cy="8" r="0.9" fill="#FDE047"></circle>
+    </g>
+</svg></span><span class="hidden md:inline">Galaxy</span></button><button type="button" title="Show/Hide Typewriter stickers" class="px-2.5 py-1.5 rounded-full text-xs font-mono flex items-center gap-1.5 transition border bg-sky-50 dark:bg-sky-950/70 border-sky-200 dark:border-sky-700/60 text-slate-800 dark:text-sky-200 shadow-xs"><span class="w-4 h-4 inline-flex items-center justify-center scale-75"><svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Paper Sheet -->
+    <rect x="10" y="4" width="12" height="10" rx="1" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.4"></rect>
+    <line x1="12.5" y1="7" x2="19.5" y2="7" stroke="#64748B" stroke-width="1.2" stroke-linecap="round"></line>
+    <line x1="12.5" y1="9.8" x2="17.5" y2="9.8" stroke="#64748B" stroke-width="1.2" stroke-linecap="round"></line>
+    <!-- Roller Platen -->
+    <rect x="6" y="12" width="20" height="3" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Typewriter Body -->
+    <path d="M6 15H26L28 25C28 26.1 27.1 27 26 27H6C4.9 27 4 26.1 4 25L6 15Z" fill="#10B981" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"></path>
+    <!-- Keycaps -->
+    <circle cx="10" cy="20" r="1.2" fill="#F8FAFC"></circle>
+    <circle cx="14" cy="20" r="1.2" fill="#F8FAFC"></circle>
+    <circle cx="18" cy="20" r="1.2" fill="#F8FAFC"></circle>
+    <circle cx="22" cy="20" r="1.2" fill="#F8FAFC"></circle>
+    <rect x="11" y="23.2" width="10" height="1.8" rx="0.9" fill="#F8FAFC"></rect>
+</svg></span><span class="hidden md:inline">Typewriter</span></button></div>
+
+            <div class="h-5 w-[1px] bg-slate-200 dark:bg-slate-700 mx-0.5 shrink-0"></div>
+
+            <!-- Clear Extra User-Placed Stickers Button -->
+            <button id="clear-extra-btn" type="button" title="Reset to default strewn layout" class="px-2.5 py-1.5 rounded-full text-xs font-mono text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition shrink-0">
+                ↺ Reset
+            </button>
+
+            <div class="h-5 w-[1px] bg-slate-200 dark:bg-slate-700 mx-0.5 shrink-0"></div>
+
+            <!-- Open Standalone SVG & HTML Assets Drawer -->
+            <button id="open-assets-btn" type="button" title="Inspect, copy, or download SVG &amp; HTML assets" class="px-3 py-1.5 rounded-full text-xs font-mono font-medium bg-slate-900 text-white dark:bg-sky-500 dark:text-slate-950 hover:opacity-90 active:scale-95 transition shrink-0 flex items-center gap-1.5">
+                <span>📦</span>
+                <span>Assets / SVGs</span>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Container where all strewn background SVG stickers live -->
+    <div id="strewn-layer" aria-hidden="true"><div class="strewn-sticker" title="Galaxy (Click to nudge)" style="left: 87.374796vw; top: 15.05004vh; --tilt: -17.0deg; --scale: 0.93; --float-dur: 5.94s; --float-delay: -3.49s; opacity: 1; pointer-events: auto;"><svg viewBox="0 0 32 32" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="galaxy-swirl">
+        <!-- Outer Spiral Arms -->
+        <path d="M16 5C22.5 5 27 9.8 27 15.5C27 20.5 23 24.5 17.5 24.5C13 24.5 9.5 21 9.5 16.5C9.5 13 12.2 10.5 15.5 10.5" stroke="#8B5CF6" stroke-width="2.2" stroke-linecap="round"></path>
+        <path d="M16 27C9.5 27 5 22.2 5 16.5C5 11.5 9 7.5 14.5 7.5C19 7.5 22.5 11 22.5 15.5C22.5 19 19.8 21.5 16.5 21.5" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round"></path>
+        <!-- Glowing Core -->
+        <circle cx="16" cy="16" r="4" fill="#FDE047" opacity="0.5"></circle>
+        <circle cx="16" cy="16" r="2.3" fill="#FFFFFF"></circle>
+        <!-- Tiny Orbiting Stars -->
+        <circle cx="7" cy="9" r="1.1" fill="#F472B6"></circle>
+        <circle cx="25" cy="23" r="1.1" fill="#38BDF8"></circle>
+        <circle cx="24" cy="8" r="0.9" fill="#FDE047"></circle>
+    </g>
+</svg></div><div class="strewn-sticker" title="Barbell (Click to nudge)" style="left: 92.47617vw; top: 53.772278vh; --tilt: 3.5deg; --scale: 0.98; --float-dur: 6.39s; --float-delay: -2.80s; opacity: 1; pointer-events: auto;"><svg viewBox="0 0 36 32" width="42" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Steel Bar -->
+    <rect x="2" y="14.5" width="32" height="3" rx="1.5" fill="#94A3B8" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Left Plates -->
+    <rect x="5" y="7" width="3.5" height="18" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.4"></rect>
+    <rect x="9" y="9.5" width="2.8" height="13" rx="1.2" fill="#38BDF8" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Right Plates -->
+    <rect x="27.5" y="7" width="3.5" height="18" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.4"></rect>
+    <rect x="24.2" y="9.5" width="2.8" height="13" rx="1.2" fill="#38BDF8" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Center Knurling Highlight -->
+    <line x1="15" y1="16" x2="21" y2="16" stroke="#F8FAFC" stroke-width="1.2" stroke-dasharray="1 1"></line>
+</svg></div><div class="strewn-sticker" title="Matcha (Click to nudge)" style="left: 10.324454vw; top: 16.513673vh; --tilt: -1.8deg; --scale: 1.01; --float-dur: 6.02s; --float-delay: -4.31s; opacity: 1; pointer-events: auto;"><svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Gentle Steam -->
+    <path class="matcha-steam" d="M12 8C12 6.5 13.5 6 13.5 4.5" stroke="#94A3B8" stroke-width="1.3" stroke-linecap="round"></path>
+    <path class="matcha-steam" style="animation-delay: 0.9s" d="M18.5 8.5C18.5 7 20 6.5 20 5" stroke="#94A3B8" stroke-width="1.3" stroke-linecap="round"></path>
+    <!-- Ceramic Chawan Bowl -->
+    <path d="M5 13H27L25.2 22.5C24.7 25 22.5 26.8 20 26.8H12C9.5 26.8 7.3 25 6.8 22.5L5 13Z" fill="#F5F5F4" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"></path>
+    <!-- Foot Ring -->
+    <rect x="11" y="26.8" width="10" height="2.2" rx="1" fill="#D6D3D1" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Vibrant Ceremonial Matcha Liquid & Froth -->
+    <ellipse cx="16" cy="13" rx="11" ry="3.2" fill="#65A30D" stroke="#1E293B" stroke-width="1.4"></ellipse>
+    <ellipse cx="16" cy="13" rx="8" ry="1.8" fill="#84CC16"></ellipse>
+    <!-- Microfoam Bubbles -->
+    <circle cx="13.5" cy="12.7" r="0.7" fill="#ECFCCB"></circle>
+    <circle cx="17.5" cy="13.3" r="0.6" fill="#ECFCCB"></circle>
+    <circle cx="15.5" cy="12.5" r="0.5" fill="#ECFCCB"></circle>
+</svg></div><div class="strewn-sticker" title="Typewriter (Click to nudge)" style="left: 6.705847vw; top: 51.555123vh; --tilt: -15.1deg; --scale: 1.07; --float-dur: 7.99s; --float-delay: -1.73s; opacity: 1; pointer-events: auto;"><svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Paper Sheet -->
+    <rect x="10" y="4" width="12" height="10" rx="1" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.4"></rect>
+    <line x1="12.5" y1="7" x2="19.5" y2="7" stroke="#64748B" stroke-width="1.2" stroke-linecap="round"></line>
+    <line x1="12.5" y1="9.8" x2="17.5" y2="9.8" stroke="#64748B" stroke-width="1.2" stroke-linecap="round"></line>
+    <!-- Roller Platen -->
+    <rect x="6" y="12" width="20" height="3" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Typewriter Body -->
+    <path d="M6 15H26L28 25C28 26.1 27.1 27 26 27H6C4.9 27 4 26.1 4 25L6 15Z" fill="#10B981" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"></path>
+    <!-- Keycaps -->
+    <circle cx="10" cy="20" r="1.2" fill="#F8FAFC"></circle>
+    <circle cx="14" cy="20" r="1.2" fill="#F8FAFC"></circle>
+    <circle cx="18" cy="20" r="1.2" fill="#F8FAFC"></circle>
+    <circle cx="22" cy="20" r="1.2" fill="#F8FAFC"></circle>
+    <rect x="11" y="23.2" width="10" height="1.8" rx="0.9" fill="#F8FAFC"></rect>
+</svg></div><div class="strewn-sticker" title="Spaceship (Click to nudge)" style="left: 85.941298vw; top: 83.696468vh; --tilt: -16.0deg; --scale: 1.05; --float-dur: 7.13s; --float-delay: -2.52s; opacity: 1; pointer-events: auto;"><svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Thruster Flame -->
+    <path class="thruster-flame" d="M13 25L16 31L19 25H13Z" fill="#F97316"></path>
+    <path class="thruster-flame" d="M14.5 25L16 28.5L17.5 25H14.5Z" fill="#FDE047"></path>
+    <!-- Side Fins -->
+    <path d="M9 19L5 24H10V19H9Z" fill="#EF4444" stroke="#1E293B" stroke-width="1.4" stroke-linejoin="round"></path>
+    <path d="M23 19L27 24H22V19H23Z" fill="#EF4444" stroke="#1E293B" stroke-width="1.4" stroke-linejoin="round"></path>
+    <!-- Main Fuselage -->
+    <path d="M16 3C11.5 8 10 14.5 10 22H22C22 14.5 20.5 8 16 3Z" fill="#F8FAFC" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"></path>
+    <!-- Nose Cone Tip -->
+    <path d="M16 3C14.2 5 13.1 6.8 12.5 8.5H19.5C18.9 6.8 17.8 5 16 3Z" fill="#EF4444"></path>
+    <!-- Porthole Window -->
+    <circle cx="16" cy="14" r="3" fill="#38BDF8" stroke="#1E293B" stroke-width="1.4"></circle>
+    <circle cx="15" cy="13" r="0.9" fill="#FFFFFF"></circle>
+    <!-- Engine Base -->
+    <rect x="12" y="22" width="8" height="3" rx="1" fill="#475569" stroke="#1E293B" stroke-width="1.3"></rect>
+</svg></div><div class="strewn-sticker" title="Galaxy (Click to nudge)" style="left: 12.571428vw; top: 82.297484vh; --tilt: -3.7deg; --scale: 1.00; --float-dur: 7.24s; --float-delay: -3.57s; opacity: 1; pointer-events: auto;"><svg viewBox="0 0 32 32" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="galaxy-swirl">
+        <!-- Outer Spiral Arms -->
+        <path d="M16 5C22.5 5 27 9.8 27 15.5C27 20.5 23 24.5 17.5 24.5C13 24.5 9.5 21 9.5 16.5C9.5 13 12.2 10.5 15.5 10.5" stroke="#8B5CF6" stroke-width="2.2" stroke-linecap="round"></path>
+        <path d="M16 27C9.5 27 5 22.2 5 16.5C5 11.5 9 7.5 14.5 7.5C19 7.5 22.5 11 22.5 15.5C22.5 19 19.8 21.5 16.5 21.5" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round"></path>
+        <!-- Glowing Core -->
+        <circle cx="16" cy="16" r="4" fill="#FDE047" opacity="0.5"></circle>
+        <circle cx="16" cy="16" r="2.3" fill="#FFFFFF"></circle>
+        <!-- Tiny Orbiting Stars -->
+        <circle cx="7" cy="9" r="1.1" fill="#F472B6"></circle>
+        <circle cx="25" cy="23" r="1.1" fill="#38BDF8"></circle>
+        <circle cx="24" cy="8" r="0.9" fill="#FDE047"></circle>
+    </g>
+</svg></div></div>
+
+    <!-- Standalone Assets Inspector & Download Modal -->
+    <div id="assets-modal" role="dialog" aria-modal="true" aria-labelledby="assets-modal-title" class="fixed inset-0 z-50 items-center justify-center p-4 sm:p-6 bg-slate-950/50 backdrop-blur-sm flex">
+        <div id="assets-modal-card" class="w-full max-w-3xl max-h-[88vh] flex flex-col rounded-2xl bg-[#FAF9F6] dark:bg-slate-900 border border-slate-300 dark:border-sky-500/30 shadow-2xl overflow-hidden font-mono">
+            
+            <!-- Modal Header -->
+            <div class="px-5 py-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3">
+                <div>
+                    <h2 id="assets-modal-title" class="text-sm sm:text-base font-semibold text-slate-900 dark:text-slate-100">
+                        Standalone SVG &amp; Page Assets
+                    </h2>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+                        Copy inline SVG markup or download individual files directly.
+                    </p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button id="download-html-btn" type="button" class="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-900 text-white dark:bg-sky-500 dark:text-slate-950 hover:opacity-90 active:scale-95 transition">
+                        ↓ index.html
+                    </button>
+                    <button id="close-assets-btn" type="button" aria-label="Close assets modal" class="w-8 h-8 rounded-lg border border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-slate-200/70 dark:hover:bg-slate-800 transition">
+                        ✕
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Body: Grid of 5 Standalone SVG Assets -->
+            <div id="assets-grid" class="p-5 overflow-y-auto grid grid-cols-1 sm:grid-cols-2 gap-4"><div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/60 p-4 flex flex-col justify-between gap-3">
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl graph-paper border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
+                                <svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Thruster Flame -->
+    <path class="thruster-flame" d="M13 25L16 31L19 25H13Z" fill="#F97316"></path>
+    <path class="thruster-flame" d="M14.5 25L16 28.5L17.5 25H14.5Z" fill="#FDE047"></path>
+    <!-- Side Fins -->
+    <path d="M9 19L5 24H10V19H9Z" fill="#EF4444" stroke="#1E293B" stroke-width="1.4" stroke-linejoin="round"></path>
+    <path d="M23 19L27 24H22V19H23Z" fill="#EF4444" stroke="#1E293B" stroke-width="1.4" stroke-linejoin="round"></path>
+    <!-- Main Fuselage -->
+    <path d="M16 3C11.5 8 10 14.5 10 22H22C22 14.5 20.5 8 16 3Z" fill="#F8FAFC" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"></path>
+    <!-- Nose Cone Tip -->
+    <path d="M16 3C14.2 5 13.1 6.8 12.5 8.5H19.5C18.9 6.8 17.8 5 16 3Z" fill="#EF4444"></path>
+    <!-- Porthole Window -->
+    <circle cx="16" cy="14" r="3" fill="#38BDF8" stroke="#1E293B" stroke-width="1.4"></circle>
+    <circle cx="15" cy="13" r="0.9" fill="#FFFFFF"></circle>
+    <!-- Engine Base -->
+    <rect x="12" y="22" width="8" height="3" rx="1" fill="#475569" stroke="#1E293B" stroke-width="1.3"></rect>
+</svg>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-900 dark:text-slate-100">Spaceship</div>
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400">spaceship.svg</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" data-action="copy" class="px-2.5 py-1.5 rounded-lg text-[11px] border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition">
+                                Copy SVG
+                            </button>
+                            <button type="button" data-action="download" class="px-2.5 py-1.5 rounded-lg text-[11px] bg-slate-800 text-white dark:bg-sky-500/20 dark:text-sky-300 dark:border dark:border-sky-500/40 hover:opacity-90 transition">
+                                ↓ .svg
+                            </button>
+                        </div>
+                    </div>
+                    <pre class="text-[10px] leading-relaxed p-2.5 rounded-lg bg-slate-100/90 dark:bg-slate-900 text-slate-600 dark:text-slate-300 overflow-x-auto max-h-24 select-all"><code>&lt;svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;!-- Thruster Flame --&gt;
+    &lt;path class="thruster-flame" d="M13 25L16 31L19 25H13Z" fill="#F97316"/&gt;
+    &lt;path class="thruster-flame" d="M14.5 25L16 28.5L17.5 25H14.5Z" fill="#FDE047"/&gt;
+    &lt;!-- Side Fins --&gt;
+    &lt;path d="M9 19L5 24H10V19H9Z" fill="#EF4444" stroke="#1E293B" stroke-width="1.4" stroke-linejoin="round"/&gt;
+    &lt;path d="M23 19L27 24H22V19H23Z" fill="#EF4444" stroke="#1E293B" stroke-width="1.4" stroke-linejoin="round"/&gt;
+    &lt;!-- Main Fuselage --&gt;
+    &lt;path d="M16 3C11.5 8 10 14.5 10 22H22C22 14.5 20.5 8 16 3Z" fill="#F8FAFC" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"/&gt;
+    &lt;!-- Nose Cone Tip --&gt;
+    &lt;path d="M16 3C14.2 5 13.1 6.8 12.5 8.5H19.5C18.9 6.8 17.8 5 16 3Z" fill="#EF4444"/&gt;
+    &lt;!-- Porthole Window --&gt;
+    &lt;circle cx="16" cy="14" r="3" fill="#38BDF8" stroke="#1E293B" stroke-width="1.4"/&gt;
+    &lt;circle cx="15" cy="13" r="0.9" fill="#FFFFFF"/&gt;
+    &lt;!-- Engine Base --&gt;
+    &lt;rect x="12" y="22" width="8" height="3" rx="1" fill="#475569" stroke="#1E293B" stroke-width="1.3"/&gt;
+&lt;/svg&gt;</code></pre>
+                </div><div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/60 p-4 flex flex-col justify-between gap-3">
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl graph-paper border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
+                                <svg viewBox="0 0 36 32" width="42" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Steel Bar -->
+    <rect x="2" y="14.5" width="32" height="3" rx="1.5" fill="#94A3B8" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Left Plates -->
+    <rect x="5" y="7" width="3.5" height="18" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.4"></rect>
+    <rect x="9" y="9.5" width="2.8" height="13" rx="1.2" fill="#38BDF8" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Right Plates -->
+    <rect x="27.5" y="7" width="3.5" height="18" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.4"></rect>
+    <rect x="24.2" y="9.5" width="2.8" height="13" rx="1.2" fill="#38BDF8" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Center Knurling Highlight -->
+    <line x1="15" y1="16" x2="21" y2="16" stroke="#F8FAFC" stroke-width="1.2" stroke-dasharray="1 1"></line>
+</svg>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-900 dark:text-slate-100">Barbell</div>
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400">barbell.svg</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" data-action="copy" class="px-2.5 py-1.5 rounded-lg text-[11px] border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition">
+                                Copy SVG
+                            </button>
+                            <button type="button" data-action="download" class="px-2.5 py-1.5 rounded-lg text-[11px] bg-slate-800 text-white dark:bg-sky-500/20 dark:text-sky-300 dark:border dark:border-sky-500/40 hover:opacity-90 transition">
+                                ↓ .svg
+                            </button>
+                        </div>
+                    </div>
+                    <pre class="text-[10px] leading-relaxed p-2.5 rounded-lg bg-slate-100/90 dark:bg-slate-900 text-slate-600 dark:text-slate-300 overflow-x-auto max-h-24 select-all"><code>&lt;svg viewBox="0 0 36 32" width="42" height="36" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;!-- Steel Bar --&gt;
+    &lt;rect x="2" y="14.5" width="32" height="3" rx="1.5" fill="#94A3B8" stroke="#1E293B" stroke-width="1.3"/&gt;
+    &lt;!-- Left Plates --&gt;
+    &lt;rect x="5" y="7" width="3.5" height="18" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.4"/&gt;
+    &lt;rect x="9" y="9.5" width="2.8" height="13" rx="1.2" fill="#38BDF8" stroke="#1E293B" stroke-width="1.3"/&gt;
+    &lt;!-- Right Plates --&gt;
+    &lt;rect x="27.5" y="7" width="3.5" height="18" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.4"/&gt;
+    &lt;rect x="24.2" y="9.5" width="2.8" height="13" rx="1.2" fill="#38BDF8" stroke="#1E293B" stroke-width="1.3"/&gt;
+    &lt;!-- Center Knurling Highlight --&gt;
+    &lt;line x1="15" y1="16" x2="21" y2="16" stroke="#F8FAFC" stroke-width="1.2" stroke-dasharray="1 1"/&gt;
+&lt;/svg&gt;</code></pre>
+                </div><div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/60 p-4 flex flex-col justify-between gap-3">
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl graph-paper border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
+                                <svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Gentle Steam -->
+    <path class="matcha-steam" d="M12 8C12 6.5 13.5 6 13.5 4.5" stroke="#94A3B8" stroke-width="1.3" stroke-linecap="round"></path>
+    <path class="matcha-steam" style="animation-delay: 0.9s" d="M18.5 8.5C18.5 7 20 6.5 20 5" stroke="#94A3B8" stroke-width="1.3" stroke-linecap="round"></path>
+    <!-- Ceramic Chawan Bowl -->
+    <path d="M5 13H27L25.2 22.5C24.7 25 22.5 26.8 20 26.8H12C9.5 26.8 7.3 25 6.8 22.5L5 13Z" fill="#F5F5F4" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"></path>
+    <!-- Foot Ring -->
+    <rect x="11" y="26.8" width="10" height="2.2" rx="1" fill="#D6D3D1" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Vibrant Ceremonial Matcha Liquid & Froth -->
+    <ellipse cx="16" cy="13" rx="11" ry="3.2" fill="#65A30D" stroke="#1E293B" stroke-width="1.4"></ellipse>
+    <ellipse cx="16" cy="13" rx="8" ry="1.8" fill="#84CC16"></ellipse>
+    <!-- Microfoam Bubbles -->
+    <circle cx="13.5" cy="12.7" r="0.7" fill="#ECFCCB"></circle>
+    <circle cx="17.5" cy="13.3" r="0.6" fill="#ECFCCB"></circle>
+    <circle cx="15.5" cy="12.5" r="0.5" fill="#ECFCCB"></circle>
+</svg>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-900 dark:text-slate-100">Matcha</div>
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400">matcha.svg</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" data-action="copy" class="px-2.5 py-1.5 rounded-lg text-[11px] border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition">
+                                Copy SVG
+                            </button>
+                            <button type="button" data-action="download" class="px-2.5 py-1.5 rounded-lg text-[11px] bg-slate-800 text-white dark:bg-sky-500/20 dark:text-sky-300 dark:border dark:border-sky-500/40 hover:opacity-90 transition">
+                                ↓ .svg
+                            </button>
+                        </div>
+                    </div>
+                    <pre class="text-[10px] leading-relaxed p-2.5 rounded-lg bg-slate-100/90 dark:bg-slate-900 text-slate-600 dark:text-slate-300 overflow-x-auto max-h-24 select-all"><code>&lt;svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;!-- Gentle Steam --&gt;
+    &lt;path class="matcha-steam" d="M12 8C12 6.5 13.5 6 13.5 4.5" stroke="#94A3B8" stroke-width="1.3" stroke-linecap="round"/&gt;
+    &lt;path class="matcha-steam" style="animation-delay: 0.9s" d="M18.5 8.5C18.5 7 20 6.5 20 5" stroke="#94A3B8" stroke-width="1.3" stroke-linecap="round"/&gt;
+    &lt;!-- Ceramic Chawan Bowl --&gt;
+    &lt;path d="M5 13H27L25.2 22.5C24.7 25 22.5 26.8 20 26.8H12C9.5 26.8 7.3 25 6.8 22.5L5 13Z" fill="#F5F5F4" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"/&gt;
+    &lt;!-- Foot Ring --&gt;
+    &lt;rect x="11" y="26.8" width="10" height="2.2" rx="1" fill="#D6D3D1" stroke="#1E293B" stroke-width="1.3"/&gt;
+    &lt;!-- Vibrant Ceremonial Matcha Liquid &amp; Froth --&gt;
+    &lt;ellipse cx="16" cy="13" rx="11" ry="3.2" fill="#65A30D" stroke="#1E293B" stroke-width="1.4"/&gt;
+    &lt;ellipse cx="16" cy="13" rx="8" ry="1.8" fill="#84CC16"/&gt;
+    &lt;!-- Microfoam Bubbles --&gt;
+    &lt;circle cx="13.5" cy="12.7" r="0.7" fill="#ECFCCB"/&gt;
+    &lt;circle cx="17.5" cy="13.3" r="0.6" fill="#ECFCCB"/&gt;
+    &lt;circle cx="15.5" cy="12.5" r="0.5" fill="#ECFCCB"/&gt;
+&lt;/svg&gt;</code></pre>
+                </div><div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/60 p-4 flex flex-col justify-between gap-3">
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl graph-paper border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
+                                <svg viewBox="0 0 32 32" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="galaxy-swirl">
+        <!-- Outer Spiral Arms -->
+        <path d="M16 5C22.5 5 27 9.8 27 15.5C27 20.5 23 24.5 17.5 24.5C13 24.5 9.5 21 9.5 16.5C9.5 13 12.2 10.5 15.5 10.5" stroke="#8B5CF6" stroke-width="2.2" stroke-linecap="round"></path>
+        <path d="M16 27C9.5 27 5 22.2 5 16.5C5 11.5 9 7.5 14.5 7.5C19 7.5 22.5 11 22.5 15.5C22.5 19 19.8 21.5 16.5 21.5" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round"></path>
+        <!-- Glowing Core -->
+        <circle cx="16" cy="16" r="4" fill="#FDE047" opacity="0.5"></circle>
+        <circle cx="16" cy="16" r="2.3" fill="#FFFFFF"></circle>
+        <!-- Tiny Orbiting Stars -->
+        <circle cx="7" cy="9" r="1.1" fill="#F472B6"></circle>
+        <circle cx="25" cy="23" r="1.1" fill="#38BDF8"></circle>
+        <circle cx="24" cy="8" r="0.9" fill="#FDE047"></circle>
+    </g>
+</svg>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-900 dark:text-slate-100">Galaxy</div>
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400">galaxy.svg</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" data-action="copy" class="px-2.5 py-1.5 rounded-lg text-[11px] border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition">
+                                Copy SVG
+                            </button>
+                            <button type="button" data-action="download" class="px-2.5 py-1.5 rounded-lg text-[11px] bg-slate-800 text-white dark:bg-sky-500/20 dark:text-sky-300 dark:border dark:border-sky-500/40 hover:opacity-90 transition">
+                                ↓ .svg
+                            </button>
+                        </div>
+                    </div>
+                    <pre class="text-[10px] leading-relaxed p-2.5 rounded-lg bg-slate-100/90 dark:bg-slate-900 text-slate-600 dark:text-slate-300 overflow-x-auto max-h-24 select-all"><code>&lt;svg viewBox="0 0 32 32" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;g class="galaxy-swirl"&gt;
+        &lt;!-- Outer Spiral Arms --&gt;
+        &lt;path d="M16 5C22.5 5 27 9.8 27 15.5C27 20.5 23 24.5 17.5 24.5C13 24.5 9.5 21 9.5 16.5C9.5 13 12.2 10.5 15.5 10.5" stroke="#8B5CF6" stroke-width="2.2" stroke-linecap="round"/&gt;
+        &lt;path d="M16 27C9.5 27 5 22.2 5 16.5C5 11.5 9 7.5 14.5 7.5C19 7.5 22.5 11 22.5 15.5C22.5 19 19.8 21.5 16.5 21.5" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round"/&gt;
+        &lt;!-- Glowing Core --&gt;
+        &lt;circle cx="16" cy="16" r="4" fill="#FDE047" opacity="0.5"/&gt;
+        &lt;circle cx="16" cy="16" r="2.3" fill="#FFFFFF"/&gt;
+        &lt;!-- Tiny Orbiting Stars --&gt;
+        &lt;circle cx="7" cy="9" r="1.1" fill="#F472B6"/&gt;
+        &lt;circle cx="25" cy="23" r="1.1" fill="#38BDF8"/&gt;
+        &lt;circle cx="24" cy="8" r="0.9" fill="#FDE047"/&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;</code></pre>
+                </div><div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/60 p-4 flex flex-col justify-between gap-3">
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl graph-paper border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
+                                <svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Paper Sheet -->
+    <rect x="10" y="4" width="12" height="10" rx="1" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.4"></rect>
+    <line x1="12.5" y1="7" x2="19.5" y2="7" stroke="#64748B" stroke-width="1.2" stroke-linecap="round"></line>
+    <line x1="12.5" y1="9.8" x2="17.5" y2="9.8" stroke="#64748B" stroke-width="1.2" stroke-linecap="round"></line>
+    <!-- Roller Platen -->
+    <rect x="6" y="12" width="20" height="3" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.3"></rect>
+    <!-- Typewriter Body -->
+    <path d="M6 15H26L28 25C28 26.1 27.1 27 26 27H6C4.9 27 4 26.1 4 25L6 15Z" fill="#10B981" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"></path>
+    <!-- Keycaps -->
+    <circle cx="10" cy="20" r="1.2" fill="#F8FAFC"></circle>
+    <circle cx="14" cy="20" r="1.2" fill="#F8FAFC"></circle>
+    <circle cx="18" cy="20" r="1.2" fill="#F8FAFC"></circle>
+    <circle cx="22" cy="20" r="1.2" fill="#F8FAFC"></circle>
+    <rect x="11" y="23.2" width="10" height="1.8" rx="0.9" fill="#F8FAFC"></rect>
+</svg>
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-900 dark:text-slate-100">Typewriter</div>
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400">typewriter.svg</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" data-action="copy" class="px-2.5 py-1.5 rounded-lg text-[11px] border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition">
+                                Copy SVG
+                            </button>
+                            <button type="button" data-action="download" class="px-2.5 py-1.5 rounded-lg text-[11px] bg-slate-800 text-white dark:bg-sky-500/20 dark:text-sky-300 dark:border dark:border-sky-500/40 hover:opacity-90 transition">
+                                ↓ .svg
+                            </button>
+                        </div>
+                    </div>
+                    <pre class="text-[10px] leading-relaxed p-2.5 rounded-lg bg-slate-100/90 dark:bg-slate-900 text-slate-600 dark:text-slate-300 overflow-x-auto max-h-24 select-all"><code>&lt;svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;!-- Paper Sheet --&gt;
+    &lt;rect x="10" y="4" width="12" height="10" rx="1" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.4"/&gt;
+    &lt;line x1="12.5" y1="7" x2="19.5" y2="7" stroke="#64748B" stroke-width="1.2" stroke-linecap="round"/&gt;
+    &lt;line x1="12.5" y1="9.8" x2="17.5" y2="9.8" stroke="#64748B" stroke-width="1.2" stroke-linecap="round"/&gt;
+    &lt;!-- Roller Platen --&gt;
+    &lt;rect x="6" y="12" width="20" height="3" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.3"/&gt;
+    &lt;!-- Typewriter Body --&gt;
+    &lt;path d="M6 15H26L28 25C28 26.1 27.1 27 26 27H6C4.9 27 4 26.1 4 25L6 15Z" fill="#10B981" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"/&gt;
+    &lt;!-- Keycaps --&gt;
+    &lt;circle cx="10" cy="20" r="1.2" fill="#F8FAFC"/&gt;
+    &lt;circle cx="14" cy="20" r="1.2" fill="#F8FAFC"/&gt;
+    &lt;circle cx="18" cy="20" r="1.2" fill="#F8FAFC"/&gt;
+    &lt;circle cx="22" cy="20" r="1.2" fill="#F8FAFC"/&gt;
+    &lt;rect x="11" y="23.2" width="10" height="1.8" rx="0.9" fill="#F8FAFC"/&gt;
+&lt;/svg&gt;</code></pre>
+                </div></div>
+        </div>
+    </div>
+
+    <script>
+        /**
+         * Creative Graph Paper Studio
+         * Features:
+         * 1. Graph paper (#FAF9F6) & Blueprint dark mode toggle with subtle paper grain
+         * 2. Static guiding quote ("A system is intelligent to the extent that it does the right thing.")
+         *    and concise MLE / LLM Systems & RL bio in crisp monospace typography
+         * 3. Strewn background SVG stickers (Spaceship, Barbell, Matcha, Galaxy, Typewriter)
+         *    thoughtfully arranged around the outer perimeter with hover/click interactions
+         * 4. Built-in Assets / SVGs inspector modal for copying or downloading each standalone SVG & index.html
+         */
+
+        // ==========================================
+        // 1. CUSTOM SVG ILLUSTRATIONS
+        // ==========================================
+        const MINI_ITEMS = [
+            {
+                id: 'spaceship',
+                fileName: 'spaceship.svg',
+                name: 'Spaceship',
+                active: true,
+                svg: `<svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Thruster Flame -->
+    <path class="thruster-flame" d="M13 25L16 31L19 25H13Z" fill="#F97316"/>
+    <path class="thruster-flame" d="M14.5 25L16 28.5L17.5 25H14.5Z" fill="#FDE047"/>
+    <!-- Side Fins -->
+    <path d="M9 19L5 24H10V19H9Z" fill="#EF4444" stroke="#1E293B" stroke-width="1.4" stroke-linejoin="round"/>
+    <path d="M23 19L27 24H22V19H23Z" fill="#EF4444" stroke="#1E293B" stroke-width="1.4" stroke-linejoin="round"/>
+    <!-- Main Fuselage -->
+    <path d="M16 3C11.5 8 10 14.5 10 22H22C22 14.5 20.5 8 16 3Z" fill="#F8FAFC" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"/>
+    <!-- Nose Cone Tip -->
+    <path d="M16 3C14.2 5 13.1 6.8 12.5 8.5H19.5C18.9 6.8 17.8 5 16 3Z" fill="#EF4444"/>
+    <!-- Porthole Window -->
+    <circle cx="16" cy="14" r="3" fill="#38BDF8" stroke="#1E293B" stroke-width="1.4"/>
+    <circle cx="15" cy="13" r="0.9" fill="#FFFFFF"/>
+    <!-- Engine Base -->
+    <rect x="12" y="22" width="8" height="3" rx="1" fill="#475569" stroke="#1E293B" stroke-width="1.3"/>
+</svg>`
+            },
+            {
+                id: 'barbell',
+                fileName: 'barbell.svg',
+                name: 'Barbell',
+                active: true,
+                svg: `<svg viewBox="0 0 36 32" width="42" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Steel Bar -->
+    <rect x="2" y="14.5" width="32" height="3" rx="1.5" fill="#94A3B8" stroke="#1E293B" stroke-width="1.3"/>
+    <!-- Left Plates -->
+    <rect x="5" y="7" width="3.5" height="18" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.4"/>
+    <rect x="9" y="9.5" width="2.8" height="13" rx="1.2" fill="#38BDF8" stroke="#1E293B" stroke-width="1.3"/>
+    <!-- Right Plates -->
+    <rect x="27.5" y="7" width="3.5" height="18" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.4"/>
+    <rect x="24.2" y="9.5" width="2.8" height="13" rx="1.2" fill="#38BDF8" stroke="#1E293B" stroke-width="1.3"/>
+    <!-- Center Knurling Highlight -->
+    <line x1="15" y1="16" x2="21" y2="16" stroke="#F8FAFC" stroke-width="1.2" stroke-dasharray="1 1"/>
+</svg>`
+            },
+            {
+                id: 'matcha',
+                fileName: 'matcha.svg',
+                name: 'Matcha',
+                active: true,
+                svg: `<svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Gentle Steam -->
+    <path class="matcha-steam" d="M12 8C12 6.5 13.5 6 13.5 4.5" stroke="#94A3B8" stroke-width="1.3" stroke-linecap="round"/>
+    <path class="matcha-steam" style="animation-delay: 0.9s" d="M18.5 8.5C18.5 7 20 6.5 20 5" stroke="#94A3B8" stroke-width="1.3" stroke-linecap="round"/>
+    <!-- Ceramic Chawan Bowl -->
+    <path d="M5 13H27L25.2 22.5C24.7 25 22.5 26.8 20 26.8H12C9.5 26.8 7.3 25 6.8 22.5L5 13Z" fill="#F5F5F4" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"/>
+    <!-- Foot Ring -->
+    <rect x="11" y="26.8" width="10" height="2.2" rx="1" fill="#D6D3D1" stroke="#1E293B" stroke-width="1.3"/>
+    <!-- Vibrant Ceremonial Matcha Liquid & Froth -->
+    <ellipse cx="16" cy="13" rx="11" ry="3.2" fill="#65A30D" stroke="#1E293B" stroke-width="1.4"/>
+    <ellipse cx="16" cy="13" rx="8" ry="1.8" fill="#84CC16"/>
+    <!-- Microfoam Bubbles -->
+    <circle cx="13.5" cy="12.7" r="0.7" fill="#ECFCCB"/>
+    <circle cx="17.5" cy="13.3" r="0.6" fill="#ECFCCB"/>
+    <circle cx="15.5" cy="12.5" r="0.5" fill="#ECFCCB"/>
+</svg>`
+            },
+            {
+                id: 'galaxy',
+                fileName: 'galaxy.svg',
+                name: 'Galaxy',
+                active: true,
+                svg: `<svg viewBox="0 0 32 32" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g class="galaxy-swirl">
+        <!-- Outer Spiral Arms -->
+        <path d="M16 5C22.5 5 27 9.8 27 15.5C27 20.5 23 24.5 17.5 24.5C13 24.5 9.5 21 9.5 16.5C9.5 13 12.2 10.5 15.5 10.5" stroke="#8B5CF6" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M16 27C9.5 27 5 22.2 5 16.5C5 11.5 9 7.5 14.5 7.5C19 7.5 22.5 11 22.5 15.5C22.5 19 19.8 21.5 16.5 21.5" stroke="#38BDF8" stroke-width="2.2" stroke-linecap="round"/>
+        <!-- Glowing Core -->
+        <circle cx="16" cy="16" r="4" fill="#FDE047" opacity="0.5"/>
+        <circle cx="16" cy="16" r="2.3" fill="#FFFFFF"/>
+        <!-- Tiny Orbiting Stars -->
+        <circle cx="7" cy="9" r="1.1" fill="#F472B6"/>
+        <circle cx="25" cy="23" r="1.1" fill="#38BDF8"/>
+        <circle cx="24" cy="8" r="0.9" fill="#FDE047"/>
+    </g>
+</svg>`
+            },
+            {
+                id: 'typewriter',
+                fileName: 'typewriter.svg',
+                name: 'Typewriter',
+                active: true,
+                svg: `<svg viewBox="0 0 32 32" width="38" height="38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Paper Sheet -->
+    <rect x="10" y="4" width="12" height="10" rx="1" fill="#FFFFFF" stroke="#1E293B" stroke-width="1.4"/>
+    <line x1="12.5" y1="7" x2="19.5" y2="7" stroke="#64748B" stroke-width="1.2" stroke-linecap="round"/>
+    <line x1="12.5" y1="9.8" x2="17.5" y2="9.8" stroke="#64748B" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Roller Platen -->
+    <rect x="6" y="12" width="20" height="3" rx="1.5" fill="#334155" stroke="#1E293B" stroke-width="1.3"/>
+    <!-- Typewriter Body -->
+    <path d="M6 15H26L28 25C28 26.1 27.1 27 26 27H6C4.9 27 4 26.1 4 25L6 15Z" fill="#10B981" stroke="#1E293B" stroke-width="1.5" stroke-linejoin="round"/>
+    <!-- Keycaps -->
+    <circle cx="10" cy="20" r="1.2" fill="#F8FAFC"/>
+    <circle cx="14" cy="20" r="1.2" fill="#F8FAFC"/>
+    <circle cx="18" cy="20" r="1.2" fill="#F8FAFC"/>
+    <circle cx="22" cy="20" r="1.2" fill="#F8FAFC"/>
+    <rect x="11" y="23.2" width="10" height="1.8" rx="0.9" fill="#F8FAFC"/>
+</svg>`
+            }
+        ];
+
+        // Sparse, well-spaced outer perimeter anchor zones (in viewport percentages)
+        // Keeps wide breathing room around the central quote & MLE bio
+        const PERIMETER_ANCHORS = [
+            { x: 11, y: 16 },
+            { x: 87, y: 15 },
+            { x: 8,  y: 52 },
+            { x: 91, y: 55 },
+            { x: 14, y: 84 },
+            { x: 85, y: 83 }
+        ];
+
+        // ==========================================
+        // 2. STATE & DOM ELEMENTS
+        // ==========================================
+        const state = {
+            darkMode: false,
+            stickers: [] // Array of { itemId, el, xPct, yPct, tilt, scale, isExtra }
+        };
+
+        const stickerCountEl = document.getElementById('sticker-count');
+        const strewnLayer = document.getElementById('strewn-layer');
+        const stickerToggles = document.getElementById('sticker-toggles');
+        const assetsModal = document.getElementById('assets-modal');
+        const assetsGrid = document.getElementById('assets-grid');
+
+        // ==========================================
+        // 3. THEME & UI CONTROLS
+        // ==========================================
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeLabel = document.getElementById('theme-label');
+
+        themeToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            state.darkMode = !state.darkMode;
+            document.documentElement.classList.toggle('dark', state.darkMode);
+            themeIcon.textContent = state.darkMode ? '📐' : '☀️';
+            themeLabel.textContent = state.darkMode ? 'BLUEPRINT' : 'PAPER';
+        });
+
+        // ==========================================
+        // 4. STREWN BACKGROUND STICKERS ENGINE
+        // ==========================================
+        function updateStickerCounter() {
+            const visibleCount = state.stickers.filter(s => {
+                const def = MINI_ITEMS.find(m => m.id === s.itemId);
+                return def && def.active;
+            }).length;
+            if (stickerCountEl) {
+                stickerCountEl.textContent = `ELEMENTS: ${String(visibleCount).padStart(2, '0')}`;
+            }
+        }
+
+        function spawnSparklesAt(clientX, clientY) {
+            const glyphs = ['✦', '•', '✧', '+'];
+            const colors = ['#38BDF8', '#F59E0B', '#10B981', '#F472B6'];
+            for (let i = 0; i < 5; i++) {
+                const sp = document.createElement('span');
+                sp.className = 'click-sparkle font-mono font-bold';
+                sp.textContent = glyphs[i % glyphs.length];
+                sp.style.color = colors[i % colors.length];
+                sp.style.left = `${clientX}px`;
+                sp.style.top = `${clientY}px`;
+                const angle = (i / 5) * Math.PI * 2 + Math.random() * 0.5;
+                const dist = 24 + Math.random() * 20;
+                sp.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
+                sp.style.setProperty('--dy', `${Math.sin(angle) * dist}px`);
+                document.body.appendChild(sp);
+                setTimeout(() => sp.remove(), 650);
+            }
+        }
+
+        function createStickerElement(itemDef, xPct, yPct, isExtra = false) {
+            const el = document.createElement('div');
+            el.className = 'strewn-sticker';
+            el.title = `${itemDef.name} (Click to nudge)`;
+            el.innerHTML = itemDef.svg;
+
+            const tilt = (Math.random() * 34 - 17).toFixed(1);
+            const scale = (0.9 + Math.random() * 0.32).toFixed(2);
+            const floatDur = (5.2 + Math.random() * 3.2).toFixed(2);
+            const floatDelay = (-Math.random() * 5).toFixed(2);
+
+            el.style.left = `${xPct}vw`;
+            el.style.top = `${yPct}vh`;
+            el.style.setProperty('--tilt', `${tilt}deg`);
+            el.style.setProperty('--scale', scale);
+            el.style.setProperty('--float-dur', `${floatDur}s`);
+            el.style.setProperty('--float-delay', `${floatDelay}s`);
+            el.style.opacity = itemDef.active ? '1' : '0';
+            el.style.pointerEvents = itemDef.active ? 'auto' : 'none';
+
+            el.addEventListener('click', (e) => {
+                e.stopPropagation();
+                el.classList.remove('is-popping');
+                void el.offsetWidth;
+                el.classList.add('is-popping');
+                spawnSparklesAt(e.clientX, e.clientY);
+                setTimeout(() => {
+                    el.classList.remove('is-popping');
+                }, 560);
+            });
+
+            strewnLayer.appendChild(el);
+
+            const record = {
+                itemId: itemDef.id,
+                el,
+                xPct,
+                yPct,
+                tilt,
+                scale,
+                isExtra
+            };
+            state.stickers.push(record);
+            updateStickerCounter();
+            return record;
+        }
+
+        function scatterDefaultStickers() {
+            strewnLayer.innerHTML = '';
+            state.stickers = [];
+
+            const shuffledAnchors = [...PERIMETER_ANCHORS].sort(() => Math.random() - 0.5);
+            const shuffledItems = [...MINI_ITEMS].sort(() => Math.random() - 0.5);
+
+            shuffledAnchors.forEach((anchor, idx) => {
+                const itemDef = shuffledItems[idx % shuffledItems.length];
+                const jitterX = (Math.random() - 0.5) * 3.5;
+                const jitterY = (Math.random() - 0.5) * 3.5;
+                const xPct = Math.max(6, Math.min(94, anchor.x + jitterX));
+                const yPct = Math.max(10, Math.min(89, anchor.y + jitterY));
+                createStickerElement(itemDef, xPct, yPct, false);
+            });
+        }
+
+        function buildStickerToggles() {
+            MINI_ITEMS.forEach((item) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.title = `Show/Hide ${item.name} stickers`;
+
+                const applyStyles = () => {
+                    btn.className = `px-2.5 py-1.5 rounded-full text-xs font-mono flex items-center gap-1.5 transition border ${
+                        item.active
+                            ? 'bg-sky-50 dark:bg-sky-950/70 border-sky-200 dark:border-sky-700/60 text-slate-800 dark:text-sky-200 shadow-xs'
+                            : 'bg-transparent border-transparent opacity-45 hover:opacity-75 text-slate-500'
+                    }`;
+                };
+
+                applyStyles();
+                btn.innerHTML = `<span class="w-4 h-4 inline-flex items-center justify-center scale-75">${item.svg}</span><span class="hidden md:inline">${item.name}</span>`;
+
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    item.active = !item.active;
+                    applyStyles();
+
+                    state.stickers.forEach((s) => {
+                        if (s.itemId === item.id) {
+                            s.el.style.opacity = item.active ? '1' : '0';
+                            s.el.style.pointerEvents = item.active ? 'auto' : 'none';
+                        }
+                    });
+                    updateStickerCounter();
+                });
+
+                stickerToggles.appendChild(btn);
+            });
+        }
+
+        document.getElementById('shuffle-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const shuffledAnchors = [...PERIMETER_ANCHORS].sort(() => Math.random() - 0.5);
+
+            state.stickers.forEach((s, idx) => {
+                let targetX, targetY;
+                if (idx < shuffledAnchors.length) {
+                    const anchor = shuffledAnchors[idx];
+                    targetX = Math.max(5, Math.min(95, anchor.x + (Math.random() - 0.5) * 4.5));
+                    targetY = Math.max(8, Math.min(91, anchor.y + (Math.random() - 0.5) * 4.5));
+                } else {
+                    const edge = Math.floor(Math.random() * 4);
+                    if (edge === 0) { targetX = 8 + Math.random() * 84; targetY = 8 + Math.random() * 12; }
+                    else if (edge === 1) { targetX = 8 + Math.random() * 84; targetY = 80 + Math.random() * 11; }
+                    else if (edge === 2) { targetX = 5 + Math.random() * 10; targetY = 15 + Math.random() * 70; }
+                    else { targetX = 85 + Math.random() * 10; targetY = 15 + Math.random() * 70; }
+                }
+
+                const newTilt = (Math.random() * 34 - 17).toFixed(1);
+                s.xPct = targetX;
+                s.yPct = targetY;
+                s.tilt = newTilt;
+
+                s.el.style.transition = 'left 0.55s cubic-bezier(0.22, 1, 0.36, 1), top 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.25s ease';
+                s.el.style.left = `${targetX}vw`;
+                s.el.style.top = `${targetY}vh`;
+                s.el.style.setProperty('--tilt', `${newTilt}deg`);
+
+                setTimeout(() => {
+                    s.el.style.transition = 'opacity 0.25s ease, filter 0.2s ease';
+                }, 600);
+            });
+        });
+
+        document.getElementById('clear-extra-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            scatterDefaultStickers();
+        });
+
+        document.body.addEventListener('click', (e) => {
+            if (
+                e.target.closest('button') ||
+                e.target.closest('#control-pill') ||
+                e.target.closest('#text-safe-zone') ||
+                e.target.closest('.strewn-sticker') ||
+                e.target.closest('#assets-modal-card') ||
+                !assetsModal.classList.contains('hidden')
+            ) {
+                return;
+            }
+
+            const activePool = MINI_ITEMS.filter(i => i.active);
+            const pool = activePool.length > 0 ? activePool : MINI_ITEMS;
+            const chosen = pool[Math.floor(Math.random() * pool.length)];
+            if (!chosen.active) chosen.active = true;
+
+            const xPct = (e.clientX / window.innerWidth) * 100;
+            const yPct = (e.clientY / window.innerHeight) * 100;
+
+            const created = createStickerElement(chosen, xPct, yPct, true);
+            created.el.classList.add('is-popping');
+            spawnSparklesAt(e.clientX, e.clientY);
+            setTimeout(() => created.el.classList.remove('is-popping'), 560);
+        });
+
+        // ==========================================
+        // 5. STANDALONE SVG & HTML ASSETS DRAWER
+        // ==========================================
+        function copyTextFallback(text, onDone) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+                document.execCommand('copy');
+                if (onDone) onDone();
+            } catch (err) {
+                console.error('Copy failed', err);
+            }
+            ta.remove();
+        }
+
+        function triggerDownload(filename, content, mimeType) {
+            const blob = new Blob([content], { type: mimeType });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+
+        function buildAssetsModal() {
+            assetsGrid.innerHTML = '';
+
+            MINI_ITEMS.forEach((item) => {
+                const card = document.createElement('div');
+                card.className = 'rounded-xl border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-950/60 p-4 flex flex-col justify-between gap-3';
+
+                const standaloneSvg = `<?xml version="1.0" encoding="UTF-8"?>\n${item.svg}`;
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between gap-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl graph-paper border border-slate-200 dark:border-slate-800 flex items-center justify-center shrink-0">
+                                ${item.svg}
+                            </div>
+                            <div>
+                                <div class="text-xs font-semibold text-slate-900 dark:text-slate-100">${item.name}</div>
+                                <div class="text-[11px] text-slate-500 dark:text-slate-400">${item.fileName}</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1.5">
+                            <button type="button" data-action="copy"
+                                class="px-2.5 py-1.5 rounded-lg text-[11px] border border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 transition">
+                                Copy SVG
+                            </button>
+                            <button type="button" data-action="download"
+                                class="px-2.5 py-1.5 rounded-lg text-[11px] bg-slate-800 text-white dark:bg-sky-500/20 dark:text-sky-300 dark:border dark:border-sky-500/40 hover:opacity-90 transition">
+                                ↓ .svg
+                            </button>
+                        </div>
+                    </div>
+                    <pre class="text-[10px] leading-relaxed p-2.5 rounded-lg bg-slate-100/90 dark:bg-slate-900 text-slate-600 dark:text-slate-300 overflow-x-auto max-h-24 select-all"><code></code></pre>
+                `;
+
+                card.querySelector('code').textContent = item.svg;
+
+                const copyBtn = card.querySelector('[data-action="copy"]');
+                copyBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    copyTextFallback(item.svg, () => {
+                        const prev = copyBtn.textContent;
+                        copyBtn.textContent = '✓ Copied';
+                        setTimeout(() => { copyBtn.textContent = prev; }, 1400);
+                    });
+                });
+
+                const dlBtn = card.querySelector('[data-action="download"]');
+                dlBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    triggerDownload(item.fileName, standaloneSvg, 'image/svg+xml;charset=utf-8');
+                });
+
+                assetsGrid.appendChild(card);
+            });
+        }
+
+        function openAssetsModal() {
+            assetsModal.classList.remove('hidden');
+            assetsModal.classList.add('flex');
+        }
+
+        function closeAssetsModal() {
+            assetsModal.classList.add('hidden');
+            assetsModal.classList.remove('flex');
+        }
+
+        document.getElementById('open-assets-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            openAssetsModal();
+        });
+
+        document.getElementById('close-assets-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeAssetsModal();
+        });
+
+        assetsModal.addEventListener('click', (e) => {
+            if (e.target === assetsModal) {
+                closeAssetsModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !assetsModal.classList.contains('hidden')) {
+                closeAssetsModal();
+            }
+        });
+
+        document.getElementById('download-html-btn').addEventListener('click', (e) => {
+            e.stopPropagation();
+            const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            triggerDownload('index.html', fullHtml, 'text/html;charset=utf-8');
+        });
+
+        // ==========================================
+        // 6. INITIALIZATION
+        // ==========================================
+        window.addEventListener('DOMContentLoaded', () => {
+            buildStickerToggles();
+            scatterDefaultStickers();
+            buildAssetsModal();
+        });
+    </script>
+
+</body></html>

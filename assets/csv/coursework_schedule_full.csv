@@ -1,0 +1,165 @@
+Course,Date,Day,Type,Title
+Deep RL (10-703),2026-08-24,Mon,Lecture,Lecture #1: Welcome and Introduction to the Class
+LLM Systems (11-868),2026-08-24,Mon,Lecture,Introduction to LLM
+AI Agents (11-768),2026-08-25,Tue,Lecture,Course Overview: What Is an Agent?
+Deep RL (10-703),2026-08-26,Wed,Lecture,Lecture #2: Introduction to Reinforcement Learning
+LLM Systems (11-868),2026-08-26,Wed,Lecture,GPU Programming Basics 1
+AI Agents (11-768),2026-08-27,Thu,Lecture,Agent Capabilities 1: Tool Use
+AI Innovation / Capstone,2026-08-27,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+Deep RL (10-703),2026-08-28,Fri,Recitation,"Recitation #1: Neural Nets, PyTorch, Gymnasium"
+Deep RL (10-703),2026-08-31,Mon,Lecture,Lecture #3: Policy Gradient Methods
+LLM Systems (11-868),2026-08-31,Mon,Lecture,GPU Acceleration
+AI Agents (11-768),2026-09-01,Tue,Lecture,Agent Capabilities 2: Context Management for Long-Context Agents
+AI Innovation / Capstone,2026-09-01,Tue,Deadline,The 20-10-10 Exercise - Aligning Interests Ahead of Capstone Selection - due 11:59pm
+AI Innovation / Capstone,2026-09-02,Wed,Deadline,Sign Up for Free Miro Account (badges) - due 11:59pm
+Deep RL (10-703),2026-09-02,Wed,Lecture,Lecture #4: Actor-Critic Methods & Evolutionary Methods for Policy Search
+LLM Systems (11-868),2026-09-02,Wed,Deadline,HW1 due 11:59pm
+LLM Systems (11-868),2026-09-02,Wed,Lecture,Deep Learning Frameworks and Auto Differentiation
+AI Agents (11-768),2026-09-03,Thu,Lecture,Agent Capabilities 3: Skills and Memory
+AI Innovation / Capstone,2026-09-03,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+Deep RL (10-703),2026-09-04,Fri,Recitation,"Recitation #2: MDPs, Policy Gradients, & HW1"
+Deep RL (10-703),2026-09-07,Mon,Holiday,No Class - Labor Day
+AI Agents (11-768),2026-09-08,Tue,Lecture,"Agent Capabilities 4: Planning, Task Decomposition, and Multi-Agent Coordination"
+AI Innovation / Capstone,2026-09-08,Tue,Deadline,[Individual] Design Thinking Exploration Artifacts (1 of 2) - due 11:59pm
+AI Innovation / Capstone,2026-09-08,Tue,Deadline,[Individual] Design Thinking Exploration Video Submission (2 of 2) - due 11:59pm
+AI Agents (11-768),2026-09-09,Wed,Quiz,Lecture Highlight Quiz (9/8 lecture) - avail Sep 8 3:30pm - due Sep 9 5:00pm
+Deep RL (10-703),2026-09-09,Wed,Lecture,Lecture #5: Value-based Methods
+LLM Systems (11-868),2026-09-09,Wed,Deadline,HW2 due 11:59pm
+LLM Systems (11-868),2026-09-09,Wed,Lecture,LLM Architecture and Pre-training
+AI Agents (11-768),2026-09-10,Thu,Lecture,Domains 1: Coding Agents
+AI Innovation / Capstone,2026-09-10,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+Deep RL (10-703),2026-09-11,Fri,Deadline,HW1 due
+Deep RL (10-703),2026-09-11,Fri,Recitation,Recitation #3: Value-Based Methods and Actor-Critic Methods & HW2
+AI Agents (11-768),2026-09-14,Mon,Deadline,Assignment 1: Harness due
+Deep RL (10-703),2026-09-14,Mon,Lecture,Lecture #6: Value based methods (Cont.)
+LLM Systems (11-868),2026-09-14,Mon,Lecture,Tokenization and Embedding
+AI Agents (11-768),2026-09-15,Tue,Lecture,Domains 2: GUI Agents (JY Koh)
+AI Agents (11-768),2026-09-16,Wed,Quiz,Lecture Highlight Quiz (9/15 lecture) - avail Sep 15 3:30pm - due Sep 16 5:00pm
+AI Innovation / Capstone,2026-09-16,Wed,Deadline,DEEP Research - Problem Space - due 11:59pm
+Deep RL (10-703),2026-09-16,Wed,Lecture,Lecture #7: Advanced Policy Gradient Methods
+LLM Systems (11-868),2026-09-16,Wed,Deadline,Project Team Formation due 11:59pm
+LLM Systems (11-868),2026-09-16,Wed,Lecture,Generation and Speculative Decoding
+AI Agents (11-768),2026-09-17,Thu,Lecture,Training 1: Supervised Fine-Tuning (SFT) (Yueqi Song)
+AI Innovation / Capstone,2026-09-17,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+Deep RL (10-703),2026-09-18,Fri,Recitation,Recitation #4: Policy-Based Methods & HW3
+Deep RL (10-703),2026-09-21,Mon,Deadline,HW2 due
+Deep RL (10-703),2026-09-21,Mon,Lecture,Lecture #8: Advanced Policy Gradient Methods (Cont.)
+LLM Systems (11-868),2026-09-21,Mon,Lecture,Accelerating Transformer on GPU Part 1
+AI Agents (11-768),2026-09-22,Tue,Lecture,Training 2: Reinforcement Learning Basics
+AI Innovation / Capstone,2026-09-22,Tue,Deadline,Upload v0 Team Charters - due 11:59pm
+AI Innovation / Capstone,2026-09-22,Tue,Deadline,[Deep] Capstone Company Research and Mental Model Building - due 11:59pm
+AI Innovation / Capstone,2026-09-22,Tue,Deadline,Capstone Sponsor Communication (review in advance) - due 11:59pm
+Deep RL (10-703),2026-09-23,Wed,Lecture,Lecture #9: Off-Policy Actor-Critic and Max-Ent RL
+LLM Systems (11-868),2026-09-23,Wed,Deadline,HW3 due 11:59pm
+LLM Systems (11-868),2026-09-23,Wed,Lecture,Accelerating Transformer on GPU Part 2
+AI Agents (11-768),2026-09-24,Thu,Deadline,Assignment 2: Eval due
+AI Agents (11-768),2026-09-24,Thu,Lecture,Domains 3: Deep Research Agents (Akari Asai)
+AI Innovation / Capstone,2026-09-24,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+Deep RL (10-703),2026-09-25,Fri,Recitation,Recitation #5: IL Diffusion Policies and HW4
+Deep RL (10-703),2026-09-28,Mon,Lecture,Lecture #10: Imitation Learning
+LLM Systems (11-868),2026-09-28,Mon,Lecture,"Guest Lecture (Srinath Mandalapu, Google): TPU and JAX"
+AI Agents (11-768),2026-09-29,Tue,Lecture,Training 3: Advanced RL Algorithms
+AI Innovation / Capstone,2026-09-29,Tue,Deadline,Prep of Social Selling Styles / Rewards Systems - due 11:59pm
+AI Agents (11-768),2026-09-30,Wed,Quiz,Lecture Highlight Quiz (9/29 lecture) - avail Sep 29 3:30pm - due Sep 30 5:00pm
+AI Innovation / Capstone,2026-09-30,Wed,Deadline,Team Retrospective 1 - due 11:59pm
+Deep RL (10-703),2026-09-30,Wed,Lecture,Lecture #11: Imitation Learning and Diffusion
+LLM Systems (11-868),2026-09-30,Wed,Deadline,Project Proposal due 11:59pm
+LLM Systems (11-868),2026-09-30,Wed,Lecture,"Guest Lecture (Srinath Mandalapu, Google): Pallas and Splash Attention"
+AI Agents (11-768),2026-10-01,Thu,Lecture,Training 4: RL Systems (Apurva Gandhi)
+AI Innovation / Capstone,2026-10-01,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+AI Agents (11-768),2026-10-02,Fri,Quiz,Lecture Highlight Quiz (10/1 lecture) - avail Oct 1 3:30pm - due Oct 2 5:00pm
+Deep RL (10-703),2026-10-02,Fri,Deadline,HW3 due
+Deep RL (10-703),2026-10-02,Fri,Recitation,Recitation #6: Midterm Review & HW4
+Deep RL (10-703),2026-10-05,Mon,Exam,Midterm (in class)
+LLM Systems (11-868),2026-10-05,Mon,Lecture,Distributed Data Parallel Training
+AI Agents (11-768),2026-10-06,Tue,Lecture,Safety 1: Sandboxing and Credential Management
+Deep RL (10-703),2026-10-07,Wed,Lecture,Lecture #12: RL & Generative Modeling
+LLM Systems (11-868),2026-10-07,Wed,Deadline,HW4 due 11:59pm
+LLM Systems (11-868),2026-10-07,Wed,Lecture,Model Parallel Training
+AI Agents (11-768),2026-10-08,Thu,Lecture,Frameworks 1: OpenHands
+AI Innovation / Capstone,2026-10-08,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+AI Innovation / Capstone,2026-10-09,Fri,Deadline,Upload v1 Team Charters & v0 360 Review - due 11:59pm
+Deep RL (10-703),2026-10-09,Fri,Deadline,HW4 due
+Deep RL (10-703),2026-10-09,Fri,Recitation,Recitation #7: IL Diffusion Policies
+Deep RL (10-703),2026-10-12,Mon,Holiday,Fall Break - No Classes (through 10/16)
+AI Agents (11-768),2026-10-13,Tue,Holiday,Fall Break - No class
+AI Agents (11-768),2026-10-15,Thu,Holiday,Fall Break - No class
+AI Innovation / Capstone,2026-10-16,Fri,Deadline,V1 of Final Pitch (Partial Sponsor Review) - due 11:59pm
+Deep RL (10-703),2026-10-19,Mon,Lecture,Lecture #13: Offline RL
+LLM Systems (11-868),2026-10-19,Mon,Lecture,Systems for Mixture-of-Expert Models
+AI Agents (11-768),2026-10-20,Tue,Lecture,Frameworks 2: LangGraph
+Deep RL (10-703),2026-10-21,Wed,Lecture,Lecture #14: Model-based Methods
+LLM Systems (11-868),2026-10-21,Wed,Lecture,Memory Optimization in Distributed Training
+AI Agents (11-768),2026-10-22,Thu,Deadline,Assignment 3: Training due
+AI Agents (11-768),2026-10-22,Thu,Lecture,Safety 2: Observability and Monitoring (Eric Wallace)
+AI Innovation / Capstone,2026-10-22,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+Deep RL (10-703),2026-10-23,Fri,Deadline,Project Team Formation & Proposal due (tentative)
+Deep RL (10-703),2026-10-23,Fri,Recitation,Recitation #8: Midterm Solution Session & HW5
+Deep RL (10-703),2026-10-26,Mon,Lecture,Lecture #15: Model-based Methods (Cont.)
+LLM Systems (11-868),2026-10-26,Mon,Deadline,HW5 due 11:59pm
+LLM Systems (11-868),2026-10-26,Mon,Lecture,Model Quantization
+AI Agents (11-768),2026-10-27,Tue,Lecture,Agents and the Future of Work (Zora Wang)
+AI Agents (11-768),2026-10-28,Wed,Quiz,Lecture Highlight Quiz (10/27 lecture) - avail Oct 27 3:30pm - due Oct 28 5:00pm
+Deep RL (10-703),2026-10-28,Wed,Lecture,Lecture #16: Model-based Methods & Learning and Tree-Search Planning
+LLM Systems (11-868),2026-10-28,Wed,Lecture,Model Quantization II
+AI Agents (11-768),2026-10-29,Thu,Lecture,Interaction 1: Multi-Agent Interaction (Saujas Vaduguru)
+AI Innovation / Capstone,2026-10-29,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+AI Innovation / Capstone,2026-10-30,Fri,Deadline,Team Retrospective 2 & Round 2 360 Review - due 11:59pm
+AI Innovation / Capstone,2026-10-30,Fri,Deadline,V2 of Final Pitch - due 11:59pm
+Deep RL (10-703),2026-10-30,Fri,Recitation,Recitation #9: TD-MPC & PETS
+Deep RL (10-703),2026-11-02,Mon,Lecture,Lecture #17: Model-based Methods for offline RL
+LLM Systems (11-868),2026-11-02,Mon,Lecture,Efficient fine-tuning for Large Models
+AI Agents (11-768),2026-11-03,Tue,Project hours,Project hours
+Deep RL (10-703),2026-11-04,Wed,Lecture,Lecture #18: Guided Diffusion
+LLM Systems (11-868),2026-11-04,Wed,Deadline,Project Mid-term Report due 11:59pm
+LLM Systems (11-868),2026-11-04,Wed,Lecture,Optimizing Attention for Modern Hardware (Tri Dao)
+AI Agents (11-768),2026-11-05,Thu,Project hours,Project hours
+AI Innovation / Capstone,2026-11-05,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+Deep RL (10-703),2026-11-06,Fri,Recitation,Recitation #10: Exploration
+Deep RL (10-703),2026-11-09,Mon,Lecture,Lecture #19: Exploration
+LLM Systems (11-868),2026-11-09,Mon,Lecture,LLM serving with SGL
+AI Agents (11-768),2026-11-10,Tue,Lecture,Interaction 2: Human-Agent Interaction (Valerie Chen)
+Deep RL (10-703),2026-11-11,Wed,Deadline,HW5 due
+Deep RL (10-703),2026-11-11,Wed,Lecture,Lecture #20: Sim2Real Learning
+LLM Systems (11-868),2026-11-11,Wed,Lecture,Efficient LLM Inference with Paged Attention and vLLM (Woosuk Kwon)
+AI Agents (11-768),2026-11-12,Thu,Lecture,Search 1: Reranking and Critic Models
+AI Innovation / Capstone,2026-11-12,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+AI Agents (11-768),2026-11-13,Fri,Quiz,Lecture Highlight Quiz (11/12 lecture) - avail Nov 12 3:30pm - due Nov 13 5:00pm
+AI Innovation / Capstone,2026-11-13,Fri,Deadline,Team Retrospective 3 & 360 Reviews - due 11:59pm
+AI Innovation / Capstone,2026-11-13,Fri,Deadline,V3 of Final Pitch - due 11:59pm
+Deep RL (10-703),2026-11-13,Fri,Recitation,Recitation #11: Sim2Real and HW6
+LLM Systems (11-868),2026-11-13,Fri,Deadline,HW6 due 11:59pm
+Deep RL (10-703),2026-11-16,Mon,Lecture,Lecture #21: Sim2Real Learning (Cont.)
+LLM Systems (11-868),2026-11-16,Mon,Lecture,Acceleration on TPU1
+AI Agents (11-768),2026-11-17,Tue,Lecture,Search 2: Tree Search (JY Koh)
+AI Agents (11-768),2026-11-18,Wed,Quiz,Lecture Highlight Quiz (11/17 lecture) - avail Nov 17 3:30pm - due Nov 18 5:00pm
+Deep RL (10-703),2026-11-18,Wed,Deadline,Project Midway Report due
+Deep RL (10-703),2026-11-18,Wed,Lecture,Lecture #22: RL with Foundation Models
+LLM Systems (11-868),2026-11-18,Wed,Lecture,Acceleration on TPU2
+AI Agents (11-768),2026-11-19,Thu,Lecture,Guest Lecture (Karthik Narasimhan)
+AI Innovation / Capstone,2026-11-19,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+AI Innovation / Capstone,2026-11-20,Fri,Deadline,Red Team Presentation Skill - due 11:59pm
+Deep RL (10-703),2026-11-20,Fri,Recitation,Recitation #12: RL with Foundation Models
+Deep RL (10-703),2026-11-23,Mon,Deadline,HW6 due
+Deep RL (10-703),2026-11-23,Mon,Lecture,Lecture #23: RL with Foundation Models (Cont.)
+LLM Systems (11-868),2026-11-23,Mon,Lecture,Efficient Reinforcement Learning System for LLMs
+AI Agents (11-768),2026-11-24,Tue,Lecture,Guest Lecture (Sasha Rush)
+Deep RL (10-703),2026-11-25,Wed,Holiday,Thanksgiving Break - No Classes (through 11/27)
+AI Agents (11-768),2026-11-26,Thu,Holiday,Thanksgiving - No class
+Deep RL (10-703),2026-11-30,Mon,Lecture,Lecture #24: Goal-Driven Reasoning for Multimodal AI Agents
+LLM Systems (11-868),2026-11-30,Mon,Deadline,HW7 due 11:59pm
+LLM Systems (11-868),2026-11-30,Mon,Lecture,Serving with Disaggregated Prefill-Decoding
+AI Agents (11-768),2026-12-01,Tue,Deadline,Final Presentations (posters) begin (through Dec 3)
+AI Agents (11-768),2026-12-01,Tue,Presentation,Final presentations (posters)
+AI Innovation / Capstone,2026-12-01,Tue,Deadline,Team Retrospective 4 & 360 Reviews - due 11:59pm
+Deep RL (10-703),2026-12-02,Wed,Lecture,Lecture #25: Projects
+LLM Systems (11-868),2026-12-02,Wed,Lecture,Better KV Cache for LLM Serving (Junchen Jiang)
+AI Agents (11-768),2026-12-03,Thu,Presentation,Final presentations (posters)
+AI Innovation / Capstone,2026-12-03,Thu,Class,"AI Innovation Class, 5:00pm-7:50pm"
+AI Innovation / Capstone,2026-12-04,Fri,Deadline,Roll Call Attendance - due 11:59pm
+Deep RL (10-703),2026-12-04,Fri,Deadline,HW7 due
+Deep RL (10-703),2026-12-04,Fri,Lecture,Lecture #26: Projects
+LLM Systems (11-868),2026-12-04,Fri,Deadline,Final Project Presentation
+LLM Systems (11-868),2026-12-06,Sun,Deadline,Final Project Report due 11:59pm
+AI Innovation / Capstone,2026-12-07,Mon,Deadline,Team Retrospective 5 - Final Retro & Final 360 Reviews - due 11:59pm
+Deep RL (10-703),2026-12-07,Mon,Deadline,Project Final Report due (finals week Dec 7-11)

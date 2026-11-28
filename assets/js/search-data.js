@@ -4,20 +4,20 @@ const ninja = document.querySelector('ninja-keys');
 // add the home and posts menu items
 ninja.data = [{
     id: "nav-about",
-    title: "about",
+    title: "About",
     section: "Navigation",
     handler: () => {
       window.location.href = "/";
     },
   },{id: "nav-projects",
-          title: "PROJECTS",
+          title: "Projects",
           description: "Selected research and academic projects",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
           },
         },{id: "nav-news",
-          title: "news",
+          title: "News",
           description: "",
           section: "Navigation",
           handler: () => {
@@ -47,7 +47,7 @@ ninja.data = [{
           section: "News",},{id: "news-joined-apple-as-a-machine-learning-intern-on-the-applied-machine-learning-team",
           title: 'Joined Apple as a Machine Learning Intern on the Applied Machine Learning team....',
           description: "",
-          section: "News",},{id: "news-started-working-with-altus-dexterity-on-the-darpa-surgical-challenge-as-a-machine-learning-research-engineer-focusing-on-language-planning-reasoning-and-voice-our-team-was-selected-as-one-of-10-teams-for-the-final-darpa-surgical-competition",
+          section: "News",},{id: "news-started-working-with-altus-dexterity-on-the-darpa-surgical-challenge-as-a-machine-learning-research-engineer-focusing-on-language-planning-reasoning-and-voice-our-team-has-been-selected-as-one-of-10-teams-for-the-final-darpa-surgical-competition",
           title: 'Started working with Altus Dexterity on the DARPA surgical challenge as a Machine...',
           description: "",
           section: "News",},{id: "projects-zulipgpt-llm-integration-for-chat-summarization-in-open-source-messaging",

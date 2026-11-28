@@ -8,4 +8,4 @@ alt: DARPA Surgical Competition logo
 href: https://altusdexterity.ai
 ---
 
-Started working with Altus Dexterity on the DARPA surgical challenge as a Machine Learning Research Engineer, focusing on language planning, reasoning, and voice. Our team was selected as one of 10 teams for the final DARPA Surgical Competition.
+Started working with Altus Dexterity on the DARPA surgical challenge as a Machine Learning Research Engineer, focusing on language planning, reasoning, and voice. Our team has been selected as one of 10 teams for the final DARPA Surgical Competition.

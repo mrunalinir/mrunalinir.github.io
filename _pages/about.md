@@ -1,8 +1,8 @@
 ---
 layout: about
-title: about
+title: About
 permalink: /
-subtitle: Artificial Intelligence | Research | Development
+subtitle: Artificial Intelligence | Research and Development | System Design
 
 profile:
   align: right
@@ -27,8 +27,7 @@ latest_posts:
 ---
 
 <blockquote class="intro-quote">
-  <p>"A system is intelligent to the extent that it does the right thing."</p>
-  <footer>Stuart Russell &amp; Peter Norvig</footer>
+  <p>A system is intelligent to the extent that it does the right thing.</p>
 </blockquote>
 
 **I love working on ML systems and reinforcement learning.** I build fast, reliable models and teach them to reason.

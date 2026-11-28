@@ -198,12 +198,13 @@ html[data-theme="light"] #light-toggle-light {
   padding-right: 72px !important;
 }
 
-// ── ABOUT PAGE ELEMENTS (mapped onto existing al-folio classes) ──
+// ── PAGE HEADERS (about name, News, Projects, CV) ──
 .post .post-title {
   font-family: 'EB Garamond', serif !important;
   font-size: 74px !important;
   font-weight: 500 !important;
   font-style: normal !important;
+  text-transform: none !important;
   color: var(--ink) !important;
   line-height: 1.0 !important;
   letter-spacing: 0.02em !important;
@@ -352,12 +353,14 @@ article a:hover {
 // ── CV PAGE (will mostly affect any custom cv markup using these classes) ──
 .cv-page h1 {
   font-family: 'EB Garamond', serif !important;
-  font-size: 60px !important;
+  font-size: 74px !important;
   font-weight: 500 !important;
-  font-style: italic !important;
+  font-style: normal !important;
+  text-transform: none !important;
   color: var(--ink) !important;
   line-height: 1.0 !important;
-  margin-bottom: 6px !important;
+  letter-spacing: 0.02em !important;
+  margin-bottom: 12px !important;
 }
 
 .cv-page .cv-subtitle {
@@ -678,19 +681,11 @@ i.icondepartment {
     padding-right: 24px !important;
   }
 
-  // Scale down hero title
-  .post .post-title {
-    font-size: 52px !important;
-  }
-
-  // CV page title
-  .cv-page h1 {
-    font-size: 44px !important;
-  }
-
-  // Projects page title
+  // Scale down page titles
+  .post .post-title,
+  .cv-page h1,
   .projects h1 {
-    font-size: 44px !important;
+    font-size: 52px !important;
   }
 
   // Profile card: float at narrower width, slightly smaller text
@@ -787,16 +782,12 @@ i.icondepartment {
     padding-right: 16px !important;
   }
 
-  // Hero title
-  .post .post-title {
-    font-size: 38px !important;
-    line-height: 1.1 !important;
-  }
-
-  // CV / projects page h1
+  // Page titles
+  .post .post-title,
   .cv-page h1,
   .projects h1 {
-    font-size: 32px !important;
+    font-size: 38px !important;
+    line-height: 1.1 !important;
   }
 
   // Post description subtitle
@@ -898,12 +889,14 @@ i.icondepartment {
 // ── PROJECTS PAGE ──
 .projects h1 {
   font-family: 'EB Garamond', serif !important;
-  font-size: 60px !important;
+  font-size: 74px !important;
   font-weight: 500 !important;
-  font-style: italic !important;
+  font-style: normal !important;
+  text-transform: none !important;
   color: var(--ink) !important;
   line-height: 1.0 !important;
-  margin-bottom: 10px !important;
+  letter-spacing: 0.02em !important;
+  margin-bottom: 12px !important;
 }
 
 .projects .subtitle {
